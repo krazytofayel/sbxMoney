@@ -1,0 +1,397 @@
+/*-------------------------------
+    Hero  Section CSS
+-------------------------------*/
+ .hero-content span {
+  display: block;
+  margin-bottom: 10px;
+  color: #00A79D;
+}
+
+ .hero-content h1 {
+  font-size: 54px;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+ .hero-content p {
+  margin-bottom: 40px;
+}
+
+ .hero-content .hero-btn a:nth-child(1) {
+  margin-right: 15px;
+}
+
+.style1 {
+  margin-top: 130px;
+  padding: 50px 0 0;
+  background-color: #F2FAFC;
+}
+
+
+
+.style1 .container .hero-shape-one {
+  position: absolute;
+  top: -50px;
+  left: 30%;
+}
+
+.style1 .container .hero-shape-two {
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+}
+
+.style1 .container .hero-shape-three {
+  position: absolute;
+  top: 0px;
+  right: 0%;
+}
+
+
+
+.style1 .hero-content span {
+  letter-spacing: 4px;
+}
+
+.style1 .hero-currency-convert {
+  position: relative;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap {
+  background-color: #fff;
+  padding: 25px 30px 30px;
+  display: inline-block;
+  min-width: 360px;
+  position: absolute;
+  border-radius: 5px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 10;
+  margin-left: 280px;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap h5 {
+  margin-bottom: 15px;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap .form-group {
+  margin-bottom: 15px;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap .form-group label {
+  display: block;
+  margin: 0 0 10px;
+  color: #000;
+  font-weight: 400;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap .form-group input,
+.style1 .hero-currency-convert .currency-converter-wrap .form-group select {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  padding: 10px 15px;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap .form-group input::-webkit-input-placeholder {
+  opacity: 0.7;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap .form-group input:-ms-input-placeholder {
+  opacity: 0.7;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap .form-group input::-ms-input-placeholder {
+  opacity: 0.7;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap .form-group input::placeholder {
+  opacity: 0.7;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap .form-group select {
+  opacity: 0.7;
+}
+
+.style1 .hero-currency-convert .currency-converter-wrap button {
+  display: block;
+  background-color: #00A79D;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  border: none;
+  padding: 14px 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.style1 .hero-currency-convert .hero-currency-img {
+  max-width: 75%;
+  margin-left: auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 50px;
+  overflow: hidden;
+}
+
+.style1 .hero-currency-convert .hero-currency-img img {
+  /* display: block; */
+  /* margin: 0 auto; */
+}
+
+.style1 .hero-currency-convert .hero-currency-img:after {
+  position: absolute;
+  top: -150px;
+  left: 0;
+  content: "";
+  width: 200vw;
+  height: 200vh;
+  background-color: #00A79D;
+  /* -webkit-transform: rotate(-20deg); */
+  transform: rotate(-20deg);
+  z-index: -1;
+}
+
+.style2 {
+  background-color: #FAFAFC;
+  padding: 100px 0;
+  margin-top: 85px;
+  z-index: 1;
+  position: relative;
+}
+
+.style2 .hero-shape {
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+}
+
+.style2 .container {
+  position: relative;
+}
+
+.style2 .container .hero-shape-one {
+  position: absolute;
+  top: 30px;
+  left: 30%;
+}
+
+.style2 .container .hero-shape-two {
+  position: absolute;
+  bottom: 50px;
+  left: 30%;
+}
+
+.style2 .container .hero-shape-three {
+  position: absolute;
+  top: 10px;
+  right: 10%;
+  z-index: 10;
+}
+
+.style2 .hero-content > span {
+  letter-spacing: 4px;
+}
+
+.style2 .hero-content .play-video .play-now {
+  background-color: #00A79D;
+}
+
+.style2 .hero-content .play-video .play-now i {
+  color: #fff;
+}
+
+.style2 .hero-content .hero-contact {
+  margin-top: 55px;
+  max-width: 80%;
+}
+
+.style2 .hero-content .hero-contact .hero-contact-img {
+  margin-left: 15px;
+}
+
+.style2 .hero-content .hero-contact .hero-contact-img a {
+  display: inline-block;
+  margin-left: -15px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+
+.style2 .hero-content .hero-contact .hero-contact-img a img {
+  border-radius: 50%;
+  border: 3px solid #fff;
+}
+
+.style2 .hero-content .hero-contact .hero-contact-text {
+  width: 55%;
+  margin-left: 25px;
+}
+
+.style2 .hero-content .hero-contact .hero-contact-text p {
+  margin: 0;
+  padding: 0;
+}
+
+.style2 .hero-content .hero-contact .hero-contact-text p .link {
+  text-decoration: underline;
+}
+
+.style2 .hero-img-wrap {
+  position: relative;
+}
+
+.style2 .hero-img-wrap .hero-promo-text {
+  position: absolute;
+  bottom: 100px;
+  left: 40%;
+  -webkit-transform: trasnlateX(-50%);
+  transform: trasnlateX(-50%);
+  background-color: #fff;
+  padding: 20px 20px 20px 25px;
+  border-radius: 5px;
+  z-index: 2;
+}
+
+.style2 .hero-img-wrap .hero-promo-text span {
+  margin-right: 15px;
+}
+
+.style2 .hero-img-wrap .hero-promo-text span i {
+  color: #00A79D;
+  font-size: 52px;
+  line-height: 0.8;
+}
+
+.style2 .hero-img-wrap .hero-promo-text h6 {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+}
+
+.style2 .hero-img-wrap .hero-promo-text h6 span {
+  display: block;
+  color: #666666;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.style2 .hero-img-wrap .hero-img-one,
+.style2 .hero-img-wrap .hero-img-two {
+  position: relative;
+  width: calc(50% - 15px);
+  z-index: 1;
+}
+
+.style2 .hero-img-wrap .hero-img-one:before,
+.style2 .hero-img-wrap .hero-img-two:before {
+  position: absolute;
+  width: 0;
+  height: 0;
+  content: "";
+  z-index: 1;
+  top: -7px;
+  left: -5px;
+  border-top: 38px solid #FAFAFC;
+  border-left: 38px solid #FAFAFC;
+  border-right: 38px solid transparent;
+  border-bottom: 38px solid transparent;
+  -webkit-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
+
+.style2 .hero-img-wrap .hero-img-two {
+  margin-top: 80px;
+}
+
+.style2 .hero-content .hero-btn .play-video, .style3 .hero-content .hero-btn .play-video {
+  display: inline-block;
+}
+
+.style2 .hero-content .hero-btn .play-video span, .style3 .hero-content .hero-btn .play-video span {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.style2 .hero-content .hero-btn .play-video span.link-text, .style3 .hero-content .hero-btn .play-video span.link-text {
+  position: relative;
+  top: -6px;
+  color: #666666;
+}
+
+.style2 .hero-content .hero-btn .play-video .play-now, .style3 .hero-content .hero-btn .play-video .play-now {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  line-height: 30px;
+  margin: 0 7px 0 0;
+  padding: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.style2 .hero-content .hero-btn .play-video .play-now i, .style3 .hero-content .hero-btn .play-video .play-now i {
+  font-size: 26px;
+}
+
+.style3 {
+  margin-top: 134px;
+  padding: 100px 0 80px;
+  background-color: #FAFAFC;
+}
+
+.style3 .container {
+  position: relative;
+}
+
+.style3 .container .hero-shape-one {
+  position: absolute;
+  bottom: 60px;
+  right: 5%;
+}
+
+.style3 .container .hero-shape-two {
+  position: absolute;
+  bottom: 20px;
+  left: 30%;
+}
+
+.style3 .container .hero-shape-three {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.style3 .hero-content .play-video .play-now {
+  background-color: #fff;
+  -webkit-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.style3 .hero-content .play-video .play-now i {
+  color: #00A79D;
+}
+
+.style3 .hero-img-wrap .hero-img {
+  margin-bottom: 25px;
+  border-radius: 5px;
+}
+
+.style3 .hero-img-wrap .hero-img img {
+  border-radius: 5px;
+}
