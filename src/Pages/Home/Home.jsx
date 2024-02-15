@@ -27,19 +27,19 @@ const Home = () => {
 
   return (
     <>
-      {/* <div className={`z-20  ${navfix
+      <div className={`z-20  ${navfix
         ? "fixed top-0  shadow-lg w-full  bg-white transition-all duration-300 ease-in-out "
         : ""
         }`}
       >
         <NavBar className="relative " />
-      </div> */}
+      </div>
       {/* <MainHeroSection/> */}
-      <Prestige_Benifit/>
+      <Prestige_Benifit />
       <Why_Chose_Us></Why_Chose_Us>
-      <Fast_Easy_Secured_Every_Transaction/>
-  <SBX_Mobile_App_Section></SBX_Mobile_App_Section>
-  <FAQ></FAQ>
+      <Fast_Easy_Secured_Every_Transaction />
+      <SBX_Mobile_App_Section></SBX_Mobile_App_Section>
+      <FAQ></FAQ>
       <Footer />
 
     </>
