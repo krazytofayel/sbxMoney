@@ -4,33 +4,49 @@ import { BsSendFill } from 'react-icons/bs'
 import { motion } from "framer-motion";
 
 import { Link } from 'react-router-dom';
-
+import { useState } from 'react';
+import SocialIcon from './SocialIcon/SocialIcon';
+import FooterlogoImg from '../../../../public/Logo.png'
 const Footer = () => {
+
 	return (
 		<>
-			<div className="w-full  h-full  pb-5 bg-[#EDF7F5] text-gray-700 px-5  ">
-
-
-
-
-
-
+			<div className="w-full  h-full  pb-5 bg-transparent text-gray-700 px-5 bg-green-200  ">
 				<div
 					className="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
 					<div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-						{/* <img src={FooterlogoImg} alt=" main logo" className=" " /> */}
+						<img src={FooterlogoImg} alt=" main logo" className=" " />
 						<p className="my-3 text-[16px] text-black mt-5 mb-10">Get the academic support you need with our dedicated tutoring services. Follow us on our Social Media platforms and never miss a beat.
 						</p>
 
-						<span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start space-x-2">
-							<BiLogoFacebookCircle size={30} />
-							<BiLogoTwitter size={30} />
-							<BiLogoYoutube size={30} />
-							<BiLogoInstagramAlt size={30} />
-							<BiLogoLinkedinSquare size={30} />
+						<div className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start space-x-2">
+							
+							<SocialIcon
+								icon={<BiLogoFacebookCircle size={30} />}
+								hoverIconSrc="https://img.icons8.com/fluent/30/000000/facebook-new.png"
+								alt="Facebook"
+								link="https://facebook.com"
+							/>
+							<SocialIcon
+								icon={<BiLogoTwitter size={30} />}
+								hoverIconSrc="https://img.icons8.com/fluent/30/000000/twitter.png"
+								alt="Twitter"
+								link="https://twitter.com"
+							/>
+							<SocialIcon
+								icon={<BiLogoInstagramAlt size={30} />}
+								hoverIconSrc="https://img.icons8.com/fluent/30/000000/instagram-new.png"
+								alt="Instagram"
+								link="https://instagram.com"
+							/>
+							<SocialIcon
+								icon={<BiLogoLinkedinSquare size={30} />}
+								hoverIconSrc="https://img.icons8.com/fluent/30/000000/linkedin-2.png"
+								alt="LinkedIn"
+								link="https://linkedin.com"
+							/>
 
-						</span>
-
+						</div>
 					</div>
 					<div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
 						<div className="lg:w-2/6 md:w-1/2 w-full px-6">
@@ -40,11 +56,11 @@ const Footer = () => {
 									<a className="hover:underline" href="">
 										<li>Our Services</li>
 									</a>
-									<Link to='/tutor_blog' className="hover:underline" href="">
-										<li>Blog</li>
+									<Link to='/help' className="hover:underline" href="">
+										<li>Help</li>
 									</Link>
-									<Link to='/tutor_resources' className="hover:underline" href="">
-										<li>Resource </li>
+									<Link to='/aboutus' className="hover:underline" href="">
+										<li>About Us </li>
 									</Link>
 									<a className="hover:underline" href="">
 										<li>FAQ</li>
@@ -121,9 +137,9 @@ const Footer = () => {
 
 					</div>
 				</div>
-				
+
 			</div>
-			<div className="bg-[#2c6777]">
+			<div className="bg-green-400">
 				<div className="container py-4 px-5 flex flex-wrap flex-col sm:flex-row">
 					<p className="text-white  text-sm text-center sm:text-left">Copyright © 2023 Tutor2U ABN Number 20611064601</p>
 				</div>
