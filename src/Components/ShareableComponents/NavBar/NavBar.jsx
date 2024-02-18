@@ -7,7 +7,7 @@ const NavBar = () => {
     { name: 'Home', link: '/' },
     { name: 'About Us', link: '/aboutus' },
     { name: 'Service', link: '/tutor_job' },
-    { name: 'Contact', link: '/request_tutor' },
+    { name: 'Contact US', link: '/contactus' },
     { name: 'Request Money', link: '/find_tutor' },
   ];
 
