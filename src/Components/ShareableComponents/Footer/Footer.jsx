@@ -11,7 +11,7 @@ const Footer = () => {
 
 	return (
 		<>
-			<div className="w-full  h-full  pb-5 bg-transparent text-gray-700 px-5 bg-green-200  ">
+			<div className="w-full  h-full  pb-5  text-gray-700 px-5 bg-green-200  ">
 				<div
 					className="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
 					<div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
@@ -20,7 +20,7 @@ const Footer = () => {
 						</p>
 
 						<div className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start space-x-2">
-							
+
 							<SocialIcon
 								icon={<BiLogoFacebookCircle size={30} />}
 								hoverIconSrc="https://img.icons8.com/fluent/30/000000/facebook-new.png"
@@ -56,25 +56,41 @@ const Footer = () => {
 									<a className="hover:underline" href="">
 										<li>Our Services</li>
 									</a>
-									<Link to='/help' className="hover:underline" href="">
-										<li>Help</li>
-									</Link>
+
+									<li>   
+
+										<Link to='/help' className="hover:underline" href=""> Help</Link>
+										
+									</li>
+									
+									<li>   
+										
+										<Link to='/privacy_policy' className="hover:underline" href=""> Privacy Policy</Link>
+										
+									</li>
+									<li>   
+										
+										<Link to='/condition_of_use' className="hover:underline" href=""> Terms and condition</Link>
+										
+									</li>
+									<li>   
+										
+										<Link to='/lagel_agreement' className="hover:underline" href=""> Lagel Agreement</Link>
+										
+									</li>
+
 									<Link to='/aboutus' className="hover:underline" href="">
 										<li>About Us </li>
 									</Link>
-									<a className="hover:underline" href="">
+									<Link className="hover:underline" href="">
 										<li>FAQ</li>
-									</a>
-									<a className="hover:underline" href="">
-										<li>Career</li>
-									</a>
+									</Link>
 
-									<a className="hover:underline" href="">
-										<li>Privacy Policy</li>
-									</a>
-									<a className="hover:underline" href="">
-										<li>Terms of Use </li>
-									</a>
+									{/* <Link className="hover:underline" href="">
+										<li>Career</li>
+									</Link> */}
+							
+									
 
 
 								</ul>
