@@ -1,5 +1,7 @@
 import React from 'react'
-
+import { FiPhoneCall } from "react-icons/fi";
+import { LuMail } from "react-icons/lu";
+import { CiLocationOn } from "react-icons/ci"
 const Contact_Us_From = () => {
   return (
    <>
@@ -42,14 +44,9 @@ const Contact_Us_From = () => {
                   <ul class="mt-3">
                     <li class="flex items-center">
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill='#007bff'
-                          viewBox="0 0 479.058 479.058">
-                          <path
-                            d="M434.146 59.882H44.912C20.146 59.882 0 80.028 0 104.794v269.47c0 24.766 20.146 44.912 44.912 44.912h389.234c24.766 0 44.912-20.146 44.912-44.912v-269.47c0-24.766-20.146-44.912-44.912-44.912zm0 29.941c2.034 0 3.969.422 5.738 1.159L239.529 264.631 39.173 90.982a14.902 14.902 0 0 1 5.738-1.159zm0 299.411H44.912c-8.26 0-14.971-6.71-14.971-14.971V122.615l199.778 173.141c2.822 2.441 6.316 3.655 9.81 3.655s6.988-1.213 9.81-3.655l199.778-173.141v251.649c-.001 8.26-6.711 14.97-14.971 14.97z"
-                            data-original="#000000" />
-                        </svg>
+                        <LuMail/>
                       </div>
-                      <a target="blank" href="#" class="text-[#007bff] text-sm ml-3">
+                      <a target="blank" href="#" class="text-[#9fadbd] text-sm ml-3">
                         <strong class="block">info@sbxmoney.com.au</strong>
                         <strong>shafique@sbxmoney.com.au</strong>
                       </a>
@@ -69,14 +66,9 @@ const Contact_Us_From = () => {
                   <ul class="mt-3">
                     <li class="flex items-center">
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill='#007bff'
-                          viewBox="0 0 479.058 479.058">
-                          <path
-                            d="M434.146 59.882H44.912C20.146 59.882 0 80.028 0 104.794v269.47c0 24.766 20.146 44.912 44.912 44.912h389.234c24.766 0 44.912-20.146 44.912-44.912v-269.47c0-24.766-20.146-44.912-44.912-44.912zm0 29.941c2.034 0 3.969.422 5.738 1.159L239.529 264.631 39.173 90.982a14.902 14.902 0 0 1 5.738-1.159zm0 299.411H44.912c-8.26 0-14.971-6.71-14.971-14.971V122.615l199.778 173.141c2.822 2.441 6.316 3.655 9.81 3.655s6.988-1.213 9.81-3.655l199.778-173.141v251.649c-.001 8.26-6.711 14.97-14.971 14.97z"
-                            data-original="#000000" />
-                        </svg>
+                        <FiPhoneCall/>
                       </div>
-                      <a target="blank" href="#" class="text-[#007bff] text-sm ml-3">
+                      <a target="blank" href="#" class="text-gray-400 text-sm ml-3">
                         <strong class="block">(+614) 03034223</strong>
                         <strong>(+612) 9758 0094</strong>
                       </a>
@@ -87,12 +79,7 @@ const Contact_Us_From = () => {
                   <ul class="mt-3">
                     <li class="flex items-center">
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                          stroke="currentColor" aria-hidden="true" class="h-7 w-6  text-gray-400">
-                          <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z">
-                          </path>
-                        </svg>
+                       <CiLocationOn/>
                       </div>
                       <dd> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
                     </li>

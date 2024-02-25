@@ -9,13 +9,13 @@ const AboutUs_Home_Banner = () => {
             <div class="text-center space-y-5">
               <h2 class="text-base font-semibold text-green-400 dark:text-pink-300 tracking-wide uppercase">Unlock Your Potential
                 Today</h2>
-              <div class="inline-flex items-end justify-center w-full text-center mx-auto">
+              {/* <div class="inline-flex items-end justify-center w-full text-center mx-auto">
                 <img src="https://cdn.devdojo.com/tails/avatars/024.jpg" class="absolute transform translate-x-24 ml-6 rounded-full w-12 h-12 md:w-16 md:h-16 border-4 border-white" />
                 <img src="https://cdn.devdojo.com/tails/avatars/012.jpg" class="absolute transform -translate-x-24 -ml-6 rounded-full w-12 h-12 md:w-16 md:h-16 border-4 border-white" />
                 <img src="https://cdn.devdojo.com/tails/avatars/029.jpg" class="absolute transform -translate-x-16 rounded-full w-16 h-16 md:w-20 md:h-20 border-4 border-white" />
                 <img src="https://cdn.devdojo.com/tails/avatars/005.jpg" class="absolute transform translate-x-16 rounded-full w-16 h-16 md:w-20 md:h-20 border-4 border-white" />
                 <img src="https://cdn.devdojo.com/tails/avatars/032.jpg" class="rounded-full w-20 h-20 md:w-24 md:h-24 border-4 border-white relative" />
-              </div>
+              </div> */}
               <p
                 class="mt-1 text-4xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl sm:tracking-tight lg:text-6xl">
                 Your Companion for Seamless Money Transaction.

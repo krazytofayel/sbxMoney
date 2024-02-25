@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GradientButton from './HelpComponents/GradientButton/GradientButton'
 import { FiPhoneCall } from "react-icons/fi";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
@@ -6,10 +6,29 @@ import HelpGrid from './HelpComponents/HelpGrid/HelpGrid';
 import { FaRegMessage } from "react-icons/fa6";
 import { BiMessageAltDetail } from "react-icons/bi";
 import Footer from '../../Components/ShareableComponents/Footer/Footer';
+import NavBar from '../../Components/ShareableComponents/NavBar/NavBar';
 const Help = () => {
+  const [navfix, setNavfix] = useState(false);
+
+  function setFixed() {
+    if (window.scrollY >= 70) {
+      setNavfix(true);
+      //console.log(scrollY)
+    } else {
+      setNavfix(false);
+    }
+  }
+  window.addEventListener("scroll", setFixed);
   return (
     <>
-      <div className="p-8">
+      <div className={`z-20  ${navfix
+        ? "fixed top-0  shadow-lg w-full  bg-white transition-all duration-300 ease-in-out "
+        : ""
+        }`}
+      >
+        <NavBar className="relative " />
+      </div>
+      <div className="p-8 bg-gradient-to-b from-[#cdffdb] to-transparent">
 
         <h1 className="text-4xl font-medium text-gray-700 text-center mt-6">
           Hi! How can we help you?
@@ -83,7 +102,7 @@ const Help = () => {
           <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-4">
 
             <div className='relative flex justify-center items-center h-full rounded-md border border-gray-200 bg-white p-2.5 hover:border-gray-400 sm:rounded-lg sm:p-5 shadow-xl'>
-              <div className='border p-2 shadow-xl rounded-lg h-20 w-20 '><FaRegMessage size={60}/></div>
+              <div className='border p-2 shadow-xl rounded-lg h-20 w-20 '><FaRegMessage size={60} /></div>
               <div
                 class=" flex h-full w-full flex-col rounded-md   bg-white  hover:border-gray-400 sm:rounded-lg sm:p-5">
 
@@ -124,7 +143,7 @@ const Help = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   )
 }

@@ -20,12 +20,12 @@ const NavBar = () => {
           <div className="p-2 md:p-0 lg:p-0 ">
 
             <motion.div initial={{ opacity: 0 }}
-              animate={{ opacity: 1, x: 100 }}
+              animate={{ opacity: 1, }}
               transition={{
                 ease: "linear",
                 duration: 2,
-                x: { duration: 2 }
-              }}> <img src={navlogo} alt=" main logo" /></motion.div>
+               
+              }}> <img src={navlogo} alt=" main logo" className='h-10' /></motion.div>
 
 
           </div>
@@ -43,7 +43,7 @@ const NavBar = () => {
               }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ ease: "linear", duration: 0.2 }}
+            transition={{ ease: "linear", duration: 2 }}
           >
             {Links.map((link) => (
               <motion.li
@@ -51,7 +51,7 @@ const NavBar = () => {
                 className="md:ml-4 md:text-[11px] truncate md:my-0 my-7 lg:text-lg relative group"
                 whileHover={{ scale: 1.1 }}
               >
-                <span className="absolute inset-x-0 bottom-0 h-1 bg-black border-b border-transparent transition-all duration-300 opacity-0 group-hover:opacity-100"></span>
+                <span className="absolute inset-x-0 bottom-0 h-.5 bg-[#089bab] border-b border-transparent transition-all duration-300 opacity-0 group-hover:opacity-100"></span>
                 <Link to={link.link} className="duration-500 font-medium">
                   {link.name}
                 </Link>

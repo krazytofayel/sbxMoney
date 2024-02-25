@@ -4,7 +4,7 @@ const Foundation = () => {
   return (
     <>
 
-      <section class="overflow-hidden bg-gradient-to-t from-blue-200 to-transparent py-8 sm:py-16">
+      <section class="overflow-hidden bg-gradient-to-b from-[#cdffdb] to-transparent py-8 sm:py-16">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto grid max-w-3xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             <div className='w-full '>
