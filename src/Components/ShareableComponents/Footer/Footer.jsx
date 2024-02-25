@@ -82,8 +82,8 @@ const Footer = () => {
 									<Link to='/aboutus' className="hover:underline" href="">
 										<li>About Us </li>
 									</Link>
-									<Link className="hover:underline" href="">
-										<li>FAQ</li>
+									<Link to={'/user_guide'} className="hover:underline" href="">
+										<li>User Guide</li>
 									</Link>
 
 									{/* <Link className="hover:underline" href="">
