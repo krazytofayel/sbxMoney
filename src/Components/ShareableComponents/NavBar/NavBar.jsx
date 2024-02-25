@@ -25,7 +25,7 @@ const NavBar = () => {
                 ease: "linear",
                 duration: 2,
                
-              }}> <img src={navlogo} alt=" main logo" /></motion.div>
+              }}> <img src={navlogo} alt=" main logo" className='h-10' /></motion.div>
 
 
           </div>
