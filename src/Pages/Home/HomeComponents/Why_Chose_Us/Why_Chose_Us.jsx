@@ -1,5 +1,5 @@
 import React from 'react'
-
+import {motion} from 'framer-motion'
 const Why_Chose_Us = () => {
   return (
     <>
@@ -17,7 +17,9 @@ const Why_Chose_Us = () => {
         </div> */}
         <div class="relative container flex flex-col justify-between items-center  px-4 mx-auto md:flex-row sm:px-6 ">
           <div class="flex justify-between mb-16 py-5 max-w-2xl p-8">
-            <div class="text-left">
+            <motion.div initial={{ x: "-100vw", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ ease: "easeInOut", duration: 1 }} class="text-left">
               <h2
                 class="text-4xl font-extrabold leading-10 tracking-tight text-gray-800 sm:text-5xl sm:leading-none md:text-6xl">
                 Discover why we're the
@@ -26,19 +28,23 @@ const Why_Chose_Us = () => {
               </h2>
 
 
-            </div>
+            </motion.div>
           </div>
-          <div class="text-left">
+          <motion.div  initial={{ x: "100vw", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ ease: "easeInOut", duration: 1 }} class="text-left">
             <h2 class="text-2xl font-extrabold leading-10 tracking-tight text-[#2DBE61] ">Why Chose Us?</h2>
             <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate dignissim augue, Nullam vulputate dignissim augue.
             </p>
 
-          </div>
+          </motion.div>
         </div>
 
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div class="">
+          <motion.div  initial={{ x: "-100vw", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ ease: "easeInOut", duration: 1 }} class="">
             <div class="relative flex  flex-col justify-center overflow-hidden shadow-lg ">
               <div
                 class="group relative cursor-pointer overflow-hidden  px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
@@ -87,8 +93,10 @@ const Why_Chose_Us = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="">
+          </motion.div>
+          <motion.div  initial={{ x: "-100vw", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ ease: "easeInOut", duration: 1 }} class="">
             <div class="relative flex  flex-col justify-center overflow-hidden shadow-lg ">
               <div
                 class="group relative cursor-pointer overflow-hidden  px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
@@ -137,8 +145,10 @@ const Why_Chose_Us = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="">
+          </motion.div>
+          <motion.div  initial={{ x: "100vw", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ ease: "easeInOut", duration: 1 }} class="">
             <div class="relative flex  flex-col justify-center overflow-hidden shadow-lg ">
               <div
                 class="group relative cursor-pointer overflow-hidden  px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
@@ -187,8 +197,10 @@ const Why_Chose_Us = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div class="">
+          </motion.div>
+          <motion.div  initial={{ x: "100vw", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ ease: "easeInOut", duration: 1 }} class="">
             <div class="relative flex  flex-col justify-center overflow-hidden shadow-lg ">
               <div
                 class="group relative cursor-pointer overflow-hidden  px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
@@ -237,7 +249,7 @@ const Why_Chose_Us = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* <div class="p-8">
             <div

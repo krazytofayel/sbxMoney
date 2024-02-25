@@ -5,7 +5,7 @@ import AnimatedStatsCard from './AnimatedStatsCard/AnimatedStatsCard';
 const Statistics = () => {
   return (
     <>
-      <div className='bg-transparent '>
+      <div className='bg-gradient-to-t from-[#cdffdb] to-transparent '>
         <h2 className=' text-3xl font-bold tracking-tight text-gray-700 max-w-lg text-center mx-auto sm:text-4xl p-5 mb-3 mt-10'>We care for you and so we always improve</h2>
         <div className="flex justify-center items-center ">
           <div className="grid grid-cols-1 md:grid-cols-3  xl:grid-cols-5 gap-4 mb-10 mt-5">

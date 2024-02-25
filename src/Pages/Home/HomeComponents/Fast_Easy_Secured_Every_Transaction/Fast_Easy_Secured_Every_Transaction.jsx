@@ -1,6 +1,6 @@
 import React from 'react'
 import GlobalButton from '../../../../Components/ShareableComponents/GlobalComponents/GlobalButton/GlobalButton'
-
+import {motion} from 'framer-motion'
 const Fast_Easy_Secured_Every_Transaction = () => {
   const handleButtonClick = () => {
     // Handle button click logic here
@@ -10,10 +10,14 @@ const Fast_Easy_Secured_Every_Transaction = () => {
       <section>
         <div className='container mx-auto mt-20'>
           <div className='flex flex-col lg:flex-row justify-center items-center gap-10'>
-            <div>
+            <motion.div  initial={{ x: "-100vw", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ ease: "easeInOut", duration: 1 }}>
               <img src="/src/assets/Group1.png" alt="" />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div  initial={{ x: "100vw", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ ease: "easeInOut", duration: 1 }}>
 
               <div className=" lg:max-w-80 xl:max-w-[48rem]
                 ">
@@ -44,7 +48,7 @@ const Fast_Easy_Secured_Every_Transaction = () => {
 
 
               </div>
-            </div>
+            </motion.div>
           </div>
 
 
