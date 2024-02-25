@@ -1,13 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GradientButton from '../HelpComponents/GradientButton/GradientButton'
 import { FiPhoneCall } from "react-icons/fi";
 import { TfiHeadphoneAlt } from "react-icons/tfi";
+import Footer from '../../../Components/ShareableComponents/Footer/Footer';
+import NavBar from '../../../Components/ShareableComponents/NavBar/NavBar';
 
 
 const HelpDetail = () => {
+          const [navfix, setNavfix] = useState(false);
+
+  function setFixed() {
+    if (window.scrollY >= 70) {
+      setNavfix(true);
+      //console.log(scrollY)
+    } else {
+      setNavfix(false);
+    }
+  }
+  window.addEventListener("scroll", setFixed);
   return (
     <>
-      <div className="p-8">
+    <div className={`z-20  ${navfix
+        ? "fixed top-0  shadow-lg w-full  bg-white transition-all duration-300 ease-in-out "
+        : ""
+        }`}
+      >
+        <NavBar className="relative " />
+      </div>
+      <div className="p-8 bg-gradient-to-b from-[#cdffdb] to-transparent">
 
         <h1 className="text-4xl font-medium text-gray-700 text-center mt-6">
           Hi! How can we help you?
@@ -76,7 +96,7 @@ const HelpDetail = () => {
         </section>
       </div>
       <section>
-        <div className='container mx-auto'>
+        <div className='container mx-auto mt-10 mb-10'>
           <div className=''>  <h2 className='text-2xl font-semibold mb-2'>How can I contact with customer support ?</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with </p>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
@@ -84,6 +104,7 @@ const HelpDetail = () => {
           </div>
         </div>
       </section>
+      <Footer/>
     </>
   )
 }
