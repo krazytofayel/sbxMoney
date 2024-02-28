@@ -11,9 +11,15 @@ const FAQ = () => {
 
         <div className=" lg:p-5">
 
-          <h1 className="title-font text-[#2c6777] text-[24px] xl:text-[40px] lg:text-[36px] md:text-[27px] title-font font-bold mt-12 mb-12 text-center">
+          {/* <h1 className="title-font text-[#2c6777] text-[24px] xl:text-[40px] lg:text-[36px] md:text-[27px] title-font font-bold mt-12 mb-12 text-center">
             Frequently Asked Questions
-          </h1>
+          </h1> */}
+                <h2
+              class="text-2xl text-center  font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-5xl mt-10 mb-10">
+             Frequently Asked
+              <span class="font-bold text-[#2DBE61]"> Questions</span>
+            
+            </h2>
           <div className="container mx-auto">
 
 
