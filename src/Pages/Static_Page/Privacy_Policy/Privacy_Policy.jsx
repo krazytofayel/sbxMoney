@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../../../Components/ShareableComponents/Footer/Footer'
 import Neumorphism_Text_Header from '../Static_Page_Components/Neumorphism_Text_Header/Neumorphism_Text_Header'
+import NavBar from '../../../Components/ShareableComponents/NavBar/NavBar';
 
 const Privacy_Policy = () => {
+      const [navfix, setNavfix] = useState(false);
+
+  function setFixed() {
+    if (window.scrollY >= 70) {
+      setNavfix(true);
+      //console.log(scrollY)
+    } else {
+      setNavfix(false);
+    }
+  }
+  window.addEventListener("scroll", setFixed);
   const items = [
     "To assist us in providing services to you;",
     "To allow you to change web pages during your visit without having to re-enter your password;",
@@ -14,7 +26,13 @@ const Privacy_Policy = () => {
   return (
     <>
 
-
+ <div className={`z-20  ${navfix
+        ? "fixed top-0  shadow-lg w-full  bg-white transition-all duration-300 ease-in-out "
+        : ""
+        }`}
+      >
+        <NavBar className="relative " />
+      </div>
       <section>
         <div>
           <div className='flex justify-center align-middle items-center bg-[#CDFFDB] h-[30rem] mb-5'>

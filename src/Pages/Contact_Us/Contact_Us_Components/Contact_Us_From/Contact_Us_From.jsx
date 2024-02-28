@@ -81,7 +81,7 @@ const Contact_Us_From = () => {
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                        <CiLocationOn/>
                       </div>
-                      <dd> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
+                      <dd className='text-gray-400 text-sm ml-3'> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
                     </li>
                   </ul>
                   
@@ -124,7 +124,7 @@ const Contact_Us_From = () => {
                 </div>
               </div>
               <div class="mt-8 flex justify-end">
-                <button type="submit" class="w-max  rounded-2xl border-2 border-0 bg-[#579c9c]  px-5 py-1.5 text-sm font-semibold text-white transition-colors duration-150 ease-in-out hover:border-blue-400 hover:bg-blue-400">Send message</button>
+                <button type="submit" class="w-max  rounded  bg-[#579c9c]  px-5 py-1.5 text-sm font-semibold text-white transition-colors duration-150 ease-in-out">Send message</button>
               </div>
             </div>
           </form>

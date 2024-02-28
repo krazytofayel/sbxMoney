@@ -38,12 +38,12 @@ const Home = () => {
       </div>
       <MainHeroSection />
       <Prestige_Benifit />
-      <Why_Chose_Us></Why_Chose_Us>
+      <Why_Chose_Us/>
       <Fast_Easy_Secured_Every_Transaction />
 
       <Take_It_Easy_Steper />
       <Slider />
-      <SBX_Mobile_App_Section></SBX_Mobile_App_Section>
+      <SBX_Mobile_App_Section/>
       <FAQ></FAQ>
       <Footer />
 
