@@ -12,10 +12,10 @@ const SBX_Mobile_App_Section = () => {
             transition={{ ease: "easeInOut", duration: 1 }}
             class="">
             <h2
-              class="text-4xl font-extrabold leading-10 tracking-tight text-gray-800 sm:text-5xl sm:leading-none md:text-6xl mt-10">
+              class="text-2xl text-center md:text-start font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none lg:text-6xl mt-10">
               Easy banking and Money
-              <span class="font-bold text-[#2DBE61]">Transfer on the SBX APP</span>
-              <span class="text-xl font-semibold rounded-full text-blueGray-500">2.0</span>
+              <span class="font-bold text-[#2DBE61] transition-all duration-1000 animate-pulse">Transfer on the SBX APP</span>
+              <span class="text-xl font-semibold rounded-full text-blueGray-500  transition-all duration-1000 animate-pulse ">2.0</span>
             </h2>
 
             <div class="flex mt-10">
