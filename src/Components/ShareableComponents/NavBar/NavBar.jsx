@@ -6,9 +6,9 @@ const NavBar = () => {
   let Links = [
     { name: 'Home', link: '/' },
     { name: 'About Us', link: '/aboutus' },
-    { name: 'Service', link: '/tutor_job' },
+    { name: 'Service', link: '/' },
     { name: 'Contact US', link: '/contactus' },
-    { name: 'Request Money', link: '/find_tutor' },
+ 
   ];
 
   let [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@ const NavBar = () => {
   return (
     <>
       <div>
-        <nav className="container mx-auto md:flex justify-between items-center text-black py-[18.5px] ">
+        <nav className="container mx-auto md:flex justify-between items-center text-black py-[18.5px] p-5 ">
           <div className="p-2 md:p-0 lg:p-0 ">
 
             <motion.div initial={{ opacity: 0 }}
@@ -39,7 +39,7 @@ const NavBar = () => {
           </motion.div>
 
           <motion.ul
-            className={`md:flex md:items-center md:bg-inherit md:pb-0 pb-12 absolute md:static text-[#089bab] bg-white md:z-auto z-[1] right-0 w-full h-screen md:h-full md:w-auto md:pl-0 pl-5 transition-all duration-500 ease-in-out ${open ? 'right-19' : 'hidden'
+            className={`md:flex md:items-center md:bg-inherit md:pb-0 pb-12 absolute md:static text-black bg-white md:z-auto z-[1] right-0 w-full h-screen md:h-full md:w-auto md:pl-0 pl-5 transition-all duration-500 ease-in-out ${open ? 'right-19' : 'hidden'
               }`}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -75,7 +75,7 @@ const NavBar = () => {
             <button className="bg-[#d6e5f1] text-[#2c6777] md:text-[11px] lg:text-[16px] px-3 py-1 rounded font-semibold lg:font-medium truncate">
               <Link to="/becomea_tutor">Send Money</Link>
             </button>
-            <button className="bg-[#2c6777] text-white md:text-[11px] lg:text-[16px] px-3 py-1 rounded font-semibold lg:font-medium truncate">
+            <button className="bg-green-400 text-white md:text-[11px] lg:text-[16px] px-3 py-1 rounded font-semibold lg:font-medium truncate">
               <Link to="/sign_in">Sign in</Link>
             </button>
           </div>
