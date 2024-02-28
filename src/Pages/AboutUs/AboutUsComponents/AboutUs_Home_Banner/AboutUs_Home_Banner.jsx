@@ -19,11 +19,11 @@ const AboutUs_Home_Banner = () => {
               <p
                 class="mt-1 text-4xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl sm:tracking-tight lg:text-6xl">
                 Your Companion for Seamless Money Transaction.
-                <span class="px-2 py-1 relative inline-block"><svg class="stroke-current bottom-0 absolute text-blue-300 -translate-x-2" viewBox="0 0 410 18" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.4c16.8 16.8 380.8-11.2 397.6 5.602" stroke-width="12" fill="none" fill-rule="evenodd" stroke-linecap="round"></path></svg><span class="relative">A Financial Revulotion</span></span>
+                <span class="px-2 py-1 relative inline-block"><svg class="stroke-current bottom-0 absolute text-green-400 -translate-x-2" viewBox="0 0 410 18" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.4c16.8 16.8 380.8-11.2 397.6 5.602" stroke-width="12" fill="none" fill-rule="evenodd" stroke-linecap="round"></path></svg><span class="relative">A Financial Revulotion</span></span>
               </p>
               <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-500 dark:text-gray-300">Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore Lorem ipsum dolor sit amet,</p>
               <a href="#"
-                class="inline-block px-6 py-3 mt-8 bg-green-400 dark:bg-blue-500 text-white font-semibold rounded hover:bg-blue-700 dark:hover:bg-blue-600">
+                class="inline-block px-6 py-3 mt-8 bg-green-400 dark:bg-blue-500 text-white font-semibold rounded hover:bg-green-400 dark:hover:bg-blue-600">
                 Get Started
               </a>
             </div>
