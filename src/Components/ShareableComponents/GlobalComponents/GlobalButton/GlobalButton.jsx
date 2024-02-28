@@ -2,7 +2,7 @@ import React from 'react';
 
 const GlobalButton = ({ onClick, text, bgColor, hoverBgColor, textColor, hoverTextColor }) => {
   // Construct Tailwind CSS class names dynamically
-  const buttonClasses = `relative flex justify-center items-center rounded-md font-semibold px-6 md:px-8 h-12 md:h-14 ${bgColor} text-${textColor} hover:bg-${hoverBgColor} hover:text-${hoverTextColor}
+  const buttonClasses = `relative flex justify-center items-center rounded-md font-semibold px-6 md:px-8 h-12 md:h-14 mx-auto md:ml-0  ${bgColor} text-${textColor} hover:bg-${hoverBgColor} hover:text-${hoverTextColor}
                     before:absolute 
                     before:inset-0 
                     before:bg-${hoverBgColor} 
