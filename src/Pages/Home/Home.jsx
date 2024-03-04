@@ -29,21 +29,17 @@ const Home = () => {
 
   return (
     <>
-      <div className={`z-20  ${navfix
-        ? "fixed top-0  shadow-lg w-full  bg-white transition-all duration-300 ease-in-out "
-        : ""
-        }`}
-      >
-        <NavBar className="relative " />
+      <div className={`z-20 fixed top-0 bg-white w-full transition-all duration-300 ease-in-out ${navfix ? "shadow-lg bg-white" : ""}`}>
+        <NavBar />
       </div>
       <MainHeroSection />
       <Prestige_Benifit />
-      <Why_Chose_Us/>
+      <Why_Chose_Us />
       <Fast_Easy_Secured_Every_Transaction />
 
       <Take_It_Easy_Steper />
       <Slider />
-      <SBX_Mobile_App_Section/>
+      <SBX_Mobile_App_Section />
       <FAQ></FAQ>
       <Footer />
 
