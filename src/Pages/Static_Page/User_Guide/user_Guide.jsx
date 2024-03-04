@@ -22,12 +22,8 @@ const User_Guide = () => {
   return (
     <>
 
-      <div className={`z-20  ${navfix
-        ? "fixed top-0  shadow-lg w-full  bg-white transition-all duration-300 ease-in-out "
-        : ""
-        }`}
-      >
-        <NavBar className="relative " />
+        <div className={`z-20 fixed top-0 bg-white w-full transition-all duration-300 ease-in-out ${navfix ? "shadow-lg bg-white" : ""}`}>
+        <NavBar />
       </div>
       <section>
 
