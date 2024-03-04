@@ -15,7 +15,9 @@ const Footer = () => {
 				<div
 					className="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
 					<div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
-						<img src={FooterlogoImg} alt=" main logo" className=" " />
+						<div className='flex justify-center md:justify-start'>
+							<img src={FooterlogoImg} alt=" main logo" className=" " />
+						</div>
 						<p className="my-3 text-[16px] text-black mt-5 mb-10">Get the academic support you need with our dedicated tutoring services. Follow us on our Social Media platforms and never miss a beat.
 						</p>
 
@@ -40,7 +42,7 @@ const Footer = () => {
 								link="https://instagram.com"
 							/>
 							<SocialIcon
-								icon={<BiLogoLinkedinSquare size={30} />}
+								icon={<BiLogoLinkedinSquare size={29} />}
 								hoverIconSrc="https://img.icons8.com/fluent/30/000000/linkedin-2.png"
 								alt="LinkedIn"
 								link="https://linkedin.com"

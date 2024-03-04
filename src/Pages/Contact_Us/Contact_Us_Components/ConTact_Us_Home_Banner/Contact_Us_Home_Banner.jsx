@@ -1,4 +1,5 @@
 import React from 'react'
+import GlobalButton from '../../../../Components/ShareableComponents/GlobalComponents/GlobalButton/GlobalButton'
 
 const Contact_Us_Home_Banner = () => {
   return (
@@ -13,10 +14,20 @@ const Contact_Us_Home_Banner = () => {
 
             </p>
             <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-500 dark:text-gray-300">Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore Lorem ipsum dolor sit amet,</p>
-            <a href="#Us"
+            {/* <a href="#Us"
               class="inline-block px-6 py-3 mt-8 bg-green-400 dark:bg-blue-500 text-white font-semibold rounded hover:bg-blue-700 dark:hover:bg-blue-600">
               Contact Us
-            </a>
+            </a> */}
+            <div className='flex justify-center'>
+            <div> <a href="#Us">  <GlobalButton
+                  text="Contact Us"
+                  bgColor="bg-green-500"
+                  hoverBgColor="red-500"
+                  textColor="white"
+                  hoverTextColor="black" /></a>
+                  
+            </div>
+            </div>
           </div>
         </div>
       </section>

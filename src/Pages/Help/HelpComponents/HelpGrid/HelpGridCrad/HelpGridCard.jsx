@@ -2,7 +2,7 @@ import React from 'react';
 import { FaPlusSquare } from "react-icons/fa";
 const HelpGridCard = ({ title, description, buttonText, buttonHref }) => {
   return (
-    <div className="p-1 max-w-sm h-[18rem] mx-auto">
+    <div className="p-1 max-w-sm h-[19rem] mx-auto">
       <div className="flex rounded-lg h-full dark:bg-gray-800 bg-[#CDFFDB] hover:bg-teal-400 p-8 flex-col shadow-lg hover:text-white">
         <div className="flex items-center mb-3">
           <h2 className="dark:text-white text-lg font-medium">{title}</h2>

@@ -17,16 +17,16 @@ const Slider = () => {
 
   return (
     <div className="container mx-auto mt-20 mb-20">
-         <div class="relative container flex flex-col justify-between items-center  px-4 mx-auto md:flex-row sm:px-6 mb-10">
-          <div class="flex justify-between md:mb-16 md:py-5 max-w-2xl md:p-8 ">
+         <div className="relative container flex flex-col justify-between items-center  px-4 mx-auto md:flex-row sm:px-6 mb-10">
+          <div className="flex justify-between md:mb-16 md:py-5 max-w-2xl md:p-8 ">
             <motion.div initial={{ x: "-100vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ ease: "easeInOut", duration: 1 }} class="text-left">
+              transition={{ ease: "easeInOut", duration: 1 }} className="text-left">
               <h2
-                class="text-4xl font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-5xl max-w-lg">
+                className="text-4xl font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-5xl max-w-lg">
               They Satisfied With 
-                <span class="font-bold text-[#2DBE61] transition-all duration-1000 animate-pulse"> Our Service</span>
-                {/* <span class="text-xl font-semibold rounded-full text-blueGray-500">2.0</span> */}
+                <span className="font-bold text-[#2DBE61] transition-all duration-1000 animate-pulse"> Our Service</span>
+                {/* <span className="text-xl font-semibold rounded-full text-blueGray-500">2.0</span> */}
               </h2>
 
 
@@ -34,9 +34,9 @@ const Slider = () => {
           </div>
           <motion.div initial={{ x: "100vw", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ ease: "easeInOut", duration: 1 }} class="text-left">
-            <h2 class="text-2xl font-extrabold leading-10 tracking-tight text-[#2DBE61] ">Why Chose Us?</h2>
-            <p class="max-w-md mx-auto  text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            transition={{ ease: "easeInOut", duration: 1 }} className="text-left">
+            <h2 className="text-2xl font-extrabold leading-10 tracking-tight text-[#2DBE61] ">Why Chose Us?</h2>
+            <p className="max-w-md mx-auto  text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate dignissim augue, Nullam vulputate dignissim augue.
             </p>
 

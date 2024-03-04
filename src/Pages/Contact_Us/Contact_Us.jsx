@@ -6,7 +6,7 @@ import Footer from '../../Components/ShareableComponents/Footer/Footer'
 import NavBar from '../../Components/ShareableComponents/NavBar/NavBar'
 
 const Contact_Us = () => {
-      const [navfix, setNavfix] = useState(false);
+  const [navfix, setNavfix] = useState(false);
 
   function setFixed() {
     if (window.scrollY >= 70) {
@@ -18,19 +18,15 @@ const Contact_Us = () => {
   }
   window.addEventListener("scroll", setFixed);
   return (
-  <>
-    <div className={`z-20  ${navfix
-        ? "fixed top-0  shadow-lg w-full  bg-white transition-all duration-300 ease-in-out "
-        : ""
-        }`}
-      >
-        <NavBar className="relative " />
+    <>
+       <div className={`z-20 fixed top-0 bg-white w-full transition-all duration-300 ease-in-out ${navfix ? "shadow-lg bg-white" : ""}`}>
+        <NavBar />
       </div>
-  <Contact_Us_Home_Banner/>
- <Contact_Us_From/>
- <Contact_Us_Address_Card/>
- <Footer/>
-  </>
+      <Contact_Us_Home_Banner />
+      <Contact_Us_From />
+      <Contact_Us_Address_Card />
+      <Footer />
+    </>
   )
 }
 

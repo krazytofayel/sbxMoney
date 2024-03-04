@@ -2,6 +2,7 @@ import React from 'react'
 import { FiPhoneCall } from "react-icons/fi";
 import { LuMail } from "react-icons/lu";
 import { CiLocationOn } from "react-icons/ci"
+import GlobalButton from '../../../../Components/ShareableComponents/GlobalComponents/GlobalButton/GlobalButton';
 const Contact_Us_From = () => {
   return (
    <>
@@ -81,7 +82,7 @@ const Contact_Us_From = () => {
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                        <CiLocationOn/>
                       </div>
-                      <dd className='text-gray-400 text-sm ml-3'> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
+                      <dd className='text-gray-400 text-sm ml-3 font-bold'> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
                     </li>
                   </ul>
                   
@@ -95,36 +96,44 @@ const Contact_Us_From = () => {
                 <div>
                   <label for="first-name" class="block text-sm font-semibold leading-6 text-gray-900">First name</label>
                   <div class="mt-2.5">
-                    <input type="text" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" name="firstName"/>
+                    <input type="text" id="first-name" placeholder='Enter your first name' autocomplete="given-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-green-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-400 sm:text-sm sm:leading-6" name="firstName"/>
                   </div>
                 </div>
                 <div>
                   <label for="last-name" class="block text-sm font-semibold leading-6 text-gray-900">Last name</label>
                   <div class="mt-2.5">
-                    <input type="text" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" name="lastName"/>
+                    <input type="text" id="last-name" placeholder='Enter your last name'autocomplete="family-name" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-green-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-400 sm:text-sm sm:leading-6" name="lastName"/>
                   </div>
                 </div>
                 <div >
                   <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Email</label>
                   <div class="mt-2.5">
-                    <input type="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" name="email"/>
+                    <input type="email" id="email" placeholder='Enter your email' autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-green-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-400 sm:text-sm sm:leading-6" name="email"/>
                   </div>
                 </div>
                 <div >
                   <label for="email" class="block text-sm font-semibold leading-6 text-gray-900">Phone</label>
                   <div class="mt-2.5">
-                    <input type="email" id="email" autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" name="email" />
+                    <input type="email" id="email" placeholder='Enter your phone' autocomplete="email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-green-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-400 sm:text-sm sm:leading-6" name="email" />
                   </div>
                 </div>
                 <div class="sm:col-span-2">
                   <label for="message" class="block text-sm font-semibold leading-6 text-gray-900">Message</label>
                   <div class="mt-2.5">
-                    <textarea id="message" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" name="message"></textarea>
+                    <textarea id="message" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-green-400 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-400 sm:text-sm sm:leading-6" name="message"></textarea>
                   </div>
                 </div>
               </div>
               <div class="mt-8 flex justify-end">
-                <button type="submit" class="w-max  rounded  bg-[#579c9c]  px-5 py-1.5 text-sm font-semibold text-white transition-colors duration-150 ease-in-out">Send message</button>
+                {/* <button type="submit" class="w-max  rounded  bg-green-400 px-5 py-2 text-sm font-semibold text-white transition-colors duration-150 ease-in-out">Send message</button> */}
+               <div>
+                   <GlobalButton 
+                  text="Send message"
+                  bgColor="bg-green-500"
+                  hoverBgColor="red-500"
+                  textColor="white"
+                  hoverTextColor="black" />
+               </div>
               </div>
             </div>
           </form>
