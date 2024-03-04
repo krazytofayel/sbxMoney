@@ -15,9 +15,9 @@ const FAQ = () => {
             Frequently Asked Questions
           </h1> */}
                 <h2
-              class="text-2xl text-center  font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-5xl mt-10 mb-10">
+              className="text-2xl text-center  font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-5xl mt-10 mb-10">
              Frequently Asked
-              <span class="font-bold text-[#2DBE61]"> Questions</span>
+              <span className="font-bold text-[#2DBE61]"> Questions</span>
             
             </h2>
           <div className="container mx-auto">

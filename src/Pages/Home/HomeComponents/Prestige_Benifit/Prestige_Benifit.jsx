@@ -18,15 +18,15 @@ const Prestige_Benifit = () => {
   ];
   return (
     <>
-      <section class="overflow-hidden bg-white py-8 sm:py-16">
-        <div class="container mx-auto ">
-          <div class="mx-auto grid  grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2  ">
+      <section className="overflow-hidden bg-white py-8 sm:py-16">
+        <div className="container mx-auto ">
+          <div className="mx-auto grid  grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2  ">
             <motion.img initial={{ x: "-100vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ ease: "easeInOut", duration: 1, delay: 0.5 }} src="/src/assets/Group2.png" alt="Product screenshot" class="w-full h-auto flex justify-center items-center" />
-            <div class="lg:pr-8 l">
+              transition={{ ease: "easeInOut", duration: 1, delay: 0.5 }} src="/src/assets/Group2.png" alt="Product screenshot" className="w-full h-auto flex justify-center items-center" />
+            <div className="lg:pr-8 l">
 
-              <div class="">
+              <div className="">
                 <motion.p
                   initial={{ x: "-100vw", opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
