@@ -96,10 +96,10 @@ const Why_Chose_Us = () => {
             transition={{ ease: "easeInOut", duration: 1 }} className="">
             <div className="relative flex  flex-col justify-center overflow-hidden shadow-lg max-h-[25rem]">
               <div
-                className="group relative cursor-pointer overflow-hidden  px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
-                <span className="absolute top-10 z-0 h-20 w-20 rounded-full bg-sky-500 transition-all duration-300 group-hover:scale-[10]"></span>
+                className="group relative cursor-pointer overflow-hidden  px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300  hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+                <span className="absolute top-10 z-0 h-20 w-20 rounded-full bg-green-500 transition-all duration-300 group-hover:scale-[10]"></span>
                 <div className="relative z-10 mx-auto max-w-md ">
-                  <span className="grid h-20 w-20 place-items-center rounded-full bg-green-100  shadow-2xl transition-all duration-300 group-hover:bg-sky-400">
+                  <span className="grid h-20 w-20 place-items-center rounded-full bg-green-100  shadow-2xl transition-all duration-300 group-hover:bg-green-400">
                     {/* <svg
                       xmlns="http://www.w3.org/2000/svg"
                       className="h-8 w-8 text-green-500 group-hover:text-white"
