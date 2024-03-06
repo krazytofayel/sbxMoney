@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { TiTickOutline } from "react-icons/ti";
+import benefit from '../../../../../public/Group2.png'
 const Prestige_Benifit = () => {
   const items = [
     {
@@ -23,7 +24,7 @@ const Prestige_Benifit = () => {
           <div className="mx-auto grid  grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2  ">
             <motion.img initial={{ x: "-100vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ ease: "easeInOut", duration: 1, delay: 0.5 }} src="/src/assets/Group2.png" alt="Product screenshot" className="w-full h-auto flex justify-center items-center" />
+              transition={{ ease: "easeInOut", duration: 1, delay: 0.5 }} src={benefit} alt="Product screenshot" className="w-full h-auto flex justify-center items-center" />
             <div className="lg:pr-8 l">
 
               <div className="">
