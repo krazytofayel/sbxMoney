@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import error from '../../assets/404.png'
+import error from '../../../public/404.png'
 const NotFoundpage = () => {
   return (
    <>
