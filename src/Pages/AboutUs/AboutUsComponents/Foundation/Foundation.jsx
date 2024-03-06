@@ -1,6 +1,18 @@
 import React from 'react'
-
+import Foundations from '../../../../../public/Foundation.png'
+import { TiTickOutline } from "react-icons/ti";
 const Foundation = () => {
+      const items = [
+    {
+      title: "Easy Transaction",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit eiusmod tempor incididunt"
+    },
+    {
+      title: "Guaranteed Security like no other",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit eiusmod tempor incididunt"
+    },
+ 
+  ];
   return (
     <>
 
@@ -8,7 +20,7 @@ const Foundation = () => {
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <div class="mx-auto grid max-w-3xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             <div className='w-full '>
-              <img src="/src/assets/Foundation.png" alt="" />
+              <img src={Foundations} alt="" />
             </div>
             <div class="lg:pr-8 ">
               <div class="lg:max-w-lg">
@@ -16,27 +28,22 @@ const Foundation = () => {
                 <p class="mt-2 text-3xl font-bold tracking-tight text-gray-700 max-w-sm sm:text-4xl">Our Values are foundations of Trust</p>
                 <p class="mt-6 text-lg leading-8 text-gray-600">Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut laboreLorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore  Lorem ipsum dolor sit amet.
                 </p>
-                <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
-                  <div class="relative pl-9">
-                    <dt class="inline font-semibold text-gray-900"><img src="/src/assets/Animationbest.gif" alt="" class="absolute left-[-25px]   h-20 w-20 " />
-                    </dt>
-                    <dd class="inline"> <h6 class="mb-2 font-semibold leading-5">Absulate transparency</h6>
-                      <p class="mb-3 text-sm text-gray-900">
-                        Lorem ipsum dolor sit amet, consectetur dipiscing elit eiusmod tempor incididunt
-                      </p>
-                    </dd>
-                  </div>
-                  <div class="relative pl-9">
-                    <dt class="inline font-semibold text-gray-900">
-                      <img src="/src/assets/Animationbest.gif" alt="" class="absolute left-[-25px]  h-20 w-20 " />
+                  <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                  {items.map((item, index) => (
+                    <div key={index} className="relative flex items-center gap-5 pl-4">
+                      <dt  className="inline font-semibold text-gray-900">
 
-                    </dt>
-                    <dd class="inline"> <h6 class="mb-2 font-semibold leading-5">Commitment to Safety</h6>
-                      <p class="mb-3 text-sm text-gray-900">
-                        Lorem ipsum dolor sit amet, consectetur dipiscing elit eiusmod tempor incididunt
-                      </p></dd>
-                  </div>
-
+                        <span className=" grid h-10 w-10 place-items-center rounded-full bg-[#F0FFF4] border-2 relative overflow-hidden transition-bg duration-500 hover:bg-green-500 shadow-lg">
+                          <TiTickOutline className="h-8 w-8 text-green-400 hover:text-white absolute top-0 left-0 right-0 bottom-0 m-auto" />
+                          <span className="bg-gradient-to-t from-green-100 to-green-500 absolute bottom-0 left-0 right-0 top-full"></span>
+                        </span>
+                      </dt>
+                      <dd className="inline">
+                        <h6  className="mb-2 font-semibold leading-5 text-black">{item.title}</h6>
+                        <p  className="mb-3 text-sm text-gray-900">{item.description}</p>
+                      </dd>
+                    </div>
+                  ))}
                 </dl>
               </div>
 

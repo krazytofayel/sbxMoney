@@ -12,7 +12,7 @@ const Statistics = () => {
             <AnimatedStatsCard title="Download" value="1000" icon={<FaDownload className="text-white" />} />
             <AnimatedStatsCard title="Feedback" value="500" icon={<FaFileSignature className="text-white" />} />
             <AnimatedStatsCard title="Worker" value="300" icon={<FaUserTie className="text-white" />} />
-            <AnimatedStatsCard title="Year Of Experience" value="500" icon={<FaCalendarAlt className="text-white" />} />
+            <AnimatedStatsCard title="Years Of Experience" value="5" icon={<FaCalendarAlt className="text-white" />} />
             <AnimatedStatsCard title="Contributer" value="300" icon={<FaUserCog className="text-white" />} />
           </div>
         </div>
