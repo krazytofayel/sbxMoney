@@ -4,6 +4,7 @@ import Neumorphism_Text_Header from '../Static_Page_Components/Neumorphism_Text_
 import { TiTickOutline } from "react-icons/ti";
 import GlobalButton from '../../../Components/ShareableComponents/GlobalComponents/GlobalButton/GlobalButton';
 import NavBar from '../../../Components/ShareableComponents/NavBar/NavBar';
+import userguied from '../../../../public/userguied.png'
 const User_Guide = () => {
   const [navfix, setNavfix] = useState(false);
 
@@ -44,7 +45,7 @@ const User_Guide = () => {
                     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 h-[100%]">
                       <div class="col-span-2 sm:col-span-1 md:col-span-2 bg-sky-50  flex flex-col">
                         <a href="" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 flex-grow">
-                          <img src="/src/assets/userguied.png" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
+                          <img src={userguied} alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
                           <div class="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
 
                         </a>
