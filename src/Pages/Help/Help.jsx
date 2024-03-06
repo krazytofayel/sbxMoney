@@ -21,12 +21,15 @@ const Help = () => {
   window.addEventListener("scroll", setFixed);
   return (
     <>
-        <div className={`z-20 fixed top-0 bg-white w-full transition-all duration-300 ease-in-out ${navfix ? "shadow-lg bg-white" : ""}`}>
+      <div className={`z-20 fixed top-0 bg-white w-full transition-all duration-300 ease-in-out ${navfix ? "shadow-lg bg-white" : ""}`}>
         <NavBar />
       </div>
+    <div>
+
+    </div>
       <div className="p-8 bg-gradient-to-b from-[#cdffdb] to-transparent">
 
-        <h1 className="text-4xl font-medium text-gray-700 text-center mt-6">
+        <h1 className="text-4xl font-medium text-gray-700 text-center mt-20">
           Hi! How can we help you?
         </h1>
         <p className="text-center mt-6 text-lg font-light text-gray-500">
