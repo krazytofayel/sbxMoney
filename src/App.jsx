@@ -12,6 +12,8 @@ import User_Guide from './Pages/Static_Page/User_Guide/user_Guide';
 import Login_Form from './Pages/Login_Logout/Login_Form/Login_Form';
 import SignUp from './Pages/Login_Logout/Sign_UP_Form/Sign_Up';
 import NotFoundpage from './Pages/NotFound_Page/NotFoundpage';
+import Admin from './Pages/DashBoard/Admin/Admin';
+
 
 
 
@@ -31,13 +33,13 @@ const App = () => {
         <Route path="/privacy_policy" element={<Privacy_Policy />} />
         <Route path="/lagel_agreement" element={<Lagel_Agreement />} />
         <Route path="/user_guide" element={<User_Guide />} />
-        <Route path='/sign_in' element={<Login_Form/>}/>
-        <Route path='/sign_up' element={<SignUp/>} />
-
+        <Route path='/sign_in' element={<Login_Form />} />
+        <Route path='/sign_up' element={<SignUp />} />
+        <Route path='/dashboard' element={<Admin/>} />
         {/*-------------------- NotFound page start--------------------- */}
         <Route path="/404" element={<NotFoundpage />} />
         <Route path="*" element={<Navigate to="/404" />} />
-{/*---------------------- NotFound page End------------------------ */}
+        {/*---------------------- NotFound page End------------------------ */}
       </Routes>
 
     </>

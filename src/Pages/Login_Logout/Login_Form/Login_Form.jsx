@@ -1,7 +1,7 @@
 
 import { Link } from "react-router-dom";
 import ParticlesBg from "../Particles/Particles";
-import signinimg from '../../../../public/gridimg1.jpg'
+import signinimg from '../../../../public/aud.avif'
 import Particless from "../Particles/Particles";
 import logoimg from '../../../../public/Logo.png'
 

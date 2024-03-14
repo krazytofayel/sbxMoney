@@ -1,12 +1,12 @@
 import logoimg from '../../../../public/Logo.png'
-import signinimg from '../../../../public/gridgroup2.png'
+import signinimg from '../../../../public/photoaud.avif'
 const SignUp = () => {
     return (
         <>
             {/* <div>SignUp</div> */}
             <section className="min-h-screen flex items-stretch text-black ">
                 <div
-                    className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white"
+                    className="lg:flex w-1/2 h-auto hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white"
                      style={{ backgroundImage: `url(${signinimg})` }}
                 >
                     <div classclassName="absolute bg-black opacity-60 inset-0 z-0"></div>
@@ -26,7 +26,7 @@ const SignUp = () => {
                     </div> */}
                     <div className="w-full py-6 pb-10 z-20 ">
                         <div className=" my-6 flex justify-center   ">
-                            <img src={logoimg} alt=" tutor2u logo" className="  " />
+                            <img src={logoimg} alt=" tutor2u logo" className="b   " />
                         </div>
                         <h1 className="text-[#2C6777] lg:text-3xl text-[26px] font-semibold mb-4">
                             Sign Up for an Account
