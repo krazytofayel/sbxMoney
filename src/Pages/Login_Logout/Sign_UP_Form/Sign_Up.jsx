@@ -1,5 +1,5 @@
 import logoimg from '../../../../public/Logo.png'
-import signinimg from '../../../assets/gridgroup2.png'
+import signinimg from '../../../../public/gridgroup2.png'
 const SignUp = () => {
     return (
         <>

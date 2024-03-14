@@ -1,5 +1,8 @@
 import React from 'react'
-
+import Gridgroup1 from '../../../../../public/Gridgroup1.png'
+import gridgroup2 from '../../../../../public/gridgroup2.png'
+import gridimg2 from '../../../../../public/gridimg1-2.jpg'
+import Animationbest from '../../../../../public/Animationbest.gif'
 const Transfer_Ur_Money = () => {
   return (
     <>
@@ -12,20 +15,20 @@ const Transfer_Ur_Money = () => {
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 ">
                 <div class="col-span-2 sm:col-span-1 md:col-span-1 bg-sky-50 h-auto md:h-full flex flex-col">
                   <a href="" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 flex-grow">
-                    <img src="/src/assets/Gridgroup1.png" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
+                    <img src={Gridgroup1} alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
                     <div class="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
 
                   </a>
                 </div>
                 <div class="col-span-2 sm:col-span-1 md:col-span-1 bg-stone-50">
                   <a href="" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 mb-4">
-                    <img src="/src/assets/gridgroup2.png" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
+                    <img src={gridgroup2} alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
                     <div class="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
 
                   </a>
 
                   <a href="" class="group relative flex flex-col overflow-hidden rounded-lg px-4 pb-4 pt-40 ">
-                    <img src="/src/assets/gridimg2.avif" alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
+                    <img src={gridimg2} alt="" class="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out" />
                     <div class="absolute inset-0 bg-gradient-to-b from-gray-900/25 to-gray-900/5"></div>
 
                   </a>
@@ -53,7 +56,7 @@ const Transfer_Ur_Money = () => {
                 </p>
                 <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
                   <div class="relative pl-9">
-                    <dt class="inline font-semibold text-gray-900"><img src="/src/assets/Animationbest.gif" alt="" class="absolute left-[-25px]   h-20 w-20 " />
+                    <dt class="inline font-semibold text-gray-900"><img src={Animationbest} alt="" class="absolute left-[-25px]   h-20 w-20 " />
                     </dt>
                     <dd class="inline"> <h6 class="mb-2 font-semibold leading-5">Powerful Mobile & Online App</h6>
                       <p class="mb-3 text-sm text-gray-900">
@@ -63,7 +66,7 @@ const Transfer_Ur_Money = () => {
                   </div>
                   <div class="relative pl-9">
                     <dt class="inline font-semibold text-gray-900">
-                      <img src="/src/assets/Animationbest.gif" alt="" class="absolute left-[-25px]  h-20 w-20 " />
+                      <img src={Animationbest} alt="" class="absolute left-[-25px]  h-20 w-20 " />
 
                     </dt>
                     <dd class="inline"> <h6 class="mb-2 font-semibold leading-5">Brings More Transperency & Speed</h6>
@@ -72,7 +75,7 @@ const Transfer_Ur_Money = () => {
                       </p></dd>
                   </div>
                   <div class="relative pl-9">
-                    <dt class="inline font-semibold text-gray-900"><img src="/src/assets/Animationbest.gif" alt="" class="absolute left-[-25px]  h-20 w-20 " /></dt>
+                    <dt class="inline font-semibold text-gray-900"><img src={Animationbest} alt="" class="absolute left-[-25px]  h-20 w-20 " /></dt>
                     <dd class="inline"> <h6 class="mb-2 font-semibold leading-5">Special For Multiple User Capabilities</h6>
                       <p class="mb-3 text-sm text-gray-900">
                         Lorem ipsum dolor sit amet, consectetur dipiscing elit eiusmod tempor incididunt

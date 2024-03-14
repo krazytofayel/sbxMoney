@@ -1,5 +1,6 @@
 {
   "name": "sbxmoney",
+  "homepage": "https://test.wsiddiquesolutions.com",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,14 +16,16 @@
     "match-sorter": "^6.3.4",
     "react": "^18.2.0",
     "react-country-flag": "^3.1.0",
+    "react-currency-input-field": "^3.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.0",
+    "react-select": "^5.8.0",
     "react-selecto": "^1.26.3",
     "react-tsparticles": "^2.12.2",
     "sort-by": "^1.2.0",
     "swiper": "^11.0.6",
-    "tsparticles": "^3.2.2"
+    "tsparticles": "^3.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.55",

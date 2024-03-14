@@ -1,6 +1,7 @@
 import React from 'react'
 import GlobalButton from '../../../../Components/ShareableComponents/GlobalComponents/GlobalButton/GlobalButton'
 import { motion } from 'framer-motion'
+import Group1 from '../../../../../public/Group1.png'
 const Fast_Easy_Secured_Every_Transaction = () => {
   const handleButtonClick = () => {
     // Handle button click logic here
@@ -13,7 +14,7 @@ const Fast_Easy_Secured_Every_Transaction = () => {
             <motion.div initial={{ x: "-100vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ ease: "easeInOut", duration: 1 }}>
-              <img src="/src/assets/Group1.png" alt="" />
+              <img src={Group1} alt="" />
             </motion.div>
             <motion.div initial={{ x: "100vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}

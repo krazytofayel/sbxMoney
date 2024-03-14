@@ -1,5 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import phnapp from '../../../../../public/Group1000003558.png'
+import Maskgroup1 from '../../../../../public/Maskgroup1.png'
+import Maskgroup2 from '../../../../../public/Maskgroup2.png'
 const SBX_Mobile_App_Section = () => {
   return (
     <>  
@@ -19,8 +22,8 @@ const SBX_Mobile_App_Section = () => {
             </h2>
 
             <div className="flex mt-10">
-              <button className="bg-black rounded-lg text-white text-xs text-center self-center px-3  my-2 mx-2"><img src="./src/assets/Maskgroup1.png" alt="" /></button>
-              <button className="bg-black rounded-lg text-white text-xs text-center self-center px-3 my-2 mx-2"><img src="./src/assets/Maskgroup2.png" alt="" /></button>
+              <button className="bg-black rounded-lg text-white text-xs text-center self-center px-3  my-2 mx-2"><img src={Maskgroup1} alt="" /></button>
+              <button className="bg-black rounded-lg text-white text-xs text-center self-center px-3 my-2 mx-2"><img src={Maskgroup2} alt="" /></button>
             </div>
           </motion.div>
           <motion.div initial={{ x: "100vw", opacity: 0 }}
@@ -30,7 +33,7 @@ const SBX_Mobile_App_Section = () => {
             <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate dignissim augue, Nullam vulputate dignissim augue.
             </p>
-            <img className="object-cover object-center rounded mt-5 w-full  " alt="hero" src="./src/assets/Group1000003558.png" />
+            <img className="object-cover object-center rounded mt-5 w-full  " alt="hero" src={phnapp} />
           </motion.div>
         </div>
       </section>

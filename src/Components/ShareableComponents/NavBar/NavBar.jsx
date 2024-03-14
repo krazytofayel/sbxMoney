@@ -75,7 +75,7 @@ const NavBar = () => {
             <button className="bg-[#d6e5f1] text-[#2c6777] md:text-[11px] lg:text-[16px] px-3 py-1 rounded font-semibold lg:font-medium truncate">
               <Link to="/becomea_tutor">Send Money</Link>
             </button>
-            <button className="bg-green-400 text-white md:text-[11px] lg:text-[16px] px-3 py-1 rounded font-semibold lg:font-medium truncate">
+            <button className="bg-green-500 text-white md:text-[11px] lg:text-[16px] px-3 py-1 rounded font-semibold lg:font-medium truncate">
               <Link to="/sign_in">Sign in</Link>
             </button>
           </div>

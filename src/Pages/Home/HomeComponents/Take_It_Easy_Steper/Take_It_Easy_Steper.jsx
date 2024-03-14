@@ -1,5 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import vectorup from '../../../../../public/VectorUp.png'
+import vectordown from '../../../../../public/Vectordown.png'
 const Take_It_Easy_Steper = () => {
   return (
     <>
@@ -44,7 +46,7 @@ const Take_It_Easy_Steper = () => {
                 className="absolute left-[18px] lg:hidden top-16 h-[calc(100%_-_32px)] w-px bg-gray-300 lg:right-0 lg:left-auto lg:top-[18px] lg:h-px lg:w-[calc(100%_-_72px)]"
                 aria-hidden="true"></span>
               <div className="absolute  hidden lg:inline-block   lg:right-0 lg:left-auto lg:h-px">
-                <img src="/src/assets/VectorUp.png" alt="Image Alt Text" />
+                <img src={vectorup} alt="Image Alt Text" />
               </div>
               <div
                 className="inline-flex h-10 w-10 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-gray-50 transition-all duration-200 group-hover:border-green-400 group-hover:bg-green-400">
@@ -72,7 +74,7 @@ const Take_It_Easy_Steper = () => {
                 className="absolute left-[18px] lg:hidden top-16 h-[calc(100%_-_32px)] w-px bg-gray-300 lg:right-0 lg:left-auto lg:top-[18px] lg:h-px lg:w-[calc(100%_-_72px)]"
                 aria-hidden="true"></span>
               <div className="absolute  hidden lg:inline-block top-5  lg:right-0 lg:left-auto lg:h-px">
-                <img src="/src/assets/Vectordown.png" alt="Image Alt Text" />
+                <img src={vectordown} alt="Image Alt Text" />
               </div>
               <div
                 className="inline-flex h-10 w-10 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-gray-50 transition-all duration-200 group-hover:border-green-400 group-hover:bg-green-400">
@@ -96,7 +98,7 @@ const Take_It_Easy_Steper = () => {
                 className="absolute left-[18px] lg:hidden top-16 h-[calc(100%_-_32px)] w-px bg-gray-300 lg:right-0 lg:left-auto lg:top-[18px] lg:h-px lg:w-[calc(100%_-_72px)]"
                 aria-hidden="true"></span>
               <div className="absolute  hidden lg:inline-block   lg:right-0 lg:left-auto lg:h-px">
-                <img src="/src/assets/VectorUp.png" alt="Image Alt Text" />
+                <img src={vectorup} alt="Image Alt Text" />
               </div>
               <div
                 className="inline-flex h-10 w-10 md:h-16 md:w-16 shrink-0 items-center justify-center rounded-xl border border-gray-300 bg-gray-50 transition-all duration-200 group-hover:border-green-400 group-hover:bg-green-400">
