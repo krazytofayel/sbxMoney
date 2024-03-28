@@ -16,9 +16,10 @@ const Footer = () => {
 					className="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
 					<div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
 						<div className='flex justify-center md:justify-start'>
-							<img src={FooterlogoImg} alt=" main logo" className=" " />
+							
+							<Link to={'/'}> <img src={FooterlogoImg} alt=" main logo" className='h-10' /></Link>
 						</div>
-						<p className="my-3 text-[16px] text-black mt-5 mb-10">Get the academic support you need with our dedicated tutoring services. Follow us on our Social Media platforms and never miss a beat.
+						<p className="my-3 text-[16px] text-black mt-5 mb-10"> Get the tailored support you need with our dedicated team. Follow us on our Social Media Platforms and never miss a beat. 
 						</p>
 
 						<div className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start space-x-2">
@@ -52,7 +53,7 @@ const Footer = () => {
 					</div>
 					<div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
 						<div className="lg:w-2/6 md:w-1/2 w-full px-6">
-							<h2 className=" mb-[18px]  text-black text-[18px] font-bold select-none">Quick Links</h2>
+							<h2 className=" mb-[18px]  text-black text-[18px] font-bold select-none">Resources  </h2>
 							<nav className="list-none mb-5">
 								<ul className="flex flex-col gap-1 text-black">
 									<a className="hover:underline" href="">
@@ -108,12 +109,12 @@ const Footer = () => {
 										<li>(02) 9158 8497</li>
 									</a>
 									<a className="hover:underline" href="#">
-										<li>info@krazyit.com</li>
+										<li>sbxMoney@gmail.com</li>
 									</a>
-									<a className="hover:underline" href="#">
+									{/* <a className="hover:underline" href="#">
 										<li>Suite no - 25, 4th Floor, Bhuiyan Mansion, 6 Motijheel C/A, Dhaka - 1000, Bangladesh
 										</li>
-									</a>
+									</a> */}
 								</ul>
 							</nav>
 						</div>
@@ -123,7 +124,7 @@ const Footer = () => {
 
 								<ul className="flex flex-col gap-[10px] text-black">
 
-									<p>Subscribe to our newsletter to stay<br /> up to date on everything Tutor2u
+									<p>Subscribe to our newsletter to stay<br /> up to date on everything SBX Money
 									</p>
 
 
@@ -158,8 +159,8 @@ const Footer = () => {
 
 			</div>
 			<div className="bg-green-400">
-				<div className="container py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-					<p className="text-white  text-sm text-center sm:text-left">Copyright © 2023 Tutor2U ABN Number 20611064601</p>
+				<div className="container py-2 px-5 flex flex-wrap flex-col sm:flex-row">
+					<p className="text-white  text-sm text-center font-semibold sm:text-left">Copyright © 2023 SBX Money ABN Number 20611064601</p>
 				</div>
 			</div>
 		</>
