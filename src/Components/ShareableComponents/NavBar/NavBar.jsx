@@ -7,12 +7,18 @@ const NavBar = () => {
     { name: 'Home', link: '/' },
     { name: 'About Us', link: '/aboutus' },
     { name: 'Service', link: '/' },
-    { name: 'Contact US', link: '/contactus' },
-{ name: 'Dashboard', link: '/dashboard' },
+    { name: 'Contact Us', link: '/contactus' },
+// { name: 'Dashboard', link: '/dashboard' },
   ];
 
   let [open, setOpen] = useState(false);
-
+ //this is important to show content in top 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <div>
@@ -25,7 +31,7 @@ const NavBar = () => {
                 ease: "linear",
                 duration: 2,
 
-              }}> <img src={navlogo} alt=" main logo" className='h-10' /></motion.div>
+              }}><Link to={'/'}> <img src={navlogo} alt=" main logo" className='h-10' /></Link></motion.div>
 
 
           </div>
@@ -47,7 +53,7 @@ const NavBar = () => {
           >
             {Links.map((link) => (
               <motion.li
-                key={link.name}
+                key={link.name}  onClick={scrollToTop}
                 className="md:ml-4 md:text-[11px] truncate md:my-0 my-7 lg:text-lg relative group"
                 whileHover={{ scale: 1.1 }}
               >
