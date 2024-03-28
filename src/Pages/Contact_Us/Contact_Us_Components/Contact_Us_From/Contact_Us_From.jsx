@@ -47,7 +47,7 @@ const Contact_Us_From = () => {
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <LuMail/>
                       </div>
-                      <a target="blank" href="#" class="text-[#9fadbd] text-sm ml-3">
+                      <a target="blank" href="#" class="text-black text-sm ml-3">
                         <strong class="block">info@sbxmoney.com.au</strong>
                         <strong>shafique@sbxmoney.com.au</strong>
                       </a>
@@ -69,7 +69,7 @@ const Contact_Us_From = () => {
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <FiPhoneCall/>
                       </div>
-                      <a target="blank" href="#" class="text-gray-400 text-sm ml-3">
+                      <a target="blank" href="#" class="text-black text-sm ml-3">
                         <strong class="block">(+614) 03034223</strong>
                         <strong>(+612) 9758 0094</strong>
                       </a>
@@ -82,7 +82,7 @@ const Contact_Us_From = () => {
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                        <CiLocationOn/>
                       </div>
-                      <dd className='text-gray-400 text-sm ml-3 font-bold'> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
+                      <dd className='text-black text-sm ml-3 font-bold'> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
                     </li>
                   </ul>
                   

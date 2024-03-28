@@ -5,7 +5,7 @@ import vectordown from '../../../../../public/Vectordown.png'
 const Take_It_Easy_Steper = () => {
   return (
     <>
-      <section className="bg-[#f6f8f7] py-12 sm:py-16 lg:py-20 xl:py-24">
+      <section className="bg-[#f6f8f7] py-12 sm:py-16 lg:py-20 xl:py-24" id='takeaseasy'>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative container flex flex-col justify-between items-center  px-4 mx-auto md:flex-row sm:px-6 ">
@@ -31,10 +31,10 @@ const Take_It_Easy_Steper = () => {
             </div>
             <motion.div initial={{ x: "100vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ ease: "easeInOut", duration: 1 }} className="md:text-left text-center">
+              transition={{ ease: "easeInOut", duration: 1 }} className="md:text-left">
               <h2 className="text-2xl font-extrabold leading-10 tracking-tight text-[#2DBE61] ">How it works?</h2>
               <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate dignissim augue, Nullam vulputate dignissim augue.
+                We craft a tailored solution that addresses your specific challenges.
               </p>
 
             </motion.div>

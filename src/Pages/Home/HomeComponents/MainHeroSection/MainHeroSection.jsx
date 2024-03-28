@@ -136,13 +136,11 @@ const handleCalculate = (event) => {
 
               </div>
               <h1 className="text-black text-center md:text-start lg:text-start text-[24px] xl:text-[40px] lg:text-[36px] md:text-[27px] title-font font-bold mt-5 mb-4 max-w-[500px] drop-shadow-2xl shadow-black">
-                The Secure,
-                easiest and fastest
-                way to send money.
+               The Secure, Easiest and Fastest Way To Send Money.
               </h1>
 
               <p className="leading-relaxed p-2 md:p-0 text-center md:text-start lg:text-start  xl:text-[20px] text-lg text-gray-500 mb-4 font-normal">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+              Count on SBX Money for giving you the confidence and efficiency to handle Money Transfer transactions. 
               </p>
 
             </div>
@@ -153,7 +151,7 @@ const handleCalculate = (event) => {
                   bgColor="bg-green-500"
                   hoverBgColor="bg-red-500"
                   textColor="white"
-                  hoverTextColor="black" />
+                  hoverTextColor="black" targetSectionId='signup' />
               </div>
               <div>
                 <GlobalButton onClick={handleButtonClick}
@@ -161,7 +159,8 @@ const handleCalculate = (event) => {
                   bgColor="bg-green-500"
                   hoverBgColor="bg-red-500"
                   textColor="white"
-                  hoverTextColor="black" />
+                  hoverTextColor="black" targetSectionId="takeaseasy" />
+ 
               </div>
 
 

@@ -12,8 +12,8 @@ const Contact_Us_Address_Card = () => {
             <div class="text-left">
               <h2
                 class="text-4xl font-extrabold leading-10 tracking-tight text-gray-800 sm:text-5xl sm:leading-none md:text-6xl">
-                Let's Talk 
-                <span class="font-bold text-[#2DBE61]"> Find our branches</span>
+                Let's  
+                <span class="font-bold text-[#2DBE61]"> Find our Branches</span>
                 {/* <span class="text-xl font-semibold rounded-full text-blueGray-500">2.0</span> */}
               </h2>
 
@@ -23,7 +23,7 @@ const Contact_Us_Address_Card = () => {
           <div class="text-left">
             <h2 class="text-2xl font-extrabold leading-10 tracking-tight text-[#2DBE61] ">Our  BD Agent</h2>
             <p class="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate dignissim augue, Nullam vulputate dignissim augue.
+              text with We are your gateway to a world of seamless international money transfers. 
             </p>
 
           </div>

@@ -14,7 +14,7 @@ const Login_Form = () => {
   return (
     <>
 
-      <section className="min-h-screen flex items-stretch text-black ">
+      <section className="min-h-screen flex items-stretch text-black " id="signup">
           
                 <div
                     className="lg:flex z-10  w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white"

@@ -13,7 +13,7 @@ const Contact_Us_Home_Banner = () => {
               Money Transfer Made Easy.
 
             </p>
-            <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-500 dark:text-gray-300">Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore Lorem ipsum dolor sit amet,</p>
+            <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-500 dark:text-gray-300">For seamless money transfers and financial management, our dedicated team is here to assist you every step of the way. Reach out below, and our friendly customer service team will promptly address your needs.</p>
             {/* <a href="#Us"
               class="inline-block px-6 py-3 mt-8 bg-green-400 dark:bg-blue-500 text-white font-semibold rounded hover:bg-blue-700 dark:hover:bg-blue-600">
               Contact Us

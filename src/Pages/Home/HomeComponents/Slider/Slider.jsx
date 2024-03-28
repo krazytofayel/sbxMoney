@@ -17,22 +17,34 @@ const Slider = () => {
 
   return (
     <div className="container mx-auto mt-20 mb-20">
-         <div className="relative container flex flex-col justify-between items-center  px-4 mx-auto md:flex-row sm:px-6 mb-10">
-          <div className="flex justify-between md:mb-16 md:py-5 max-w-2xl md:p-8 ">
+         <div className="relative container flex flex-col justify-center items-center  px-4 mx-auto md:flex-row sm:px-6 ">
+          <div className="flex justify-center md:mb-16 md:py-5 max-w-2xl md:p-8 ">
             <motion.div initial={{ x: "-100vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ ease: "easeInOut", duration: 1 }} className="text-left">
-              <h2
-                className="text-4xl font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-5xl max-w-lg">
-              They Satisfied With 
-                <span className="font-bold text-[#2DBE61] transition-all duration-1000 animate-pulse"> Our Service</span>
-                {/* <span className="text-xl font-semibold rounded-full text-blueGray-500">2.0</span> */}
-              </h2>
+              {/* <h2
+                className="text-3xl font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-4xl max-w-lg">
+              Join our Satisfied
+                <span className="font-bold text-[#2DBE61] transition-all duration-1000 animate-pulse"> Customer</span>
+         
+              </h2> */}
+ <p className="font-bold text-2xl md:text-4xl">
+                  Join our Satisfied 
+                 <span className="text-green-500 mx-1 font-extrabold text-4xl relative inline-block stroke-current transition-all duration-1000 animate-pulse">
+                    <span className="inline-block animate-bounce">
+                      Customer
+                    </span>
+                     {/* <span className="text-xl font-semibold rounded-full text-blueGray-500">2.0</span> */}
+                    <svg className="absolute -bottom-0.5 w-full max-h-1.5" viewBox="0 0 55 5" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                      <path d="M0.652466 4.00002C15.8925 2.66668 48.0351 0.400018 54.6853 2.00002" strokeWidth="2"></path>
+                    </svg>
+                  </span>
 
+                </p>
 
             </motion.div>
           </div>
-          <motion.div initial={{ x: "100vw", opacity: 0 }}
+          {/* <motion.div initial={{ x: "100vw", opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ ease: "easeInOut", duration: 1 }} className="text-left">
             <h2 className="text-2xl font-extrabold leading-10 tracking-tight text-[#2DBE61] ">Why Chose Us?</h2>
@@ -40,7 +52,7 @@ const Slider = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate dignissim augue, Nullam vulputate dignissim augue.
             </p>
 
-          </motion.div>
+          </motion.div> */}
         </div>
 
       <Swiper

@@ -3,7 +3,23 @@ import Gridgroup1 from '../../../../../public/Gridgroup1.png'
 import gridgroup2 from '../../../../../public/gridgroup2.png'
 import gridimg2 from '../../../../../public/gridimg1-2.jpg'
 import Animationbest from '../../../../../public/Animationbest.gif'
+import { TiTickOutline } from "react-icons/ti";
 const Transfer_Ur_Money = () => {
+ 
+  const items = [
+    {
+      title: "Powerful Mobile & Online App",
+      description: "Make sending money a breeze with our easy-to-use interface, guaranteeing a hassle-free experience every time. "
+    },
+    {
+      title: "Brings More Transperency & Speed",
+      description: "Rest assured knowing your financial transactions are safeguarded with the utmost level of protection."
+    },
+    {
+      title: "Special For Multiple User Capabilities",
+      description: "Bringing you cutting-edge solutions that redefine the way you manage and transfer funds, making your financial journey more efficient and convenient. "
+    }
+  ];
   return (
     <>
 
@@ -51,37 +67,26 @@ const Transfer_Ur_Money = () => {
             <div class="lg:pr-8 ">
               <div class="lg:max-w-lg">
 
-                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-700 sm:text-4xl">Prestige Benefits</p>
+                <p class="mt-2 text-3xl font-bold tracking-tight text-gray-700 sm:text-4xl">About Us</p>
                 <p class="mt-6 text-lg leading-8 text-gray-600">Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore
                 </p>
-                <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
-                  <div class="relative pl-9">
-                    <dt class="inline font-semibold text-gray-900"><img src={Animationbest} alt="" class="absolute left-[-25px]   h-20 w-20 " />
-                    </dt>
-                    <dd class="inline"> <h6 class="mb-2 font-semibold leading-5">Powerful Mobile & Online App</h6>
-                      <p class="mb-3 text-sm text-gray-900">
-                        Lorem ipsum dolor sit amet, consectetur dipiscing elit eiusmod tempor incididunt
-                      </p>
-                    </dd>
-                  </div>
-                  <div class="relative pl-9">
-                    <dt class="inline font-semibold text-gray-900">
-                      <img src={Animationbest} alt="" class="absolute left-[-25px]  h-20 w-20 " />
+                 <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                  {items.map((item, index) => (
+                    <div key={index} className="relative flex items-center gap-5 pl-4">
+                      <dt  className="inline font-semibold text-gray-900">
 
-                    </dt>
-                    <dd class="inline"> <h6 class="mb-2 font-semibold leading-5">Brings More Transperency & Speed</h6>
-                      <p class="mb-3 text-sm text-gray-900">
-                        Lorem ipsum dolor sit amet, consectetur dipiscing elit eiusmod tempor incididunt
-                      </p></dd>
-                  </div>
-                  <div class="relative pl-9">
-                    <dt class="inline font-semibold text-gray-900"><img src={Animationbest} alt="" class="absolute left-[-25px]  h-20 w-20 " /></dt>
-                    <dd class="inline"> <h6 class="mb-2 font-semibold leading-5">Special For Multiple User Capabilities</h6>
-                      <p class="mb-3 text-sm text-gray-900">
-                        Lorem ipsum dolor sit amet, consectetur dipiscing elit eiusmod tempor incididunt
-                      </p>
-                    </dd>
-                  </div>
+                        <span className=" grid h-10 w-10 place-items-center rounded-full bg-[#F0FFF4] border-2 relative overflow-hidden transition-bg duration-500 hover:bg-green-500 shadow-lg">
+                          <TiTickOutline className="h-8 w-8 text-green-400 hover:text-white absolute top-0 left-0 right-0 bottom-0 m-auto" />
+                          <span className="bg-gradient-to-t from-green-100 to-green-500 absolute bottom-0 left-0 right-0 top-full"></span>
+                        </span>
+                      </dt>
+                      <dd className="inline">
+                        <h6 
+                           className="mb-2 font-semibold leading-5 text-black">{item.title}</h6>
+                        <p  className="mb-3 text-sm max-w-md text-gray-900">{item.description}</p>
+                      </dd>
+                    </div>
+                  ))}
                 </dl>
               </div>
 

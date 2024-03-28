@@ -4,11 +4,11 @@ const AboutUs_Home_Banner = () => {
   return (
     <>
       <div>
-        <section class="w-full flex bg-gray-50 dark:bg-gray-900">
-          <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-            <div class="text-center space-y-5">
-              <h2 class="text-base font-semibold text-green-400 dark:text-pink-300 tracking-wide uppercase">Unlock Your Potential
-                Today</h2>
+        <section class="w-full flex bg-gray-100 dark:bg-gray-900 h-[35rem]">
+          <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 flex flex-col justify-center items-center align-middle">
+            <div class="text-center  ">
+              {/* <h2 class="text-base font-semibold text-green-400 dark:text-pink-300 tracking-wide uppercase">Unlock Your Potential
+                Today</h2> */}
               {/* <div class="inline-flex items-end justify-center w-full text-center mx-auto">
                 <img src="https://cdn.devdojo.com/tails/avatars/024.jpg" class="absolute transform translate-x-24 ml-6 rounded-full w-12 h-12 md:w-16 md:h-16 border-4 border-white" />
                 <img src="https://cdn.devdojo.com/tails/avatars/012.jpg" class="absolute transform -translate-x-24 -ml-6 rounded-full w-12 h-12 md:w-16 md:h-16 border-4 border-white" />
@@ -19,9 +19,9 @@ const AboutUs_Home_Banner = () => {
               <p
                 class="mt-1 text-4xl font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl sm:tracking-tight lg:text-6xl">
                 Your Companion for Seamless Money Transaction.
-                <span class="px-2 py-1 relative inline-block"><svg class="stroke-current bottom-0 absolute text-green-400 -translate-x-2" viewBox="0 0 410 18" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.4c16.8 16.8 380.8-11.2 397.6 5.602" stroke-width="12" fill="none" fill-rule="evenodd" stroke-linecap="round"></path></svg><span class="relative">A Financial Revulotion</span></span>
+                {/* <span class="px-2 py-1 relative inline-block"><svg class="stroke-current bottom-0 absolute text-green-400 -translate-x-2" viewBox="0 0 410 18" xmlns="http://www.w3.org/2000/svg"><path d="M6 6.4c16.8 16.8 380.8-11.2 397.6 5.602" stroke-width="12" fill="none" fill-rule="evenodd" stroke-linecap="round"></path></svg><span class="relative">A Financial Revulotion</span></span> */}
               </p>
-              <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-500 dark:text-gray-300">Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore Lorem ipsum dolor sit amet,</p>
+              <p class="max-w-3xl mt-5 mx-auto text-xl text-gray-500 dark:text-gray-300"> You can rest assured that your financial well-being is in capable hands, allowing you to focus on what truly matters.</p>
               <a href="#"
                 class="inline-block px-6 py-3 mt-8 bg-green-400 dark:bg-blue-500 text-white font-semibold rounded hover:bg-green-400 dark:hover:bg-blue-600">
                 Get Started

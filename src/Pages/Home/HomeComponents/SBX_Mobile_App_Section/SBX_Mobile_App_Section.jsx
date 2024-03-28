@@ -31,7 +31,7 @@ const SBX_Mobile_App_Section = () => {
             transition={{ ease: "easeInOut", duration: 1 }} className=" ">
             <h2 className="text-2xl font-bold leading-10 tracking-tight text-[#2DBE61] pt-10">Download the APP for free</h2>
             <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate dignissim augue, Nullam vulputate dignissim augue.
+              Just pure value at your fingertips. Join our ever-growing community of users who have embraced the freedom and flexibility our app offers.
             </p>
             <img className="object-cover object-center rounded mt-5 w-full  " alt="hero" src={phnapp} />
           </motion.div>
