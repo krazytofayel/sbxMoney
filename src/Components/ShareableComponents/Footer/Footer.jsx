@@ -8,8 +8,14 @@ import { useState } from 'react';
 import SocialIcon from './SocialIcon/SocialIcon';
 import FooterlogoImg from '../../../../public/Logo.png'
 const Footer = () => {
-
-	return (
+  // Function to scroll to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  return (
     <>
       <div className="w-full  h-full  pb-5  text-gray-700 px-5 bg-green-200  ">
         <div className="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
@@ -60,7 +66,6 @@ const Footer = () => {
               </h2>
               <nav className="list-none mb-5">
                 <ul className="flex flex-col gap-1 text-black">
-                 
                   <li>
                     <Link to="/our service" className="hover:underline" href="">
                       {" "}
@@ -68,7 +73,12 @@ const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/help" className="hover:underline" href="">
+                    <Link
+                      to="/help"
+                      className="hover:underline"
+                      href=""
+                      onClick={scrollToTop}
+                    >
                       {" "}
                       Help
                     </Link>
@@ -79,6 +89,7 @@ const Footer = () => {
                       to="/privacy_policy"
                       className="hover:underline"
                       href=""
+                      onClick={scrollToTop}
                     >
                       {" "}
                       Privacy Policy
@@ -89,6 +100,7 @@ const Footer = () => {
                       to="/condition_of_use"
                       className="hover:underline"
                       href=""
+                      onClick={scrollToTop}
                     >
                       {" "}
                       Terms and condition
@@ -99,19 +111,30 @@ const Footer = () => {
                       to="/lagel_agreement"
                       className="hover:underline"
                       href=""
+                      onClick={scrollToTop}
                     >
                       {" "}
                       Lagel Agreement
                     </Link>
                   </li>
                   <li>
-                    <Link to="/aboutus" className="hover:underline" href="">
+                    <Link
+                      to="/aboutus"
+                      className="hover:underline"
+                      href=""
+                      onClick={scrollToTop}
+                    >
                       {" "}
                       About Us
                     </Link>
                   </li>
                   <li>
-                    <Link to="/user_guidet" className="hover:underline" href="">
+                    <Link
+                      to="/user_guidet"
+                      className="hover:underline"
+                      href=""
+                      onClick={scrollToTop}
+                    >
                       {" "}
                       User Guide
                     </Link>
@@ -128,6 +151,7 @@ const Footer = () => {
               <Link
                 to="/contact_us"
                 className=" mb-[10px]  text-black text-[18px] font-bold select-none "
+                onClick={scrollToTop}
               >
                 Contact Us
               </Link>
