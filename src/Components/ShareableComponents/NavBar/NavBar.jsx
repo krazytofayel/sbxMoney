@@ -31,7 +31,7 @@ const NavBar = () => {
                 ease: "linear",
                 duration: 2,
 
-              }}><Link to={'/'}> <img src={navlogo} alt=" main logo" className='h-10' /></Link></motion.div>
+              }}><Link to={'/'}> <img src={navlogo} alt=" main logo" className='h-12 ' /></Link></motion.div>
 
 
           </div>
