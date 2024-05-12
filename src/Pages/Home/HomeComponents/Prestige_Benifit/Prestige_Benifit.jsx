@@ -40,9 +40,9 @@ const Prestige_Benifit = () => {
                   initial={{ x: "-100vw", opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ ease: "easeInOut", duration: 1, delay: 0.5 }}
-                  className="mt-6 text-lg leading-8 text-gray-600  text-center lg:text-start"
+                  className="mt-6 text-lg leading-8 text-gray-600  text-center lg:text-start font-medium"
                 >
-                 Enjoy exclusive perks and privileges with our Prestige Benefits program. 
+                  Enjoy exclusive perks and privileges with our Prestige Benefits program.
                 </motion.p>
 
 

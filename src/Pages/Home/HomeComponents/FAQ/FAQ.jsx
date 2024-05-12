@@ -83,7 +83,7 @@ const FAQ = () => {
 
                     <div className="flex justify-center mt-16 ">
                       <a href="#"
-                        className=" bg-[#2c6777] text-white no-underline hover:bg-[#4e84d4] mt-2  px-9 py-2 rounded-md    text-[16px] font-[500]"
+                        className=" bg-green-500 text-white no-underline hover:bg-green-500 mt-2  px-9 py-2 rounded-md    text-[16px] font-[500]"
                       >Ask Question</a>
 
 

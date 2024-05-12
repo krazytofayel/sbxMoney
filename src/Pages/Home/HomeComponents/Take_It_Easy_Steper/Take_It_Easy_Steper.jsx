@@ -31,9 +31,9 @@ const Take_It_Easy_Steper = () => {
             </div>
             <motion.div initial={{ x: "100vw", opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ ease: "easeInOut", duration: 1 }} className="md:text-left">
+              transition={{ ease: "easeInOut", duration: 1 }} className="md:text-left lg:-mt-14">
               <h2 className="text-2xl font-extrabold leading-10 tracking-tight text-[#2DBE61] ">How it works?</h2>
-              <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+              <p className="max-w-md  mx-auto  text-base text-gray-600 font-medium sm:text-lg md:text-xl md:max-w-3xl">
                 We craft a tailored solution that addresses your specific challenges.
               </p>
 

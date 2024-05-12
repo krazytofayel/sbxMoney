@@ -16,7 +16,7 @@ const Why_Chose_Us = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ ease: "easeInOut", duration: 1 }} className="text-left">
               <h2
-                className="text-2xl font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-4xl">
+                className="text-2xl -mt-5 font-extrabold leading-10 tracking-tight text-gray-800  sm:leading-none md:text-4xl">
                 Discover why we're the
                 <span className="font-bold text-[#2DBE61] transition-all duration-1000 animate-pulse "> preferred option for many</span>
                 {/* <span className="text-xl font-semibold rounded-full text-blueGray-500">2.0</span> */}
@@ -29,7 +29,7 @@ const Why_Chose_Us = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ ease: "easeInOut", duration: 1 }} className="text-left">
             <h2 className="text-2xl font-extrabold leading-10 tracking-tight text-[#2DBE61] ">Why Choose Us ?</h2>
-            <p className=" mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            <p className="  text-base text-gray-600 font-medium sm:text-lg  md:text-xl md:max-w-3xl">
               We are your all-in-one money transfer buddy.
             </p>
 
