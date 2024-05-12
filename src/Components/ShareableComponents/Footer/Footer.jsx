@@ -17,7 +17,7 @@ const Footer = () => {
   };
   return (
     <>
-      <div className="w-full  h-full  pb-5  text-gray-700 px-5 bg-green-200  ">
+      <div className="w-full  h-full  pb-5  text-gray-700 px-5 bg-gray-100  ">
         <div className="container px-5 py-10 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
             <div className="flex justify-center md:justify-start">
