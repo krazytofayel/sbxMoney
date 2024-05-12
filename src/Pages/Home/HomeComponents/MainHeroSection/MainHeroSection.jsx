@@ -171,13 +171,13 @@ const MainHeroSection = () => {
                   <div>
                     <label
                       for="countries"
-                      class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
                     >
                       Select your country (From)
                     </label>
                     <Select
                       id="countries"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       onChange={handleSelectFrom}
                       value={selectedCurrencyFrom}
                       options={cuntriesOptions}
@@ -186,13 +186,13 @@ const MainHeroSection = () => {
                   <div>
                     <label
                       for="countries"
-                      class="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                      className="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
                     >
                       To
                     </label>
                     <Select
                       id="countries"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       onChange={handleSelectTo}
                       value={selectedCurrencyTo}
                       options={cuntriesOptions}
@@ -201,27 +201,27 @@ const MainHeroSection = () => {
 
                   <label
                     for="countries"
-                    class="block mt-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+                    className="block mt-2 text-sm font-medium text-gray-900 dark:text-gray-400"
                   >
                     Amount
                   </label>
 
-                  <div class="grid md:grid-cols-3 justify-between md:gap-6 mt-2">
-                    <div class="   mb-5">
+                  <div className="grid md:grid-cols-3 justify-between md:gap-6 mt-2">
+                    <div className="   mb-5">
                       <CurrencyInput
                         type="text"
                         id="amount"
                         name="input-name"
                         onValueChange={(value, name) => setSelectAmount(value)}
                         value={selectAmount}
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="amount"
                       />
                     </div>
-                    <div class="relative z-0 w-full mb-5 group">
+                    <div className="relative z-0 w-full mb-5 group">
                       <select
                         id="countries"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                       >
                         <option value="">select value</option>
                         <option>Bank ET</option>
@@ -231,7 +231,7 @@ const MainHeroSection = () => {
                         <option>Cash FR</option>
                       </select>
                     </div>
-                    <div class="relative z-0 w-full  group">
+                    <div className="relative z-0 w-full  group">
                       <button
                         onClick={handleConvert}
                         className="border rounded-md px-3 py-2 bg-green-500 text-white font-semibold w-full"
