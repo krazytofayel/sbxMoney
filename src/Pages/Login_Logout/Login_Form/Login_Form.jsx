@@ -14,7 +14,7 @@ const Login_Form = () => {
   return (
     <>
 
-      <section className="min-h-screen flex items-stretch text-black ">
+      <section className="min-h-screen flex items-stretch text-black " id="signup">
           
                 <div
                     className="lg:flex z-10  w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white"
@@ -97,7 +97,7 @@ const Login_Form = () => {
                                 </span>
                             </div>
                             <div className=" pb-2 pt-4 ">
-                                <button className="uppercase block w-full p-4 text-lg text-white  font-bold rounded-lg bg-[#2C6777] hover:bg-[#3f98b1]">
+                                <button className="uppercase block w-full p-4 text-lg text-white  font-bold rounded-lg bg-green-500 hover:bg-[#3f98b1]">
                                     Sign IN
                                 </button>
                             </div>

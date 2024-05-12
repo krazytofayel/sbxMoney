@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "../../Components/ShareableComponents/NavBar/NavBar";
 import Footer from "../../Components/ShareableComponents/Footer/Footer";
 import MainHeroSection from "./HomeComponents/MainHeroSection/MainHeroSection";
@@ -17,19 +17,27 @@ import Slider from "./HomeComponents/Slider/Slider";
 const Home = () => {
   const [navfix, setNavfix] = useState(false);
 
-  function setFixed() {
-    if (window.scrollY >= 70) {
-      setNavfix(true);
-      //console.log(scrollY)
-    } else {
-      setNavfix(false);
+ useEffect(() => {
+    function handleScroll() {
+      if (window.scrollY >= 70) {
+        setNavFixed(true);
+      } else {
+        setNavFixed(false);
+      }
     }
-  }
-  window.addEventListener("scroll", setFixed);
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Clean up the event listener when component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
 
   return (
     <>
-      <div className={`z-20 fixed top-0 bg-white w-full transition-all duration-300 ease-in-out ${navfix ? "shadow-lg bg-white" : ""}`}>
+      <div className={`z-20  top-0 bg-white w-full transition-all duration-300 ease-in-out ${navfix ? "shadow-lg bg-white" : ""}`}>
         <NavBar />
       </div>
       <MainHeroSection />

@@ -34,29 +34,29 @@ const FAQ = () => {
 
 
                   <Accordion
-                    title="What is multi-currency account & how does it work?"
-                    content="Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the second item's accordion body. Let's imagine this being filled with some actual content."
+                    title="Is it safe to send money through your company? "
+                    content="A big YES, safety and security are our top priorities. We employ advanced encryption technologies and strict security protocols to protect your personal and financial information. Additionally, we're fully licensed and regulated by relevant government authorities, ensuring compliance with all applicable laws and regulations."
                     index={0}
                     openIndex={openIndex}
                     setOpenIndex={setOpenIndex}
                   />
                   <Accordion
-                    title="What is the best features & services we deliver?"
-                    content="Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the second item's accordion body. Let's imagine this being filled with some actual content."
+                    title="Can I send money to a bank account? "
+                    content=" We offer a bank deposit option, allowing you to choose the most convenient method for your recipient. For bank deposits, you'll need to provide the recipient's bank account details, and the funds will be directly credited to their account."
                     index={1}
                     openIndex={openIndex}
                     setOpenIndex={setOpenIndex}
                   />
                      <Accordion
-                    title="What is multi-currency account & how does it work?"
-                    content="Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the second item's accordion body. Let's imagine this being filled with some actual content."
+                    title=" How quickly do money transfers get delivered?"
+                    content=" Money transfer times vary based on the recipient country and service type chosen. While our standard service delivers funds within 1-2 business days to major destinations, we also provide an express option for quicker 24-hour or same-day delivery in certain cases."
                     index={2}
                     openIndex={openIndex}
                     setOpenIndex={setOpenIndex}
                   />
                      <Accordion
-                    title="What is multi-currency account & how does it work?"
-                    content="Placeholder content for this accordion, which is intended to demonstrate the .accordion-flush class. This is the second item's accordion body. Let's imagine this being filled with some actual content."
+                    title="What are the fees for sending and transferring money?"
+                    content="Our fees for money transfers are competitive and transparent. The exact fee depends on the amount you're sending and the destination country."
                     index={3}
                     openIndex={openIndex}
                     setOpenIndex={setOpenIndex}
@@ -70,20 +70,20 @@ const FAQ = () => {
               </div>
               {/* right side small dev */}
               <div className="col-span-12 lg:col-span-3" >
-                <div className=" w-auto  border border-gray-200 rounded-lg bg-cover bg-center bg-hero-pattern shadow  ">
-                  <div className="p-3  py-16">
-                    <div className="text-center  w-full">
+                <div className=" w-auto h-[18rem]  border border-gray-200 rounded-lg bg-cover bg-center bg-hero-pattern shadow  ">
+                  <div className="p-3  ">
+                    <div className="text-center max-w-sm  ">
                       <h1 className="title-font text-white text-[28px]  title-font font-me  mb-4">
                         Any Question
                       </h1>
-                      <p className="  mx-auto  font-normal   mb-4 text-white ">
-                        Do you have questions? We have answers. Check the most frequently asked questions regarding Kick-Ass Seniors
+                      <p className="  mx-auto  font-semibold   text-black ">
+                       Don't see the answer you need? ask other questions, and our customer service team will be in touch with you shortly. 
                       </p>
                     </div>
 
-                    <div className="flex justify-center ">
+                    <div className="flex justify-center mt-16 ">
                       <a href="#"
-                        className=" bg-[#2c6777] text-white no-underline hover:bg-[#4e84d4] mt-2  px-9 py-2 rounded-md    text-[16px] font-[500]"
+                        className=" bg-green-500 text-white no-underline hover:bg-green-500 mt-2  px-9 py-2 rounded-md    text-[16px] font-[500]"
                       >Ask Question</a>
 
 

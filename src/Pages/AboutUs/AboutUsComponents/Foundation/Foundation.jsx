@@ -4,13 +4,14 @@ import { TiTickOutline } from "react-icons/ti";
 const Foundation = () => {
       const items = [
     {
-      title: "Easy Transaction",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit eiusmod tempor incididunt"
+      title: "Absulate transparency ",
+      description: "We take care of dreams, connecting families, helping businesses succeed, and supporting communities across borders. Each transfer is important to us, and we handle it carefully and securely. "
     },
     {
-      title: "Guaranteed Security like no other",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit eiusmod tempor incididunt"
+      title: "Commitment to Safety ",
+      description: "We embrace compliance not merely as a regulatory obligation, but as a moral imperative, safeguarding the financial well-being of those who place their faith in us. "
     },
+    
  
   ];
   return (
@@ -26,7 +27,7 @@ const Foundation = () => {
               <div class="lg:max-w-lg">
 
                 <p class="mt-2 text-3xl font-bold tracking-tight text-gray-700 max-w-sm sm:text-4xl">Our Values are foundations of Trust</p>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore Lorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut laboreLorem ipsum dolor sit amet, consectetur dipiscing elit eius mod tempor incididunt ut labore  Lorem ipsum dolor sit amet.
+                <p class="mt-6 text-lg leading-8 text-gray-600">Our Values are the guiding principles that have forged an unbreakable bond with our customers, assuring them that their hard-earned funds are in safe hands. 
                 </p>
                   <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
                   {items.map((item, index) => (

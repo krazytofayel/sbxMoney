@@ -29,7 +29,7 @@ const Contact_Us_From = () => {
                 </svg>
               </div>
               <h2 class="text-3xl font-bold tracking-tight text-gray-900">Contact Us</h2>
-              <p class="mt-6 text-lg leading-8 text-gray-600">Feel free to reach out to us for any inquiries or assistance.
+              <p class="mt-6 text-lg leading-8 text-gray-600 font-medium">Feel free to reach out to us for any inquiries or assistance.
                 We're here to help!</p>
               <dl class="mt-10 space-y-4 text-base leading-7 text-gray-600">
                 <div class="flex gap-x-4">
@@ -47,7 +47,7 @@ const Contact_Us_From = () => {
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <LuMail/>
                       </div>
-                      <a target="blank" href="#" class="text-[#9fadbd] text-sm ml-3">
+                      <a target="blank" href="#" class="text-black text-sm ml-3">
                         <strong class="block">info@sbxmoney.com.au</strong>
                         <strong>shafique@sbxmoney.com.au</strong>
                       </a>
@@ -55,21 +55,13 @@ const Contact_Us_From = () => {
                   </ul>
                 </div>
                 <div class="flex gap-x-4">
-                  {/* <dt class="flex-none">
-                    <span class="sr-only">Email</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                      stroke="currentColor" aria-hidden="true" class="h-7 w-6 text-gray-400">
-                      <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75">
-                      </path>
-                    </svg>
-                  </dt> */}
+                
                   <ul class="mt-3">
                     <li class="flex items-center">
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                         <FiPhoneCall/>
                       </div>
-                      <a target="blank" href="#" class="text-gray-400 text-sm ml-3">
+                      <a target="blank" href="#" class="text-black text-sm ml-3">
                         <strong class="block">(+614) 03034223</strong>
                         <strong>(+612) 9758 0094</strong>
                       </a>
@@ -82,7 +74,7 @@ const Contact_Us_From = () => {
                       <div class="bg-[#e6e6e6cf] h-10 w-10 rounded-full flex items-center justify-center shrink-0">
                        <CiLocationOn/>
                       </div>
-                      <dd className='text-gray-400 text-sm ml-3 font-bold'> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
+                      <dd className='text-black text-sm ml-3 font-bold'> 48 Railway Pde Lakemba, NSW-2195, Australia.</dd>
                     </li>
                   </ul>
                   

@@ -67,7 +67,7 @@ const Help = () => {
 
             <GradientButton
               icon={FiPhoneCall}
-              text="User's Guide"
+              text="General Support"
               bgColor="bg-[#EFF4F4]"
               hoverBgColor="bg-[#2DBE61]"
               textColor="text-black"
@@ -75,7 +75,7 @@ const Help = () => {
             />
             <GradientButton
               icon={TfiHeadphoneAlt}
-              text="User's Guide"
+              text="Technical Support"
               bgColor="bg-[#EFF4F4]"
               hoverBgColor="bg-[#2DBE61]"
               textColor="text-black"
@@ -88,6 +88,7 @@ const Help = () => {
               hoverBgColor="bg-[#2DBE61]"
               textColor="text-black"
               hoverTextColor="text-white"
+              href={'/user_guide'}
             />
 
           </div>

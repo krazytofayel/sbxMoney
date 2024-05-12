@@ -4,7 +4,7 @@ const SignUp = () => {
     return (
         <>
             {/* <div>SignUp</div> */}
-            <section className="min-h-screen flex items-stretch text-black ">
+            <section className="min-h-screen flex items-stretch text-black " id="signup">
                 <div
                     className="lg:flex w-1/2 h-auto hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white"
                      style={{ backgroundImage: `url(${signinimg})` }}
@@ -117,7 +117,7 @@ const SignUp = () => {
                                 </span>
                             </div>
                             <div className=" pb-2 pt-4 ">
-                                <button className="uppercase block w-full p-4 text-lg text-white  font-bold rounded-lg bg-green-600 hover:bg-[#3f98b1]">
+                                <button className="uppercase block w-full p-4 text-lg text-white  font-bold rounded-lg bg-green-500 hover:bg-[#3f98b1]">
                                   Sign Up
                                 </button>
                             </div>
