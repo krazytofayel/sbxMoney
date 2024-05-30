@@ -17,22 +17,15 @@ import Slider from "./HomeComponents/Slider/Slider";
 const Home = () => {
   const [navfix, setNavfix] = useState(false);
 
- useEffect(() => {
-    function handleScroll() {
-      if (window.scrollY >= 70) {
-        setNavFixed(true);
-      } else {
-        setNavFixed(false);
-      }
+  function setFixed() {
+    if (window.scrollY >= 70) {
+      setNavfix(true);
+      //console.log(scrollY)
+    } else {
+      setNavfix(false);
     }
-
-    window.addEventListener("scroll", handleScroll);
-
-    // Clean up the event listener when component unmounts
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  }
+  window.addEventListener("scroll", setFixed);
 
 
   return (

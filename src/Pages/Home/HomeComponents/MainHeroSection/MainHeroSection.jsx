@@ -7,14 +7,11 @@ import vector from "../../../../../public/Vector1.png";
 import currencies from "../../../../../public/commonCurrency.json";
 import CurrencyInput from "react-currency-input-field";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
+
 
 const MainHeroSection = () => {
-  const handleButtonClick = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
 
-    // Call handleConvert to calculate the total pay amount
-    handleConvert();
-  };
   //console.log(currencies)
   const [totalPay, setTotalPay] = useState(0); // State to store the total pay amount
 
@@ -23,7 +20,28 @@ const MainHeroSection = () => {
   const [selectAmount, setSelectAmount] = useState(1);
 
   const URL = `https://v6.exchangerate-api.com/v6/e6275e44ecb29da0333681c6/latest/USD`;
+const [isRegistered, setIsRegistered] = useState(true);
+const navigate = useNavigate();
 
+
+ const handleButtonClick = (event) => {
+   event.preventDefault(); // Prevent default form submission behavior
+
+   // Logic to check if the user is registered
+   if (isRegistered) {
+     // Display the component for registered users
+     alert("User is registered. Showing registered component.");
+     navigate("/register");
+  
+   } else {
+     // Display the register component
+     alert("User is not registered. Showing registration component.");
+      navigate("/sign_up");
+   }
+
+   // Call handleConvert to calculate the total pay amount
+   handleConvert();
+ };
   const handleConvert = () => {
     fetch(URL)
       .then((response) => response.json())
@@ -42,6 +60,7 @@ const MainHeroSection = () => {
         }
       })
       .catch((error) => {
+        // eslint-disable-next-line prettier/prettier
         console.error("Error fetching data:", error);
       });
   };
@@ -200,7 +219,7 @@ const MainHeroSection = () => {
                   </div>
 
                   <label
-                    for="countries"
+                    htmlFor="countries"
                     className="block mt-2 text-sm font-medium text-gray-900 dark:text-gray-400"
                   >
                     Amount
