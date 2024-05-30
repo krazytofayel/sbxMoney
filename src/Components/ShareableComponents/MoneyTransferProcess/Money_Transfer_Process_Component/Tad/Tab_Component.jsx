@@ -1,32 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sender_Information from "../Sender_Information/Sender_Information";
 import Receiver_Information from "../Receiver_Information/Receiver_Information";
+import Transaction_Information from "../Transaction_Information/Transaction_Information";
 
 const Tab_Component = () => {
-  const [activeTab, setActiveTab] = useState("Sender");
+  const [senderformData, setSenderFormData] = useState({}); // Lifted state
+  const [receiverformData, setReceiverFormData] = useState({}); // Lifted state
+  const [activeTab, setActiveTab] = useState(() => {
+    // Check if there's a saved active tab in the URL hash
+    const hash = window.location.hash.substr(1);
+    return hash || "Sender"; // Default to "Sender" if not found
+  });
+
+  useEffect(() => {
+    // Update the URL hash whenever the active tab changes
+    window.location.hash = activeTab;
+  }, [activeTab]);
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
-  };
-
-  const handleNext = () => {
-    if (activeTab === "Sender") {
-      setActiveTab("Receiver");
-    } else if (activeTab === "Receiver") {
-      setActiveTab("Transmission");
-    } else if (activeTab === "Transmission") {
-      setActiveTab("settings"); 
-    }
-  };
-
-  const handlePrevious = () => {
-    if (activeTab === "settings") {
-      setActiveTab("Transmission");
-    } else if (activeTab === "Transmission") {
-      setActiveTab("Receiver");
-    } else if (activeTab === "Receiver") {
-      setActiveTab("Sender");
-    }
   };
 
   return (
@@ -39,7 +31,7 @@ const Tab_Component = () => {
           >
             <li className="mr-2" role="presentation">
               <button
-                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Sender" ? "text-purple-600 border-purple-600" : "text-gray-500 hover:text-gray-600 hover:border-gray-300 "}`}
+                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Sender" ? "text-green-600 border-green-600" : "text-gray-500 hover:text-gray-600 hover:border-gray-300 "}`}
                 onClick={() => handleTabClick("Sender")}
                 type="button"
                 role="tab"
@@ -51,7 +43,7 @@ const Tab_Component = () => {
             </li>
             <li className="mr-2" role="presentation">
               <button
-                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Receiver" ? "text-purple-600 border-purple-600" : "text-gray-500 hover:text-gray-600 hover:border-gray-300 "}`}
+                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Receiver" ? "text-green-600 border-green-600" : "text-gray-500 hover:text-gray-600 hover:border-gray-300 "}`}
                 onClick={() => handleTabClick("Receiver")}
                 type="button"
                 role="tab"
@@ -63,26 +55,14 @@ const Tab_Component = () => {
             </li>
             <li className="mr-2" role="presentation">
               <button
-                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Transmission" ? "text-purple-600 border-purple-600" : "text-gray-500 hover:text-gray-600 hover:border-gray-300 "}`}
-                onClick={() => handleTabClick("Transmission")}
+                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "Transaction" ? "text-green-600 border-green-600" : "text-gray-500 hover:text-gray-600 hover:border-gray-300 "}`}
+                onClick={() => handleTabClick("Transaction")}
                 type="button"
                 role="tab"
-                aria-controls="Transmission"
-                aria-selected={activeTab === "Transmission"}
+                aria-controls="Transaction"
+                aria-selected={activeTab === "Transaction"}
               >
-                Transmission
-              </button>
-            </li>
-            <li className="mr-2" role="presentation">
-              <button
-                className={`inline-block p-4 border-b-2 rounded-t-lg ${activeTab === "settings" ? "text-purple-600 border-purple-600" : "text-gray-500 hover:text-gray-600 hover:border-gray-300 "}`}
-                onClick={() => handleTabClick("settings")}
-                type="button"
-                role="tab"
-                aria-controls="settings"
-                aria-selected={activeTab === "settings"}
-              >
-                Settings
+                Transaction
               </button>
             </li>
           </ul>
@@ -94,15 +74,10 @@ const Tab_Component = () => {
             role="tabpanel"
             aria-labelledby="Sender-tab"
           >
-            <Sender_Information onNext={handleNext} />
-            <div className="mt-4">
-              <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-                onClick={handleNext}
-              >
-                Next
-              </button>
-            </div>
+            <Sender_Information
+              senderformData={senderformData}
+              setSenderFormData={setSenderFormData}
+            />
           </div>
           <div
             className={`p-4 rounded-lg bg-gray-50 ${activeTab === "Receiver" ? "" : "hidden"}`}
@@ -110,71 +85,19 @@ const Tab_Component = () => {
             role="tabpanel"
             aria-labelledby="Receiver-tab"
           >
-           <Receiver_Information/>
-            <div className="mt-4">
-              <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-2"
-                onClick={handlePrevious}
-              >
-                Previous
-              </button>
-              <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-                onClick={handleNext}
-              >
-                Next
-              </button>
-            </div>
+            <Receiver_Information
+              senderformData={senderformData}
+              receiverformData={receiverformData}
+              setReceiverFormData={setReceiverFormData}
+            />
           </div>
           <div
-            className={`p-4 rounded-lg bg-gray-50 ${activeTab === "Transmission" ? "" : "hidden"}`}
-            id="Transmission"
+            className={`p-4 rounded-lg bg-gray-50 ${activeTab === "Transaction" ? "" : "hidden"}`}
+            id="Transaction"
             role="tabpanel"
-            aria-labelledby="Transmission-tab"
+            aria-labelledby="Transaction-tab"
           >
-            <p className="text-sm text-gray-500">
-              This is some placeholder content for the{" "}
-              <strong className="font-medium text-gray-800">
-                Transmission tab's associated content
-              </strong>
-              .
-            </p>
-            <div className="mt-4">
-              <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mr-2"
-                onClick={handlePrevious}
-              >
-                Previous
-              </button>
-              <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-                onClick={handleNext}
-              >
-                Next
-              </button>
-            </div>
-          </div>
-          <div
-            className={`p-4 rounded-lg bg-gray-50 ${activeTab === "settings" ? "" : "hidden"}`}
-            id="settings"
-            role="tabpanel"
-            aria-labelledby="settings-tab"
-          >
-            <p className="text-sm text-gray-500">
-              This is some placeholder content for the{" "}
-              <strong className="font-medium text-gray-800">
-                Settings tab's associated content
-              </strong>
-              .
-            </p>
-            <div className="mt-4">
-              <button
-                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-                onClick={handlePrevious}
-              >
-                Previous
-              </button>
-            </div>
+            <Transaction_Information  />
           </div>
         </div>
       </div>

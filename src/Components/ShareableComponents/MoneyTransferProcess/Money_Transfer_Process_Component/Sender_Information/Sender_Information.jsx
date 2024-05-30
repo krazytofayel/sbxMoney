@@ -1,35 +1,69 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const Sender_Information = ({ onNext }) => {
+const Sender_Information = ({ senderformData, setSenderFormData }) => {
   const {
     register,
     handleSubmit,
-    reset,
     setValue,
+    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: senderformData });
 
-  const [formData, setFormData] = useState({});
-
+  // Load initial formData into the form
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("formData"));
-    if (savedData) {
-      setFormData(savedData);
-      for (const [key, value] of Object.entries(savedData)) {
-        setValue(key, value);
-      }
+    const savedData = JSON.parse(localStorage.getItem("senderFormData")) || {};
+    for (const key in savedData) {
+      setValue(key, savedData[key]);
     }
   }, [setValue]);
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
-    setFormData(data);
-    localStorage.setItem("formData", JSON.stringify(data));
-    //reset(); // Reset form after submission if needed
-    onNext();
+  const firstName = watch("firstName", senderformData.firstName || "");
+  const lastName = watch("lastName", senderformData.lastName || "");
+  // Automatically update fullName when firstName or lastName changes
+ 
+  useEffect(() => {
+    const fullName = `${firstName} ${lastName}`.trim();
+    setValue("fullName", fullName);
+    setSenderFormData((prev) => ({ ...prev, fullName }));
+  }, [firstName, lastName, setValue, setSenderFormData]);
+  // const onSubmit = (data) => {
+  //   setFormData(data);
+  // };
+  const onSubmit = async (data) => {
+    try {
+      // Log the data to the console
+      console.log("Data to be sent:", data);
+
+      // Update state with form data
+      setSenderFormData(data);
+      const fullName = `${data.firstName} ${data.lastName}`;
+      // Set the full name in the form data
+      data.fullName = fullName;
+      // Save form data to local storage
+      localStorage.setItem("senderFormData", JSON.stringify(data));
+      // Make a POST request to your API endpoint with form data using Axios
+      const response = await axios.post("YOUR_API_ENDPOINT", data);
+
+      // Check if the request was successful
+      if (response.status === 200) {
+        // Clear form data
+        setSenderFormData({});
+        onNext();
+      } else {
+        // Handle errors if the request failed
+        console.error("Failed to send data to the server");
+      }
+    } catch (error) {
+      // Handle errors
+      console.error("An error occurred:", error);
+    }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <div>
       <form className="max-w-4xl mx-auto" onSubmit={handleSubmit(onSubmit)}>
@@ -234,7 +268,7 @@ const Sender_Information = ({ onNext }) => {
               id="remember"
               type="checkbox"
               {...register("remember", { required: true })}
-              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
+              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-green-300 accent-green-600"
             />
           </div>
           <label
@@ -245,12 +279,21 @@ const Sender_Information = ({ onNext }) => {
           </label>
           {errors.remember && <span>This field is required</span>}
         </div>
-        <button
-          type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-          Confirm All Data
-        </button>
+        <div className="flex justify-between">
+          <button
+            type="submit"
+            className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mb-5"
+          >
+            Submit
+          </button>
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center mb-5"
+          >
+            Scroll to Top
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,37 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-const Receiver_Information = ({ onNext }) => {
+const Receiver_Information = ({
+  onNext,
+  senderformData,
+  receiverformData,
+  setReceiverFormData,
+}) => {
   const {
     register,
     handleSubmit,
     reset,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm({ defaultValues: receiverformData });
 
-  const [formData, setFormData] = useState({});
-
+  // Load initial formData into the form
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("formData"));
-    if (savedData) {
-      setFormData(savedData);
-      for (const [key, value] of Object.entries(savedData)) {
-        setValue(key, value);
-      }
+    const savedData =
+      JSON.parse(localStorage.getItem("receiverformData")) || {};
+    for (const key in savedData) {
+      setValue(key, savedData[key]);
     }
   }, [setValue]);
 
   const onSubmit = (data) => {
-    console.log("Form Data:", data);
-    setFormData(data);
-    localStorage.setItem("formData", JSON.stringify(data));
+    // Save form data to local storage
+    localStorage.setItem("receiverformData", JSON.stringify(data));
+    setReceiverFormData(data);
+    //console.log("Form receiver Data:", receiverformData);
     //reset(); // Reset form after submission if needed
-    onNext();
   };
-
+  useEffect(() => {
+    console.log("Form receiver Data:", receiverformData);
+  }, [receiverformData]);
   return (
     <div>
+      <h1>Sender Name:{senderformData.firstName} to </h1>
       <form className="max-w-4xl mx-auto" onSubmit={handleSubmit(onSubmit)}>
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="mb-5">
@@ -234,7 +239,7 @@ const Receiver_Information = ({ onNext }) => {
               id="remember"
               type="checkbox"
               {...register("remember", { required: true })}
-              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
+              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-green-300 accent-green-600"
             />
           </div>
           <label
@@ -247,9 +252,9 @@ const Receiver_Information = ({ onNext }) => {
         </div>
         <button
           type="submit"
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
         >
-          Confirm All Data
+          Submit
         </button>
       </form>
     </div>

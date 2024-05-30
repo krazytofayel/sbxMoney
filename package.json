@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "apexcharts": "^3.46.0",
+    "axios": "^1.7.2",
     "framer-motion": "^11.0.3",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
