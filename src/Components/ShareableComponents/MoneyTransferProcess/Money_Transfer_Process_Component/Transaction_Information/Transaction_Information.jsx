@@ -1,16 +1,19 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import Money_Conversion_Form from "../Money_Conversion_Form/Money_Conversion_Form";
+
 
 const Transaction_Information = ({ senderformData }) => {
   const [senderData, setSenderData] = useState({});
   const [receiverData, setReceiverData] = useState({});
+
   // Load senderData from local storage when the component mounts
   useEffect(() => {
     const storedSenderData = JSON.parse(localStorage.getItem("senderFormData"));
     if (storedSenderData) {
       setSenderData(storedSenderData);
     }
-  }, []);
+  }, [senderformData]);
   // Load receiverData from local storage when the component mounts
   useEffect(() => {
     const storedReceiverData = JSON.parse(
@@ -30,14 +33,18 @@ const Transaction_Information = ({ senderformData }) => {
   const handleReceiverChange = (event) => {
     setSelectedReceiver(event.target.value);
   };
+const [confirminfo,setConfirminfo]=useState(false)
+const handelconfirminfobtn=()=>{
+setConfirminfo((previousvalue)=>!previousvalue)
+}
   return (
     <>
       <div>
         <div className="grid grid-cols-12 gap-5 lg:gap-12 p-2 mt-10 ">
-          <div className="col-span-12 md:col-span-6 lg:col-span-6 mb-6 lg:mb-0">
-            <div className="border rounded-full">
+          <div className="col-span-12 md:col-span-6 lg:col-span-6 mb-6 lg:mb-0 ">
+            <div className=" rounded-full">
               {" "}
-              <div className="bg-white shadow-md rounded-lg p-6">
+              <div className="bg-white shadow-md rounded-lg p-6 h-[40rem]">
                 <h2 className="text-xl font-semibold mb-4">
                   Sender Information
                 </h2>
@@ -83,7 +90,7 @@ const Transaction_Information = ({ senderformData }) => {
                     <p className="font-semibold">{senderData.roadNumber}</p>
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-gray-600 mt-2 mb-2">Area:</p>
                     <p className="font-semibold">{senderData.area}</p>
@@ -100,9 +107,9 @@ const Transaction_Information = ({ senderformData }) => {
               </div>
             </div>
           </div>
-          <div className="col-span-12 md:col-span-6 lg:col-span-6 mb-6 lg:mb-0">
+          <div className="col-span-12 md:col-span-6 lg:col-span-6 mb-6 lg:mb-0 ">
             {/* Add similar display for receiver information */}
-            <div className="bg-white shadow-md rounded-lg p-6">
+            <div className="bg-white shadow-md rounded-lg p-6 h-full">
               <h2 className="text-xl font-semibold mb-4">Select Receiver</h2>
               <select
                 value={selectedReceiver}
@@ -191,6 +198,16 @@ const Transaction_Information = ({ senderformData }) => {
             </div>
           </div>
         </div>
+        <div className="flex justify-center">
+          <button
+            className="text-sm font-semibold px-3 py-2 bg-green-500 text-white rounded-md mb-10 mt-5"
+            onClick={handelconfirminfobtn}
+          >
+            {" "}
+            {confirminfo ? "Close" : "Confirm Information"}
+          </button>
+        </div>
+        {confirminfo && <Money_Conversion_Form />}
       </div>
     </>
   );

@@ -18,7 +18,7 @@ const Receiver_Information = ({
   // Load initial formData into the form
   useEffect(() => {
     const savedData =
-      JSON.parse(localStorage.getItem("receiverformData")) || {};
+      JSON.parse(localStorage.getItem("receiverformData")) ;
     for (const key in savedData) {
       setValue(key, savedData[key]);
     }

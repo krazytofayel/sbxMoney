@@ -14,6 +14,7 @@ import SignUp from './Pages/Login_Logout/Sign_UP_Form/Sign_Up';
 import NotFoundpage from './Pages/NotFound_Page/NotFoundpage';
 import Admin from './Pages/DashBoard/Admin/Admin';
 import Money_Transfer_Process from './Components/ShareableComponents/MoneyTransferProcess/Money_Transfer_Process';
+import Sender_Information from './Components/ShareableComponents/MoneyTransferProcess/Money_Transfer_Process_Component/Sender_Information/Sender_Information';
 
 
 
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/sign_up" element={<SignUp />} />
         <Route path="/register" element={<Money_Transfer_Process />} />
         <Route path="/dashboard" element={<Admin />} />
+        <Route path='/sender' element={<Sender_Information/>}/>
         {/*-------------------- NotFound page start--------------------- */}
         <Route path="/404" element={<NotFoundpage />} />
         <Route path="*" element={<Navigate to="/404" />} />
