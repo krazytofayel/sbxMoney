@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 
-const Transaction_Information = () => {
+const Transaction_Information = ({ senderformData }) => {
   const [senderData, setSenderData] = useState({});
   const [receiverData, setReceiverData] = useState({});
   // Load senderData from local storage when the component mounts
