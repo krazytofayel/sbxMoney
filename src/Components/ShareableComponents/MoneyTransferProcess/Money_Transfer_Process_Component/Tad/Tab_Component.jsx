@@ -97,7 +97,7 @@ const Tab_Component = () => {
             role="tabpanel"
             aria-labelledby="Transaction-tab"
           >
-            <Transaction_Information  />
+            <Transaction_Information senderformData={senderformData} />
           </div>
         </div>
       </div>
