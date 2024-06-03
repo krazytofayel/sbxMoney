@@ -11,105 +11,132 @@ import { useNavigate } from "react-router-dom";
 
 
 const MainHeroSection = () => {
+const [isRegistered, setIsRegistered] = useState(null); // Initialize with null
 
-  //console.log(currencies)
-  const [totalPay, setTotalPay] = useState(0); // State to store the total pay amount
+useEffect(() => {
+  const isUserRegistered = localStorage.getItem("isRegistered");
 
-  const [exchangeRateAmount, setExchangeRateAmount] = useState(0);
+  // Check if the value exists in local storage
+  if (isUserRegistered !== null) {
+    // If it exists, convert it to a boolean
+    const isRegisteredValue = isUserRegistered === "true";
+    setIsRegistered(isRegisteredValue);
+  }
+}, []);
 
-  const [selectAmount, setSelectAmount] = useState(1);
 
+
+  const cuntriesOptions = Object.keys(currencies).map((currency, index) => ({
+    value: currencies[currency].code,
+    label: `${currencies[currency].code} - ${currencies[currency].name}`,
+    name: currencies[currency].name,
+    symbol: currencies[currency].symbol,
+    index: index,
+  }));
+
+  const initialCurrencyFrom = cuntriesOptions[8];
+  const initialCurrencyTo = cuntriesOptions[11];
+  const initialTotalPay = 0;
+  const initialExchangeRateAmount = 0;
+  const initialSelectAmount = 1;
+
+  const [selectedCurrencyFrom, setSelectedCurrencyFrom] =
+    useState(initialCurrencyFrom);
+  const [selectedCurrencyTo, setSelectedCurrencyTo] =
+    useState(initialCurrencyTo);
+  const [totalPay, setTotalPay] = useState(initialTotalPay);
+  const [exchangeRateAmount, setExchangeRateAmount] = useState(
+    initialExchangeRateAmount
+  );
+  const [selectAmount, setSelectAmount] = useState(initialSelectAmount);
+
+  const [exchangeRates, setExchangeRates] = useState({});
   const URL = `https://v6.exchangerate-api.com/v6/e6275e44ecb29da0333681c6/latest/USD`;
-const [isRegistered, setIsRegistered] = useState(true);
-const navigate = useNavigate();
 
+  const navigate = useNavigate();
 
- const handleButtonClick = (event) => {
-   event.preventDefault(); // Prevent default form submission behavior
-
-   // Logic to check if the user is registered
-   if (isRegistered) {
-     // Display the component for registered users
-     alert("User is registered. Showing registered component.");
-     navigate("/register");
-  
-   } else {
-     // Display the register component
-     alert("User is not registered. Showing registration component.");
-      navigate("/sign_up");
-   }
-
-   // Call handleConvert to calculate the total pay amount
-   handleConvert();
- };
-  const handleConvert = () => {
+  useEffect(() => {
     fetch(URL)
       .then((response) => response.json())
       .then((data) => {
         if (data.result === "success") {
-          console.log(data);
-          //var conversionRate = data.conversion_rates[1]
-          //console.log(conversionRate)
-          // console.log(Amount)
-          const conversionRate =
-            data.conversion_rates[selectedCurrencyTo.value]; // Retrieve the exchange rate for the selected currency
-          const convertedAmount = selectAmount * conversionRate; // Calculate the converted amount using the fetched exchange rate
-          setTotalPay(convertedAmount.toFixed(2));
-          setExchangeRateAmount(conversionRate);
-          console.log(`Converted amount: ${convertedAmount}`);
+          setExchangeRates(data.conversion_rates);
         }
       })
       .catch((error) => {
-        // eslint-disable-next-line prettier/prettier
         console.error("Error fetching data:", error);
       });
+  }, []);
+
+  const handleConvert = () => {
+    if (exchangeRates && selectedCurrencyFrom && selectedCurrencyTo) {
+      const fromRate = exchangeRates[selectedCurrencyFrom.value];
+      const toRate = exchangeRates[selectedCurrencyTo.value];
+      if (fromRate && toRate) {
+        const conversionRate = toRate / fromRate;
+        const convertedAmount = selectAmount * conversionRate;
+        setTotalPay(convertedAmount.toFixed(2));
+        setExchangeRateAmount(conversionRate.toFixed(4));
+
+        // Save to localStorage
+        //localStorage.setItem("totalPay", convertedAmount.toFixed(2));
+        //localStorage.setItem("exchangeRateAmount", conversionRate.toFixed(4));
+      }
+    }
   };
 
-  // Function to handle the calculation when the "Calculate" button is clicked
-  const handleCalculate = (event) => {
-    event.preventDefault(); // Prevent form submission
-    const amountWithCommas = document.getElementById("amount").value; // Get the amount value from the input field
-    const amount = parseFloat(amountWithCommas.replace(/,/g, "")); // Remove commas from the input value
-    const exchangeRate = 109;
-    const calculatedTotal = amount * exchangeRate; // Calculate the total pay amount using the fetched exchange rate
-    setTotalPay(calculatedTotal.toFixed(2)); // Update the state with the calculated total pay amount
-  };
-
-  const [selectedCurrencySymbol, setSelectedCurrencySymbol] = useState("$");
-
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "US", label: "USDDD" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
-  let cuntriesOptions = [];
-  Object.keys(currencies).map((currency, index) => {
-    cuntriesOptions.push({
-      value: currencies[currency].code,
-      label: `${currencies[currency].code} - ${currencies[currency].name}`,
-      name: currencies[currency].name,
-      symbol: currencies[currency].symbol,
-      index: index,
-    });
-  });
-  const [selectedCurrencyFrom, setSelectedCurrencyFrom] = useState(
-    cuntriesOptions[8]
-  );
-  const [selectedCurrencyTo, setSelectedCurrencyTo] = useState(
-    cuntriesOptions[11]
-  );
-
-  useEffect(() => {
-    handleConvert();
-  }, [selectedCurrencyTo]);
   const handleSelectTo = (_eTo) => {
     setSelectedCurrencyTo(_eTo);
+    //localStorage.setItem("selectedCurrencyTo", JSON.stringify(_eTo));
   };
 
   const handleSelectFrom = (_eFrom) => {
-    setSelectedCurrencySymbol(_eFrom.symbol);
     setSelectedCurrencyFrom(_eFrom);
+    //localStorage.setItem("selectedCurrencyFrom", JSON.stringify(_eFrom));
+  };
+
+  const handleAmountChange = (value) => {
+    setSelectAmount(value);
+    //localStorage.setItem("selectAmount", value);
+  };
+
+  const handleClose = () => {
+    // Log form data to the console
+    console.log({
+      selectedCurrencyFrom,
+      selectedCurrencyTo,
+      selectAmount,
+      exchangeRateAmount,
+      totalPay,
+    });
+  };
+
+  useEffect(() => {
+    if (selectedCurrencyFrom && selectedCurrencyTo) {
+      handleConvert();
+    }
+  }, [selectedCurrencyTo, selectedCurrencyFrom]);
+
+  const handleButtonClick = (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+
+    // Logic to check if the user is registered
+    if (isRegistered) {
+      // Display the component for registered users
+      alert("User is registered. Showing registered component.");
+      navigate("/register");
+    } else {
+      // Display the register component
+      alert("User is not registered. Showing registration component.");
+      navigate("/sign_up");
+    }
+  };
+
+  const handleCalculate = (event) => {
+    event.preventDefault(); // Prevent form submission
+
+    // Call handleConvert to calculate the total pay amount and show conversion rate
+    handleConvert();
   };
 
   return (
@@ -252,7 +279,7 @@ const navigate = useNavigate();
                     </div>
                     <div className="relative z-0 w-full  group">
                       <button
-                        onClick={handleConvert}
+                        onClick={handleCalculate}
                         className="border rounded-md px-3 py-2 bg-green-500 text-white font-semibold w-full"
                       >
                         {" "}
@@ -260,35 +287,42 @@ const navigate = useNavigate();
                       </button>
                     </div>
                   </div>
+
                   <div>
                     <p className="border-b text-center p-2 text-gray-400 font-medium text-md">
-                      The current exchange rate is 1usd=
-                      <span className="text-[#2DBE61]  font-bold transition-all duration-1000 animate-pulse">
-                        {/* {selectedCurrencySymbol} */}
-                        {exchangeRateAmount}
-                        <span className="ml-1">
-                          ({selectedCurrencyTo.symbol})
-                        </span>{" "}
-                      </span>{" "}
+                      {exchangeRateAmount ? (
+                        <>
+                          The current exchange rate is 1{" "}
+                          {selectedCurrencyFrom?.value} =
+                          <span className="text-[#2DBE61] font-bold transition-all duration-1000 animate-pulse">
+                            {exchangeRateAmount}
+                            <span className="ml-1">
+                              ({selectedCurrencyTo?.symbol})
+                            </span>
+                          </span>
+                        </>
+                      ) : (
+                        "Select currencies to view the exchange rate"
+                      )}
                     </p>
                   </div>
-
-                  {/* <div className='flex justify-between mb-2 mt-2'>
-                    <div><p className='font-medium text-gray-700 text-sm'>Total fees</p></div>
-                    <div className='font-bold text-sm text-gray-700'><span >700</span> USD</div>
-
-                  </div> */}
                   <div className="flex justify-between mt-2">
                     <div>
                       <p className="font-medium text-black">Total to Pay</p>
                     </div>
                     <div className="font-bold">
                       <span>
-                        {selectedCurrencySymbol} {totalPay}
+                        {selectedCurrencyFrom?.symbol} {totalPay}
                       </span>{" "}
-                      USD
+                      {selectedCurrencyTo?.value}
                     </div>
                   </div>
+                  {/* <div className='flex justify-between mb-2 mt-2'>
+                    <div><p className='font-medium text-gray-700 text-sm'>Total fees</p></div>
+                    <div className='font-bold text-sm text-gray-700'><span >700</span> USD</div>
+
+                  </div> */}
+
                   <button
                     type="submit"
                     className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-green-500 rounded shadow-lg focus:outline-none hover:bg-green-500  hover:text-black"

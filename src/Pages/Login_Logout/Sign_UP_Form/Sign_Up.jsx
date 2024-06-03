@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logoimg from "../../../../public/Logo.png";
 import signinimg from "../../../../public/photoaud.avif";
 import { useForm } from "react-hook-form";
@@ -15,28 +15,42 @@ const SignUp = () => {
   const [formData, setFormData] = useState(null);
   const navigate = useNavigate();
 
+
   const onSubmit = async (data) => {
     try {
       // Log form data to the console
       console.log(data);
 
       // Send form data to API endpoint using Axios
-      const response = await axios.post("YOUR_API_ENDPOINT", data);
+      //const response = await axios.post("YOUR_API_ENDPOINT", data);
 
       // Log response data to the console
-      console.log("API Response:", response.data);
+      //console.log("API Response:", response.data);
 
       // Set form data in state
       setFormData(data);
+      // Set isRegistered to true in local storage
+      localStorage.setItem("isRegistered", "true");
+      //console.log("isRegistered value set in local storage.");
 
       // Redirect to the sign-in page
       navigate("/sign_in");
+      
     } catch (error) {
       // Handle errors
       console.error("An error occurred while submitting the form:", error);
     }
   };
 
+  //   const debounce = (func, delay) => {
+  //     let timeoutId;
+  //     return function (...args) {
+  //       const context = this;
+  //       clearTimeout(timeoutId);
+  //       timeoutId = setTimeout(() => func.apply(context, args), delay);
+  //     };
+  //   };
+  // const debouncedSubmit = debounce(onSubmit, 1000);
   return (
     <>
       <section

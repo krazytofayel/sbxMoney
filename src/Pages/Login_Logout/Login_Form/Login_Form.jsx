@@ -4,6 +4,7 @@ import signinimg from "../../../../public/aud.avif";
 import logoimg from "../../../../public/Logo.png";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Login_Form = () => {
   const {
@@ -12,6 +13,18 @@ const Login_Form = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+const [isRegistered, setIsRegistered] = useState(null); // Initialize with null
+
+useEffect(() => {
+  const isUserRegistered = localStorage.getItem("isRegistered");
+
+  // Check if the value exists in local storage
+  if (isUserRegistered !== null) {
+    // If it exists, convert it to a boolean
+    const isRegisteredValue = isUserRegistered === "true";
+    setIsRegistered(isRegisteredValue);
+  }
+}, []);
 
   const onSubmit = async (data) => {
     try {
@@ -19,13 +32,22 @@ const Login_Form = () => {
       console.log(data);
 
       // Send form data to API endpoint using Axios
-      const response = await axios.post("YOUR_API_ENDPOINT", data);
+      //const response = await axios.post("YOUR_API_ENDPOINT", data);
 
       // Log response data to the console
-      console.log("API Response:", response.data);
+      //console.log("API Response:", response.data);
 
       // Redirect based on the response  home page
-      navigate("/home"); 
+     // navigate("/"); 
+      if (isRegistered) {
+        // Display the component for registered users
+        alert("User is registered. Showing registered component.");
+        navigate("/");
+      } else {
+        // Display the register component
+        alert("User is not registered. Showing registration component.");
+        navigate("/sign_up");
+      }
     } catch (error) {
       // Handle errors
       console.error("An error occurred while submitting the form:", error);
