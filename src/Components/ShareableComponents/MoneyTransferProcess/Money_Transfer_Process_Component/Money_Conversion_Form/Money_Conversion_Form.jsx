@@ -6,7 +6,7 @@ import CurrencyInput from "react-currency-input-field";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 
-const Money_Conversion_Form = () => {
+const Money_Conversion_Form = ({ senderData,receiverData}) => {
   const cuntriesOptions = Object.keys(currencies).map((currency, index) => ({
     value: currencies[currency].code,
     label: `${currencies[currency].code} - ${currencies[currency].name}`,
@@ -81,6 +81,11 @@ const Money_Conversion_Form = () => {
       exchangeRateAmount,
       totalPay,
     });
+     const transactionData = {
+       senderData,
+       receiverData,
+     };
+     console.log("Transaction Data:", transactionData);
   };
 
   useEffect(() => {

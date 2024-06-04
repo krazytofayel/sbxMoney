@@ -303,7 +303,12 @@ setConfirminfo((previousvalue)=>!previousvalue)
             {confirminfo ? "Close" : "Confirm Information"}
           </button>
         </div>
-        {confirminfo && <Money_Conversion_Form />}
+        {confirminfo && (
+          <Money_Conversion_Form
+            senderData={senderData}
+            receiverData={receiverData}
+          />
+        )}
       </div>
     </>
   );
