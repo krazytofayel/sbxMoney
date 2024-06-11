@@ -25,7 +25,39 @@ useEffect(() => {
     setIsRegistered(isRegisteredValue);
   }
 }, []);
+  // const onSubmit = async (data) => {
+  //   try {
+  //     console.log("Form Data:", data);
 
+  //     const response = await fetch(
+  //       "http://192.168.68.107:8000/api/admin/users",
+  //       {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify(data),
+  //       }
+  //     );
+
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! Status: ${response.status}`);
+  //     }
+
+  //     const responseData = await response.json();
+  //     console.log("API Response:", responseData);
+
+  //     if (isRegistered) {
+  //       alert("User is registered. Showing registered component.");
+  //       navigate("/");
+  //     } else {
+  //       alert("User is not registered. Showing registration component.");
+  //       navigate("/sign_up");
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred while submitting the form:", error);
+  //   }
+  // };
   const onSubmit = async (data) => {
     try {
       // Log form data to the console
