@@ -4,101 +4,56 @@ import signinimg from "../../../../public/aud.avif";
 import logoimg from "../../../../public/Logo.png";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
 
 const Login_Form = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
-const [isRegistered, setIsRegistered] = useState(null); // Initialize with null
+  const [isRegistered, setIsRegistered] = useState(null);
 
-useEffect(() => {
-  const isUserRegistered = localStorage.getItem("isRegistered");
-
-  // Check if the value exists in local storage
-  if (isUserRegistered !== null) {
-    // If it exists, convert it to a boolean
-    const isRegisteredValue = isUserRegistered === "true";
-    setIsRegistered(isRegisteredValue);
-  }
-}, []);
-  // const onSubmit = async (data) => {
-  //   try {
-  //     console.log("Form Data:", data);
-
-  //     const response = await fetch(
-  //       "http://192.168.68.107:8000/api/admin/users",
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //         body: JSON.stringify(data),
-  //       }
-  //     );
-
-  //     if (!response.ok) {
-  //       throw new Error(`HTTP error! Status: ${response.status}`);
-  //     }
-
-  //     const responseData = await response.json();
-  //     console.log("API Response:", responseData);
-
-  //     if (isRegistered) {
-  //       alert("User is registered. Showing registered component.");
-  //       navigate("/");
-  //     } else {
-  //       alert("User is not registered. Showing registration component.");
-  //       navigate("/sign_up");
-  //     }
-  //   } catch (error) {
-  //     console.error("An error occurred while submitting the form:", error);
-  //   }
-  // };
   const onSubmit = async (data) => {
     try {
-      // Log form data to the console
-      console.log(data);
+      console.log("Form Data:", data);
 
-      // Send form data to API endpoint using Axios
-      //const response = await axios.post("YOUR_API_ENDPOINT", data);
+      // Send form data to login API endpoint using Axios
+      const response = await axios.post("http://127.0.0.1:8000/api/auth/login", {
+        email: data.email,
+        password: data.password,
+      });
 
-      // Log response data to the console
-      //console.log("API Response:", response.data);
+      console.log("API Response:", response.data);
 
-      // Redirect based on the response  home page
-     // navigate("/"); 
-      if (isRegistered) {
-        // Display the component for registered users
-        alert("User is registered. Showing registered component.");
+      if (response.data.accessToken) {
+        // Store access token in local storage
+        localStorage.setItem("accessToken", response.data.accessToken);
+
+        // Display success message using toast
+        toast.success(response.data.message);
+
+        // Redirect to the home page
         navigate("/");
-      } else {
-        // Display the register component
-        alert("User is not registered. Showing registration component.");
-        navigate("/sign_up");
       }
     } catch (error) {
       // Handle errors
       console.error("An error occurred while submitting the form:", error);
+      // Display error message using toast
+      if (error.response && error.response.data && error.response.data.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error("An error occurred. Please try again later.");
+      }
     }
   };
 
   return (
     <>
-      <section
-        className="min-h-screen flex items-stretch text-black"
-        id="signup"
-      >
-        <div
-          className="lg:flex z-10 w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white"
-          style={{ backgroundImage: `url(${signinimg})` }}
-        >
+      <ToastContainer />
+      <section className="min-h-screen flex items-stretch text-black" id="signup">
+        <div className="lg:flex z-10 w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white" style={{ backgroundImage: `url(${signinimg})` }}>
           <div className="absolute bg-black opacity-20 inset-0 z-0"></div>
         </div>
-
         <div className="lg:w-1/2 w-full flex items-center justify-center text-center xl:px-16 md:px-6 px-0 z-0 bg-[#f5f4ef]">
           <div className="w-full py-6 pb-10 z-20">
             <div className="my-6 flex justify-center">
@@ -108,10 +63,7 @@ useEffect(() => {
               Sign In Your Account
             </h1>
             <p className="text-[#2C6777]">Sign in or Log in to your account</p>
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto"
-            >
+            <form onSubmit={handleSubmit(onSubmit)} className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
               <div className="pb-2 pt-4">
                 <label className="block mb-2 text-lg font-bold text-[#2C6777] text-start ml-2">
                   Email
@@ -152,10 +104,7 @@ useEffect(() => {
                     value=""
                     className="w-4 h-4 bg-[#2C6777] border-[#2C6777] rounded"
                   />
-                  <label
-                    htmlFor="checkbox-1"
-                    className="ml-2 text-sm font-medium text-[#2C6777]"
-                  >
+                  <label htmlFor="checkbox-1" className="ml-2 text-sm font-medium text-[#2C6777]">
                     Remember me
                   </label>
                 </div>
