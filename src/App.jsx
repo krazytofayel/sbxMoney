@@ -38,7 +38,7 @@ const App = () => {
         <Route path="/user_guide" element={<User_Guide />} />
         <Route path="/sign_in" element={<Login_Form />} />
         <Route path="/sign_up" element={<SignUp />} />
-        <Route path="/register" element={<Money_Transfer_Process />} />
+        <Route path="/sendmoney" element={<Money_Transfer_Process />} />
         <Route path="/dashboard" element={<Admin />} />
         <Route path='/sender' element={<Sender_Information/>}/>
         {/*-------------------- NotFound page start--------------------- */}
