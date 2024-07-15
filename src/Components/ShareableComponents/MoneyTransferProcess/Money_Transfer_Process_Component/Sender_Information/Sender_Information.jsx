@@ -1,23 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { v4 as uuidv4 } from 'uuid';
 const Sender_Information = ({ senderformData, setSenderFormData }) => {
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    watch,
-    formState: { errors },
-  } = useForm({ defaultValues: senderformData });
+  const { register, handleSubmit, setValue, watch, formState: { errors },} = useForm({ defaultValues: senderformData });
 
-  // Load initial formData into the form
-  useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("senderFormData")) ;
-    for (const key in savedData) {
-      setValue(key, savedData[key]);
-    }
-  }, [setValue]);
+
 
   const firstName = watch("firstName", senderformData.firstName || "");
   const lastName = watch("lastName", senderformData.lastName || "");
@@ -33,31 +23,56 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
   // };
   const onSubmit = async (data) => {
     try {
-      // Log the data to the console
       console.log("Data to be sent:", data);
 
-      // Update state with form data
       setSenderFormData(data);
-      const fullName = `${data.firstName} ${data.lastName}`;
-      // Set the full name in the form data
-      data.fullName = fullName;
-      // Save form data to local storage
-      localStorage.setItem("senderFormData", JSON.stringify(data));
-      // Make a POST request to your API endpoint with form data using Axios
-      const response = await axios.post("YOUR_API_ENDPOINT", data);
 
-      // Check if the request was successful
+      // Generate a unique user ID
+      const uniqueUserId = uuidv4();
+      console.log(uniqueUserId)
+
+      const formData = {
+        user_id: 2,
+        name: `${data.firstName} ${data.lastName}`,
+        phone: data.contactNumber,
+        alt_phone: data.altPhone,
+        dob: data.dob,
+        nid: data.nidNumber,
+        city: data.city,
+        state: data.state,
+        country: data.country,
+        post_code: data.postCode,
+        reference_id: data.referenceId,
+      };
+
+      const response = await axios.post("http://127.0.0.1:8000/api/admin/sender-informations", formData);
+
       if (response.status === 200) {
-        // Clear form data
+        console.log("Successfully sent data to the server:", response.data);
+        toast.success(response.data.message || "Data successfully submitted.");
+        // Store data in local storage
+        localStorage.setItem('senderFormData', JSON.stringify(data));
         setSenderFormData({});
-        onNext();
       } else {
-        // Handle errors if the request failed
         console.error("Failed to send data to the server");
+        toast.error("Failed to send data to the server. Please try again later.");
       }
     } catch (error) {
-      // Handle errors
       console.error("An error occurred:", error);
+      if (error.response) {
+        // Server responded with a status other than 200 range
+        if (error.response.data && error.response.data.message) {
+          toast.error(error.response.data.message);
+        } else {
+          toast.error("Server error. Please try again later.");
+        }
+      } else if (error.request) {
+        // Request was made but no response was received
+        toast.error("No response from server. Please check your network connection.");
+      } else {
+        // Something happened in setting up the request
+        toast.error("An error occurred. Please try again later.");
+      }
     }
   };
 
@@ -149,7 +164,8 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
             />
             {errors.contactNumber && <span>This field is required</span>}
           </div>
-          <div className="grid md:grid-cols-2 md:gap-6">
+        
+          <div className="grid md:grid-cols-3 md:gap-6">
             <div className="mb-5">
               <label
                 htmlFor="nid"
@@ -180,11 +196,26 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
               />
               {errors.passportNumber && <span>This field is required</span>}
             </div>
+            <div className="mb-5">
+              <label
+                htmlFor="dob"
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                Date Of Birth
+              </label>
+              <input
+                type="date"
+                id="dob"
+                {...register("dob", { required: true })}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              />
+              {errors.dob && <span>This field is required</span>}
+            </div>
           </div>
         </div>
         <h1 className=" font-bold text-gray-900 mb-2">Personal Address:</h1>
         <div className="bg-white rounded-lg p-5">
-          <div className="grid md:grid-cols-2 md:gap-6 ">
+          <div className="grid md:grid-cols-3 md:gap-6 ">
             <div className="mb-5">
               <label
                 htmlFor="house"
@@ -217,8 +248,24 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
               />
               {errors.roadNumber && <span>This field is required</span>}
             </div>
+            <div className="mb-5">
+              <label
+                htmlFor="post_code"
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                Post Code
+              </label>
+              <input
+                type="text"
+                id="post_code"
+                {...register("postCode", { required: true })}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                placeholder="Post Code"
+              />
+              {errors.postCode && <span>This field is required</span>}
+            </div>
           </div>
-          <div className="grid md:grid-cols-3 md:gap-6">
+          {/* <div className="grid md:grid-cols-3 md:gap-6">
             <div className="mb-5">
               <label
                 htmlFor="block"
@@ -266,6 +313,54 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
                 placeholder="Post Code"
               />
               {errors.postCode && <span>This field is required</span>}
+            </div>
+          </div> */}
+
+          <div className="grid md:grid-cols-3 md:gap-6">
+            <div className="mb-5">
+              <label
+                htmlFor="country"
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                Country
+              </label>
+              <input
+                type="text"
+                id="country"
+                {...register("country", { required: true })}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              />
+              {errors.country && <span>This field is required</span>}
+            </div>
+            <div className="mb-5">
+              <label
+                htmlFor="city"
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                City
+              </label>
+              <input
+                type="text"
+                id="city"
+                {...register("city", { required: true })}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              />
+              {errors.city && <span>This field is required</span>}
+            </div>
+            <div className="mb-5">
+              <label
+                htmlFor="state"
+                className="block mb-2 text-sm font-medium text-gray-900"
+              >
+                state
+              </label>
+              <input
+                type="text"
+                id="state"
+                {...register("state", { required: true })}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              />
+              {errors.state && <span>This field is required</span>}
             </div>
           </div>
         </div>
