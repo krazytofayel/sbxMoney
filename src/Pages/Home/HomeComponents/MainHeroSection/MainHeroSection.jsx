@@ -8,11 +8,12 @@ import currencies from "../../../../../public/commonCurrency.json";
 import CurrencyInput from "react-currency-input-field";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
-
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const MainHeroSection = () => {
   const [isRegistered, setIsRegistered] = useState(null); 
-
+ 
 
 
 
@@ -28,7 +29,7 @@ const MainHeroSection = () => {
   const initialCurrencyTo = cuntriesOptions[11];
   const initialTotalPay = 0;
   const initialExchangeRateAmount = 0;
-  const initialSelectAmount = 0;
+  const initialSelectAmount = 1;
 
   const [selectedCurrencyFrom, setSelectedCurrencyFrom] = useState(initialCurrencyFrom);
   const [selectedCurrencyTo, setSelectedCurrencyTo] = useState(initialCurrencyTo);
@@ -102,18 +103,25 @@ const MainHeroSection = () => {
     if (accessToken) {
       navigate("/sendmoney");
     } else {
-      navigate("/sign_up");
+      navigate("/sign_in");
     }
   };
 
+
   const handleCalculate = (event) => {
     event.preventDefault();
+    // Validate the amount
+    if (selectAmount <= 0) {
+      toast.error("Please enter a valid amount greater than zero.");
+      return;
+    }
     // Call handleConvert to calculate the total pay amount and show conversion rate
     handleConvert();
   };
 
   return (
     <>
+      <ToastContainer />
       <section className="bg-[#CDFFDB] p-2">
         <div className=" container mx-auto grid grid-cols-1 lg:grid-cols-2  gap-10 items-center justify-items-end p-5">
           <motion.div
@@ -225,7 +233,7 @@ const MainHeroSection = () => {
                     Amount
                   </label>
 
-                  <div className="grid md:grid-cols-3 justify-between md:gap-6 mt-2">
+                  <div className="grid md:grid-cols-2 justify-between md:gap-6 mt-2">
                     <div className="   mb-5">
                       <CurrencyInput
                         type="text"
@@ -237,7 +245,7 @@ const MainHeroSection = () => {
                         placeholder="amount"
                       />
                     </div>
-                    <div className="relative z-0 w-full mb-5 group">
+                    {/* <div className="relative z-0 w-full mb-5 group">
                       <select
                         id="countries"
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
@@ -249,7 +257,7 @@ const MainHeroSection = () => {
                         <option>Bkash</option>
                         <option>Cash FR</option>
                       </select>
-                    </div>
+                    </div> */}
                     <div className="relative z-0 w-full  group">
                       <button
                         onClick={handleCalculate}
