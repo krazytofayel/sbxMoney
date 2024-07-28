@@ -12,6 +12,7 @@ const Login_Form = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const navigate = useNavigate();
   const [isRegistered, setIsRegistered] = useState(null);
+  const [attempts, setAttempts] = useState(0);
 
   const onSubmit = async (data) => {
     try {
@@ -28,6 +29,10 @@ const Login_Form = () => {
       if (response.data.accessToken) {
         // Store access token in local storage
         localStorage.setItem("accessToken", response.data.accessToken);
+        localStorage.setItem("tokenSetTimestamp", new Date().toISOString());
+
+        // Store user information in local storage
+        localStorage.setItem("user", JSON.stringify(response.data.user));
 
         // Display success message using toast
         toast.success(response.data.message);
@@ -41,6 +46,16 @@ const Login_Form = () => {
       // Display error message using toast
       if (error.response && error.response.data && error.response.data.message) {
         toast.error(error.response.data.message);
+        // Check if the error indicates the user is not registered
+        if (error.response.data.message === "Your email or password is incorrect") {
+          // Increment the attempts count
+          setAttempts(prevAttempts => prevAttempts + 1);
+
+          // If attempts are 2, redirect to the sign-up page
+          if (attempts + 1 >= 2) {
+            navigate("/sign_up");
+          }
+        }
       } else {
         toast.error("An error occurred. Please try again later.");
       }

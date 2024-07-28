@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { v4 as uuidv4 } from 'uuid';
 const Receiver_Information = ({ onNext, senderformData, receiverformData, setReceiverFormData, }) => {
-  const { register, handleSubmit, reset, setValue, formState: { errors }, } = useForm({ defaultValues: receiverformData });
+  const { register, handleSubmit, reset, setValue, getValues, formState: { errors }, } = useForm({ defaultValues: receiverformData });
 
   const [receivers, setReceivers] = useState([]);
   useEffect(() => {
@@ -15,28 +15,33 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
     }
   }, [])
 
+  // Retrieve user from local storage
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const userId = storedUser?.id;
+
+
+
   const onSubmit = async (data) => {
     try {
       console.log("Data to be sent:", data);
       setReceiverFormData(data);
-
-      // Generate a unique user ID
-      const uniqueUserId = uuidv4();
-      console.log(uniqueUserId);
-
+      if (!userId) {
+        toast.error("User information not found. Please log in again.");
+        return;
+      }
       const formData = {
-        user_id: 3,
-        name: `${data.firstName} ${data.lastName}`,
+        user_id: userId,
+        name: data.fullName,
         email: data.email,
         phone: data.contactNumber,
-        alt_phone: data.altPhone,
+        alt_phone: data.altcontact,
         city: data.city,
         state: data.state,
         country: data.country,
         post_code: data.post_code,
-        back_ac_name: data.back_ac_name, 
-        back_ac_no: data.back_ac_no, 
-        receiver_id: 2 , 
+        back_ac_name: data.back_ac_name,
+        back_ac_no: data.back_ac_no,
+        
       };
 
       // Append new receiver data to the receivers array
@@ -53,6 +58,7 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
         // Store data in local storage
         localStorage.setItem('receiverformData', JSON.stringify(data));
         setReceiverFormData({});
+        onNext()
         // Optional: Reset form fields after submission
         reset();
       } else {
@@ -81,18 +87,18 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
     // Save the current form data before resetting
     const currentData = getValues();
     const formData = {
-      user_id: 3,
-      name: `${currentData.firstName} ${currentData.lastName}`,
+      user_id: currentData.userId,
+      name: currentData.fullName,
       email: currentData.email,
       phone: currentData.contactNumber,
-      alt_phone: currentData.altPhone,
+      alt_phone: currentData.altcontact,
       city: currentData.city,
       state: currentData.state,
       country: currentData.country,
       post_code: currentData.post_code,
       back_ac_name: currentData.back_ac_name,
       back_ac_no: currentData.back_ac_no,
-      receiver_id: 2,
+      receiver_id: currentData.user_id,
     };
     const updatedReceivers = [...receivers, formData];
     setReceivers(updatedReceivers);
@@ -105,44 +111,11 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
   };
   return (
     <div>
-      <h1>Sender Name:{senderformData.firstName} to </h1>
+      <h1>Sender Name:{senderformData.name} to </h1>
       <form className="max-w-4xl mx-auto" onSubmit={handleSubmit(onSubmit)}>
         <h1 className=" font-bold text-gray-900 mb-2">Personal Information:</h1>
         <div className="bg-white rounded-lg p-5">
-          <div className="grid md:grid-cols-2 md:gap-6">
-            <div className="mb-5">
-              <label
-                htmlFor="f_name"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                First Name
-              </label>
-              <input
-                type="text"
-                id="f_name"
-                {...register("firstName", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="First Name"
-              />
-              {errors.firstName && <span>This field is required</span>}
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="l_name"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Last Name
-              </label>
-              <input
-                type="text"
-                id="l_name"
-                {...register("lastName", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Last Name"
-              />
-              {errors.lastName && <span>This field is required</span>}
-            </div>
-          </div>
+
           <div className="mb-5">
             <label
               htmlFor="full_name"
@@ -188,6 +161,21 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             />
             {errors.contactNumber && <span>This field is required</span>}
+          </div>
+          <div className="mb-5">
+            <label
+              htmlFor="altcontact"
+              className="block mb-2 text-sm font-medium text-gray-900"
+            >
+              alt Contact Number
+            </label>
+            <input
+              type="tel"
+              id="altcontact"
+              {...register("altcontact", { required: true })}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+            />
+            {errors.altcontact && <span>This field is required</span>}
           </div>
           <div className="grid md:grid-cols-2 gap-5">
             <div className="mb-5">

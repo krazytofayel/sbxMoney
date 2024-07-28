@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import Money_Conversion_Form from "../Money_Conversion_Form/Money_Conversion_Form";
 import Accordion from "../Ancordian/Ancordian";
+import axios from "axios";
 
 const Transaction_Information = ({ senderformData }) => {
   const [senderData, setSenderData] = useState({});
@@ -19,25 +20,53 @@ const Transaction_Information = ({ senderformData }) => {
     }
   }, [senderformData]);
 
-  // Load receiverData from local storage when the component mounts
-  useEffect(() => {
-    const storedReceiverData = JSON.parse(localStorage.getItem("receiverformData"));
-    if (storedReceiverData) {
-      setReceiverData(storedReceiverData);
-    }
-  }, []);
+  // Retrieve user from local storage
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const userId = storedUser?.id;
+  console.log(userId)
 
+  // Fetch receiver data specific to the user from the API when the component mounts
   useEffect(() => {
-    const storedReceivers = JSON.parse(localStorage.getItem("receivers"));
-    if (storedReceivers) {
-      const options = storedReceivers.map((receiver, index) => ({
-        id: index + 1,
-        name: receiver.name,
-        ...receiver
-      }));
-      setReceiverOptions(options);
-    }
-  }, []);
+    const fetchReceivers = async () => {
+      const accessToken = localStorage.getItem("accessToken");
+      const tokenSetTimestamp = localStorage.getItem("tokenSetTimestamp");
+
+      if (!accessToken || !tokenSetTimestamp) {
+        console.error("Access token or timestamp not found");
+        return;
+      }
+
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/admin/receivers/', {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        });
+
+        const receivers = response.data.data;
+        const tokenSetDate = new Date(tokenSetTimestamp);
+
+        // Filter receivers based on their creation date
+        const filteredReceivers = receivers.filter(receiver => {
+          const receiverCreatedDate = new Date(receiver.created_at);
+          return receiverCreatedDate >= tokenSetDate;
+        });
+
+        const options = filteredReceivers.map((receiver, index) => ({
+          id: index,
+          name: receiver.name,
+          ...receiver
+        }));
+        setReceiverOptions(options);
+      } catch (error) {
+        console.error("Error fetching receiver data:", error);
+      }
+    };
+
+    // if (userId) {
+    //   fetchReceivers();
+    // }
+  }, [userId]);
 
   const handleReceiverChange = (event) => {
     const selectedReceiverName = event.target.value;
@@ -194,24 +223,7 @@ const Transaction_Information = ({ senderformData }) => {
                       Selected Receiver: {selectedReceiverData.name}
                     </h3>
 
-                    {/* <div className="grid grid-cols-2 gap-4">
-                      <div>
-                        <p className="text-sm font-medium text-gray-900 mb-2">
-                          First Name:
-                        </p>
-                        <p className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                          {selectedReceiverData.firstName}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-900 mb-2">
-                          Last Name:
-                        </p>
-                        <p className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                          {selectedReceiver.lastName}
-                        </p>
-                      </div>
-                    </div> */}
+                   
                     <div>
                       <p className="text-sm font-medium text-gray-900 mt-2 mb-2">
                         Full Name:
@@ -238,22 +250,7 @@ const Transaction_Information = ({ senderformData }) => {
                         </p>
                       </div>
                     </div>
-                    {/* <div>
-                      <p className="text-sm font-medium text-gray-900 mt-2 mb-2">
-                        NID:
-                      </p>
-                      <p className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        {selectedReceiverData.nidNumber}
-                      </p>
-                    </div> */}
-                    {/* <div>
-                      <p className="text-sm font-medium text-gray-900 mt-2 mb-2">
-                        Passport:
-                      </p>
-                      <p className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        {selectedReceiverData.passportNumber}
-                      </p>
-                    </div> */}
+                
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <p className="text-sm font-medium text-gray-900 mt-2 mb-2">
@@ -361,6 +358,7 @@ const Transaction_Information = ({ senderformData }) => {
           <Money_Conversion_Form
             senderData={senderData}
             receiverData={receiverData}
+            selectedReceiverData={selectedReceiverData} 
           />
         )}
       </div>
