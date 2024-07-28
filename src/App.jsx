@@ -1,4 +1,3 @@
-
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Help from './Pages/Help/Help';
@@ -15,15 +14,10 @@ import NotFoundpage from './Pages/NotFound_Page/NotFoundpage';
 import Admin from './Pages/DashBoard/Admin/Admin';
 import Money_Transfer_Process from './Components/ShareableComponents/MoneyTransferProcess/Money_Transfer_Process';
 import Sender_Information from './Components/ShareableComponents/MoneyTransferProcess/Money_Transfer_Process_Component/Sender_Information/Sender_Information';
-
-
-
-
+import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
 
 
 const App = () => {
-
-
   return (
     <>
       <Routes>
@@ -38,9 +32,9 @@ const App = () => {
         <Route path="/user_guide" element={<User_Guide />} />
         <Route path="/sign_in" element={<Login_Form />} />
         <Route path="/sign_up" element={<SignUp />} />
-        <Route path="/sendmoney" element={<Money_Transfer_Process />} />
-        <Route path="/dashboard" element={<Admin />} />
-        <Route path='/sender' element={<Sender_Information/>}/>
+        <Route path="/sendmoney" element={<ProtectedRoute><Money_Transfer_Process /></ProtectedRoute>} />
+        <Route path="/dashboard" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+        <Route path='/sender' element={<ProtectedRoute><Sender_Information /></ProtectedRoute>} />
         {/*-------------------- NotFound page start--------------------- */}
         <Route path="/404" element={<NotFoundpage />} />
         <Route path="*" element={<Navigate to="/404" />} />
@@ -50,4 +44,4 @@ const App = () => {
   );
 }
 
-export default App
+export default App;

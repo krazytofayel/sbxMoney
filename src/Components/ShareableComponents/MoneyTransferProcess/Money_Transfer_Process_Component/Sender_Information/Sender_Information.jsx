@@ -4,36 +4,27 @@ import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { v4 as uuidv4 } from 'uuid';
-const Sender_Information = ({ senderformData, setSenderFormData }) => {
-  const { register, handleSubmit, setValue, watch, formState: { errors },} = useForm({ defaultValues: senderformData });
+const Sender_Information = ({ senderformData, setSenderFormData, onNext}) => {
+  const { register, handleSubmit, formState: { errors }, } = useForm({ defaultValues: senderformData });
+
+  // Retrieve user from local storage
+  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const userId = storedUser?.id;
+  const userEmail = storedUser?.email;
+  const userName = storedUser?.name;
 
 
-
-  const firstName = watch("firstName", senderformData.firstName || "");
-  const lastName = watch("lastName", senderformData.lastName || "");
-  // Automatically update fullName when firstName or lastName changes
- 
-  useEffect(() => {
-    const fullName = `${firstName} ${lastName}`.trim();
-    setValue("fullName", fullName);
-    setSenderFormData((prev) => ({ ...prev, fullName }));
-  }, [firstName, lastName, setValue, setSenderFormData]);
-  // const onSubmit = (data) => {
-  //   setFormData(data);
-  // };
   const onSubmit = async (data) => {
     try {
       console.log("Data to be sent:", data);
-
       setSenderFormData(data);
-
-      // Generate a unique user ID
-      const uniqueUserId = uuidv4();
-      console.log(uniqueUserId)
-
+      if (!userId) {
+        toast.error("User information not found. Please log in again.");
+        return;
+      }
       const formData = {
-        user_id: 2,
-        name: `${data.firstName} ${data.lastName}`,
+        user_id: userId,
+        name: userName,
         phone: data.contactNumber,
         alt_phone: data.altPhone,
         dob: data.dob,
@@ -53,6 +44,7 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
         // Store data in local storage
         localStorage.setItem('senderFormData', JSON.stringify(data));
         setSenderFormData({});
+        onNext()
       } else {
         console.error("Failed to send data to the server");
         toast.error("Failed to send data to the server. Please try again later.");
@@ -84,40 +76,7 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
       <form className="max-w-4xl mx-auto" onSubmit={handleSubmit(onSubmit)}>
         <h1 className=" font-bold text-gray-900 mb-2">Personal Information:</h1>
         <div className="bg-white rounded-lg p-5">
-          <div className="grid md:grid-cols-2 md:gap-6">
-            <div className="mb-5">
-              <label
-                htmlFor="f_name"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                First Name
-              </label>
-              <input
-                type="text"
-                id="f_name"
-                {...register("firstName", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="First Name"
-              />
-              {errors.firstName && <span>This field is required</span>}
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="l_name"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Last Name
-              </label>
-              <input
-                type="text"
-                id="l_name"
-                {...register("lastName", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Last Name"
-              />
-              {errors.lastName && <span>This field is required</span>}
-            </div>
-          </div>
+
           <div className="mb-5">
             <label
               htmlFor="full_name"
@@ -131,6 +90,7 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
               {...register("fullName", { required: true })}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
               placeholder="Full Name"
+              defaultValue={userName}
             />
             {errors.fullName && <span>This field is required</span>}
           </div>
@@ -144,6 +104,7 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
             <input
               type="email"
               id="email"
+              defaultValue={userEmail}
               {...register("email", { required: true })}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             />
@@ -164,7 +125,7 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
             />
             {errors.contactNumber && <span>This field is required</span>}
           </div>
-        
+
           <div className="grid md:grid-cols-3 md:gap-6">
             <div className="mb-5">
               <label
@@ -265,57 +226,6 @@ const Sender_Information = ({ senderformData, setSenderFormData }) => {
               {errors.postCode && <span>This field is required</span>}
             </div>
           </div>
-          {/* <div className="grid md:grid-cols-3 md:gap-6">
-            <div className="mb-5">
-              <label
-                htmlFor="block"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Block
-              </label>
-              <input
-                type="text"
-                id="block"
-                {...register("block", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Block"
-              />
-              {errors.block && <span>This field is required</span>}
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="area"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Area
-              </label>
-              <input
-                type="text"
-                id="area"
-                {...register("area", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Area"
-              />
-              {errors.area && <span>This field is required</span>}
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="post_code"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Post Code
-              </label>
-              <input
-                type="text"
-                id="post_code"
-                {...register("postCode", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Post Code"
-              />
-              {errors.postCode && <span>This field is required</span>}
-            </div>
-          </div> */}
-
           <div className="grid md:grid-cols-3 md:gap-6">
             <div className="mb-5">
               <label

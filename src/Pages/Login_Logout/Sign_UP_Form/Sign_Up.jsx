@@ -3,12 +3,14 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRef } from 'react';
 import logoimg from "../../../../public/Logo.png";
 import signinimg from "../../../../public/photoaud.avif";
 
 const SignUp = () => {
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
   const navigate = useNavigate();
+  const checkboxRef = useRef(null);
 
   const onSubmit = async (data) => {
     try {
@@ -22,7 +24,7 @@ const SignUp = () => {
       console.log("API Response:", response.data);
 
       // Save access token to local storage
-      localStorage.setItem('accessToken', response.data.accessToken);
+      // localStorage.setItem('accessToken', response.data.accessToken);
 
       // Display success message using toast
       toast.success(response.data.message);

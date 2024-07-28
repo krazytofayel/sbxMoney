@@ -5,8 +5,15 @@ import currencies from "../../../../../../public/commonCurrency.json";
 import CurrencyInput from "react-currency-input-field";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
-const Money_Conversion_Form = ({ senderData,receiverData}) => {
+const Money_Conversion_Form = ({ senderData, receiverData, selectedReceiverData }) => {
+  //console.log(receiverData)
+  useEffect(() => {
+    console.log('Selected Receiver Data in Money Conversion Form:', selectedReceiverData);
+  }, [selectedReceiverData]);
+
   const cuntriesOptions = Object.keys(currencies).map((currency, index) => ({
     value: currencies[currency].code,
     label: `${currencies[currency].code} - ${currencies[currency].name}`,
@@ -41,6 +48,11 @@ const Money_Conversion_Form = ({ senderData,receiverData}) => {
   }, []);
 
   const handleConvert = () => {
+    if (selectAmount <= 0) {
+      toast.error("Please enter a valid amount greater than zero.");
+      return;
+    }
+
     if (exchangeRates && selectedCurrencyFrom && selectedCurrencyTo) {
       const fromRate = exchangeRates[selectedCurrencyFrom.value];
       const toRate = exchangeRates[selectedCurrencyTo.value];
@@ -73,20 +85,43 @@ const Money_Conversion_Form = ({ senderData,receiverData}) => {
   };
 
   const handleClose = () => {
-    // Log form data to the console
-    console.log({
-      selectedCurrencyFrom,
-      selectedCurrencyTo,
-      selectAmount,
-      exchangeRateAmount,
-      totalPay,
-    });
-     const transactionData = {
-       senderData,
-       receiverData,
-     };
-     console.log("Transaction Data:", transactionData);
-  };
+    
+    // Retrieve user from local storage
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const userId = storedUser?.id;
+    const id = selectedReceiverData.id
+    console.log(id)
+    
+
+    const transactionData = {
+      user_id: userId,
+      receiver_id: id,
+      amount_bd: selectAmount,
+      amount_au: totalPay,
+      // updated_at: "2024-07-16T08:59:33.000000Z",
+      // created_at: "2024-07-16T08:59:33.000000Z",
+      id: id,
+     
+    };
+
+    fetch('http://127.0.0.1:8000/api/admin/transactions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(transactionData),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Transaction saved successfully:', data);
+        toast.success('Transaction saved successfully!');
+      })
+      .catch(error => {
+        console.error('Error saving transaction:', error);
+        toast.error('Error saving transaction. Please try again.');
+      });
+  }
+
 
   useEffect(() => {
     if (selectedCurrencyFrom && selectedCurrencyTo) {
@@ -94,8 +129,10 @@ const Money_Conversion_Form = ({ senderData,receiverData}) => {
     }
   }, [selectedCurrencyTo, selectedCurrencyFrom]);
 
+
   return (
     <div>
+      <ToastContainer />
       <div className="bg-white rounded p-2">
         <h1>Currency Converter</h1>
 
