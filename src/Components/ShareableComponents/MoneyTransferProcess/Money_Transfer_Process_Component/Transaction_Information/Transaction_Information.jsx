@@ -11,6 +11,7 @@ const Transaction_Information = ({ senderformData }) => {
   const [selectedReceiver, setSelectedReceiver] = useState("");
   const [selectedReceiverData, setSelectedReceiverData] = useState({});
   const [confirminfo, setConfirminfo] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Load senderData from local storage when the component mounts
   useEffect(() => {
@@ -43,6 +44,8 @@ const Transaction_Information = ({ senderformData }) => {
           }
         });
 
+        console.log("API Response: ", response.data);
+
         const receivers = response.data.data;
         const tokenSetDate = new Date(tokenSetTimestamp);
 
@@ -51,21 +54,23 @@ const Transaction_Information = ({ senderformData }) => {
           const receiverCreatedDate = new Date(receiver.created_at);
           return receiverCreatedDate >= tokenSetDate;
         });
-
+        console.log("Filtered Receivers: ", filteredReceivers);
         const options = filteredReceivers.map((receiver, index) => ({
           id: index,
           name: receiver.name,
           ...receiver
         }));
         setReceiverOptions(options);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching receiver data:", error);
+        setIsLoading(false);
       }
     };
 
-    // if (userId) {
-    //   fetchReceivers();
-    // }
+    if (userId) {
+      fetchReceivers();
+    }
   }, [userId]);
 
   const handleReceiverChange = (event) => {
@@ -210,13 +215,22 @@ const Transaction_Information = ({ senderformData }) => {
                 <h2 className="text-xl font-semibold mb-4">Select Receiver</h2>
 
 
-                <select value={selectedReceiver} onChange={handleReceiverChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                  {receiverOptions.map((option) => (
-                    <option key={option.id} value={option.name}>
-                      {option.name}
-                    </option>
-                  ))}
-                </select>
+                {isLoading ? (
+                  <div>Loading...</div>
+                ) : (
+                  <select
+                    value={selectedReceiver}
+                    onChange={handleReceiverChange}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  >
+                    <option value="">Select Receiver</option>
+                    {receiverOptions.map((option) => (
+                      <option key={option.id} value={option.name}>
+                        {option.name}
+                      </option>
+                    ))}
+                  </select>
+                )}
                 {selectedReceiver && selectedReceiverData && (
                   <div className="mt-4">
                     <h3 className="text-lg font-semibold">

@@ -58,9 +58,9 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
         // Store data in local storage
         localStorage.setItem('receiverformData', JSON.stringify(data));
         setReceiverFormData({});
-        onNext()
+        //onNext()
         // Optional: Reset form fields after submission
-        reset();
+        //reset();
       } else {
         console.error("Failed to send data to the server");
         toast.error("Failed to send data to the server. Please try again later.");
