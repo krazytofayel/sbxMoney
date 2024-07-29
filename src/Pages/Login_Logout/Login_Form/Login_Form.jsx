@@ -1,18 +1,42 @@
 import { Link, useNavigate } from "react-router-dom";
-import ParticlesBg from "../Particles/Particles";
 import signinimg from "../../../../public/aud.avif";
 import logoimg from "../../../../public/Logo.png";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState, useEffect } from "react";
+import { FaFacebookF, FaGooglePlusG, FaLinkedinIn } from "react-icons/fa";
+import ParticleBackground from "../../../Components/ParticleComponent/ParticleComponent";
 
 const Login_Form = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register,handleSubmit,formState: { errors },} = useForm();
   const navigate = useNavigate();
-  const [isRegistered, setIsRegistered] = useState(null);
   const [attempts, setAttempts] = useState(0);
+  const [rememberMe, setRememberMe] = useState(false);
+
+  useEffect(() => {
+    // Check token validity on component mount
+    const tokenSetTimestamp = localStorage.getItem("tokenSetTimestamp");
+    if (tokenSetTimestamp) {
+      const tokenSetDate = new Date(tokenSetTimestamp);
+      const currentTime = new Date();
+      const diffHoures = (currentTime - tokenSetDate) / (1000 * 60 * 60);
+      if (diffHoures >= 2) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("tokenSetTimestamp");
+        localStorage.removeItem("user");
+        localStorage.removeItem("lastEmail");
+        toast.error("Session expired. Please log in again.");
+      }
+    }
+
+    // Autofill username if "Remember Me" was checked previously
+    const lastEmail = localStorage.getItem("lastEmail");
+    if (lastEmail) {
+      document.getElementById("email").value = lastEmail;
+    }
+  }, []);
 
   const onSubmit = async (data) => {
     try {
@@ -60,6 +84,10 @@ const Login_Form = () => {
         toast.error("An error occurred. Please try again later.");
       }
     }
+  };
+
+  const handleRememberMeChange = (event) => {
+    setRememberMe(event.target.checked);
   };
 
   return (
@@ -113,10 +141,11 @@ const Login_Form = () => {
               </div>
 
               <div className="flex flex-wrap justify-between">
-                <div className="lg:mt-0 mt-2 flex items-start mb-2 lg:w-1/2 md:w-2/3 w-full">
+                <div className="lg:mt-0 mt-2 flex items-center  mb-2 lg:w-1/2 md:w-2/3 w-full p-2">
                   <input
                     type="checkbox"
-                    value=""
+                    checked={rememberMe}
+                    onChange={handleRememberMeChange}
                     className="w-4 h-4 bg-[#2C6777] border-[#2C6777] rounded"
                   />
                   <label htmlFor="checkbox-1" className="ml-2 text-sm font-medium text-[#2C6777]">
@@ -130,13 +159,13 @@ const Login_Form = () => {
               <p className="mt-4">Or Continue With</p>
               <div className="py-4 space-x-2">
                 <span className="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-[#2C6777] text-[#2C6777]">
-                  f
+                  <FaFacebookF />
                 </span>
                 <span className="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-[#2C6777] text-[#2C6777]">
-                  G+
+                  <FaGooglePlusG />
                 </span>
                 <span className="w-10 h-10 items-center justify-center inline-flex rounded-full font-bold text-lg border-2 border-[#2C6777] text-[#2C6777]">
-                  in
+                  <FaLinkedinIn />
                 </span>
               </div>
               <div className="pb-2 pt-4">
@@ -146,7 +175,10 @@ const Login_Form = () => {
               </div>
               <p className="mt-2 mb-2">
                 Don't have an account yet?{" "}
-                <Link to="/sign_up" className="text-[#2C6777] font-medium">
+                <Link
+                  to="/sign_up"
+                  className="text-[#2C6777] font-medium hover:underline"
+                >
                   Sign up
                 </Link>{" "}
               </p>
