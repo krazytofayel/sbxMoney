@@ -3,32 +3,53 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
-import { v4 as uuidv4 } from 'uuid';
-const Receiver_Information = ({ onNext, senderformData, receiverformData, setReceiverFormData, }) => {
+
+
+
+const Receiver_Information = ({  receiverformData, setReceiverFormData, }) => {
   const { register, handleSubmit, reset, setValue, getValues, formState: { errors }, } = useForm({ defaultValues: receiverformData });
 
   const [receivers, setReceivers] = useState([]);
+ 
   useEffect(() => {
+    // Load receivers from local storage when component mounts (that's whe if user visit different page and again came this page then show the previous data and add new)
     const storedReceivers = JSON.parse(localStorage.getItem("receivers"));
     if (storedReceivers) {
       setReceivers(storedReceivers);
     }
-  }, [])
+  }, []);
 
   // Retrieve user from local storage
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const userId = storedUser?.id;
 
-
-
   const onSubmit = async (data) => {
     try {
-      console.log("Data to be sent:", data);
       setReceiverFormData(data);
       if (!userId) {
         toast.error("User information not found. Please log in again.");
         return;
       }
+
+      // Validate all fields
+      for (let key in data) {
+        if (!data[key]) {
+          toast.error("Please fill in all fields before submitting.");
+          return;
+        }
+      }
+
+      // Check for duplicate receivers
+      const isDuplicate = receivers.some(receiver =>
+        receiver.email === data.email &&
+        receiver.phone === data.contactNumber
+      );
+
+      if (isDuplicate) {
+        toast.error("This receiver already exists.");
+        return;
+      }
+
       const formData = {
         user_id: userId,
         name: data.fullName,
@@ -41,24 +62,21 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
         post_code: data.post_code,
         back_ac_name: data.back_ac_name,
         back_ac_no: data.back_ac_no,
-        
       };
-
-      // Append new receiver data to the receivers array
-      const updatedReceivers = [...receivers, formData];
-      setReceivers(updatedReceivers);
-      localStorage.setItem("receivers", JSON.stringify(updatedReceivers));
-      console.log("Current receivers data:", updatedReceivers);
 
       const response = await axios.post("http://127.0.0.1:8000/api/admin/receivers", formData);
 
       if (response.status === 200) {
         console.log("Successfully sent data to the server:", response.data);
         toast.success(response.data.message || "Data successfully submitted.");
+
+        const updatedReceivers = [...receivers, formData];
+        setReceivers(updatedReceivers);
+        localStorage.setItem("receivers", JSON.stringify(updatedReceivers));
+
         // Store data in local storage
         localStorage.setItem('receiverformData', JSON.stringify(data));
         setReceiverFormData({});
-        //onNext()
         // Optional: Reset form fields after submission
         //reset();
       } else {
@@ -83,39 +101,18 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
       }
     }
   };
-  const handleAddReceiver = () => {
-    // Save the current form data before resetting
-    const currentData = getValues();
-    const formData = {
-      user_id: currentData.userId,
-      name: currentData.fullName,
-      email: currentData.email,
-      phone: currentData.contactNumber,
-      alt_phone: currentData.altcontact,
-      city: currentData.city,
-      state: currentData.state,
-      country: currentData.country,
-      post_code: currentData.post_code,
-      back_ac_name: currentData.back_ac_name,
-      back_ac_no: currentData.back_ac_no,
-      receiver_id: currentData.user_id,
-    };
-    const updatedReceivers = [...receivers, formData];
-    setReceivers(updatedReceivers);
-    localStorage.setItem("receivers", JSON.stringify(updatedReceivers));
-    // Log the updated receivers array to the console
-    console.log("Current receivers data:", updatedReceivers);
 
-    // Reset the form fields for a new receiver entry
+  const handleAddReceiver = () => {
     reset();
   };
+
+
   return (
     <div>
-      <h1>Sender Name:{senderformData.name} to </h1>
+      {/* <ToastContainer /> */}
       <form className="max-w-4xl mx-auto" onSubmit={handleSubmit(onSubmit)}>
         <h1 className=" font-bold text-gray-900 mb-2">Personal Information:</h1>
         <div className="bg-white rounded-lg p-5">
-
           <div className="mb-5">
             <label
               htmlFor="full_name"
@@ -246,56 +243,6 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
               {errors.roadNumber && <span>This field is required</span>}
             </div>
           </div>
-          {/* <div className="grid md:grid-cols-3 md:gap-6">
-            <div className="mb-5">
-              <label
-                htmlFor="block"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Block
-              </label>
-              <input
-                type="text"
-                id="block"
-                {...register("block", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Block"
-              />
-              {errors.block && <span>This field is required</span>}
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="area"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Area
-              </label>
-              <input
-                type="text"
-                id="area"
-                {...register("area", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Area"
-              />
-              {errors.area && <span>This field is required</span>}
-            </div>
-            <div className="mb-5">
-              <label
-                htmlFor="post_code"
-                className="block mb-2 text-sm font-medium text-gray-900"
-              >
-                Post Code
-              </label>
-              <input
-                type="text"
-                id="post_code"
-                {...register("postCode", { required: true })}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                placeholder="Post Code"
-              />
-              {errors.postCode && <span>This field is required</span>}
-            </div>
-          </div> */}
           <div className="mb-5">
             <label
               htmlFor="post_code"
@@ -394,36 +341,22 @@ const Receiver_Information = ({ onNext, senderformData, receiverformData, setRec
             </div>
           </div>
         </div>
-        <div className="flex items-start mb-5">
-          <div className="flex items-center h-5">
-            <input
-              id="remember"
-              type="checkbox"
-              {...register("remember", { required: true })}
-              className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-green-300 accent-green-600"
-            />
-          </div>
-          <label
-            htmlFor="remember"
-            className="ms-2 text-sm font-medium text-gray-900"
-          >
-            Remember me
-          </label>
-          {errors.remember && <span>This field is required</span>}
-        </div>
-        <button
+
+
+        <div className="flex justify-between mt-5">  
+          <button
           type="button"
           onClick={handleAddReceiver}
-          className="text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
         >
           Add Another Receiver
         </button>
-        <button
-          type="submit"
-          className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
-        >
-          Submit
-        </button>
+          <button
+            type="submit"
+            className="text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          >
+            Submit
+          </button></div>
       </form>
     </div>
   );
