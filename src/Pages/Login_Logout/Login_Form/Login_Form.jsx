@@ -10,7 +10,11 @@ import { FaFacebookF, FaGooglePlusG, FaLinkedinIn } from "react-icons/fa";
 import ParticleBackground from "../../../Components/ParticleComponent/ParticleComponent";
 
 const Login_Form = () => {
-  const { register,handleSubmit,formState: { errors },} = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
   const [attempts, setAttempts] = useState(0);
   const [rememberMe, setRememberMe] = useState(false);
@@ -43,10 +47,13 @@ const Login_Form = () => {
       console.log("Form Data:", data);
 
       // Send form data to login API endpoint using Axios
-      const response = await axios.post("http://127.0.0.1:8000/api/auth/login", {
-        email: data.email,
-        password: data.password,
-      });
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/auth/login",
+        {
+          email: data.email,
+          password: data.password,
+        }
+      );
 
       console.log("API Response:", response.data);
 
@@ -68,12 +75,18 @@ const Login_Form = () => {
       // Handle errors
       console.error("An error occurred while submitting the form:", error);
       // Display error message using toast
-      if (error.response && error.response.data && error.response.data.message) {
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
         toast.error(error.response.data.message);
         // Check if the error indicates the user is not registered
-        if (error.response.data.message === "Your email or password is incorrect") {
+        if (
+          error.response.data.message === "Your email or password is incorrect"
+        ) {
           // Increment the attempts count
-          setAttempts(prevAttempts => prevAttempts + 1);
+          setAttempts((prevAttempts) => prevAttempts + 1);
 
           // If attempts are 2, redirect to the sign-up page
           if (attempts + 1 >= 2) {
@@ -93,8 +106,16 @@ const Login_Form = () => {
   return (
     <>
       <ToastContainer />
-      <section className="min-h-screen flex items-stretch text-black" id="signup">
-        <div className="lg:flex z-10 w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white" style={{ backgroundImage: `url(${signinimg})` }}>
+      <section
+        className="min-h-screen flex items-stretch text-black"
+        id="signup"
+      >
+
+        <div
+          className="lg:flex z-10 w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center text-white"
+          style={{ backgroundImage: `url(${signinimg})` }}
+        >
+          {/* <ParticleBackground/> */}
           <div className="absolute bg-black opacity-20 inset-0 z-0"></div>
         </div>
         <div className="lg:w-1/2 w-full flex items-center justify-center text-center xl:px-16 md:px-6 px-0 z-0 bg-[#f5f4ef]">
@@ -106,7 +127,10 @@ const Login_Form = () => {
               Sign In Your Account
             </h1>
             <p className="text-[#2C6777]">Sign in or Log in to your account</p>
-            <form onSubmit={handleSubmit(onSubmit)} className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="sm:w-2/3 w-full px-4 lg:px-0 mx-auto"
+            >
               <div className="pb-2 pt-4">
                 <label className="block mb-2 text-lg font-bold text-[#2C6777] text-start ml-2">
                   Email
@@ -116,6 +140,7 @@ const Login_Form = () => {
                   id="email"
                   name="email"
                   placeholder="Your email address here"
+                  autoComplete="email"
                   className="block w-full p-3 text-[16px] rounded-lg bg-[#d2e4e9]"
                   {...register("email", { required: true })}
                 />
@@ -132,6 +157,7 @@ const Login_Form = () => {
                   id="password"
                   name="password"
                   placeholder="Enter a strong password"
+                  autoComplete="current-password"
                   className="block w-full p-3 text-[16px] rounded-lg bg-[#d2e4e9]"
                   {...register("password", { required: true })}
                 />
@@ -144,16 +170,20 @@ const Login_Form = () => {
                 <div className="lg:mt-0 mt-2 flex items-center  mb-2 lg:w-1/2 md:w-2/3 w-full p-2">
                   <input
                     type="checkbox"
+                    id="rememberMe"
                     checked={rememberMe}
                     onChange={handleRememberMeChange}
                     className="w-4 h-4 bg-[#2C6777] border-[#2C6777] rounded"
                   />
-                  <label htmlFor="checkbox-1" className="ml-2 text-sm font-medium text-[#2C6777]">
+                  <label
+                    htmlFor="rememberMe"
+                    className="ml-2 text-sm font-medium text-[#2C6777]"
+                  >
                     Remember me
                   </label>
                 </div>
                 <div className="lg:text-right text-start text-[#2C6777] font-medium hover:underline hover:text-[#22454e] lg:w-1/2 md:w-1/3 w-full">
-                  <a href="#">Forget Password</a>
+                  <Link to="/forgot-password">Forgot Password</Link>
                 </div>
               </div>
               <p className="mt-4">Or Continue With</p>
