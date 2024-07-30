@@ -1,7 +1,7 @@
 import React from 'react'
 import GlobalButton from '../../../../Components/ShareableComponents/GlobalComponents/GlobalButton/GlobalButton'
 import { motion } from 'framer-motion'
-import Group1 from '../../../../../public/Group1.png'
+import Group1 from '../../../../../public/Group1.avif'
 const Fast_Easy_Secured_Every_Transaction = () => {
   const handleButtonClick = () => {
     // Handle button click logic here

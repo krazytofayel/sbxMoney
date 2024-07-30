@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 
 const useTokenValidation = () => {
   const navigate = useNavigate();
+  const TOKEN_EXPIRY_HOURS = 2;
+  const VALIDATION_INTERVAL_MS = 60000; // 1 minute
 
   useEffect(() => {
     const validateToken = () => {
@@ -11,22 +13,22 @@ const useTokenValidation = () => {
       if (tokenSetTimestamp) {
         const tokenSetDate = new Date(tokenSetTimestamp);
         const currentTime = new Date();
-        const diffHoures = (currentTime - tokenSetDate) / (1000 *60*60);
+        const diffHours = (currentTime - tokenSetDate) / (1000 * 60 * 60);
 
-        if (diffHoures >= 2) {
+        if (diffHours >= TOKEN_EXPIRY_HOURS) {
           localStorage.removeItem('accessToken');
           localStorage.removeItem('tokenSetTimestamp');
           localStorage.removeItem('user');
           toast.error('Session expired. Please log in again.');
-          navigate('/sign_in'); 
+          navigate('/sign_in');
         }
       }
     };
 
     validateToken();
 
-    // Set up an interval to validate the token periodically in every minute it check 
-    const intervalId = setInterval(validateToken, 60000); // 60000 ms = 1 minute
+    // Set up an interval to validate the token periodically every minute
+    const intervalId = setInterval(validateToken, VALIDATION_INTERVAL_MS);
 
     // Clean up interval on component unmount to prevent memory leack(basically use memory and return those after work when the process did not return properly then happen leaks)
     return () => clearInterval(intervalId);

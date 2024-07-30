@@ -15,6 +15,8 @@ import Admin from './Pages/DashBoard/Admin/Admin';
 import Money_Transfer_Process from './Components/ShareableComponents/MoneyTransferProcess/Money_Transfer_Process';
 import Sender_Information from './Components/ShareableComponents/MoneyTransferProcess/Money_Transfer_Process_Component/Sender_Information/Sender_Information';
 import ProtectedRoute from './Components/ProtectedRoute/ProtectedRoute';
+import ForgotPasswordRequest from './Pages/Login_Logout/ForgotPassword/ForgotPasswordRequest/ForgotPasswordRequest';
+import ResetPassword from './Pages/Login_Logout/ForgotPassword/ResetPassword/ResetPassword';
 
 
 const App = () => {
@@ -39,6 +41,10 @@ const App = () => {
         <Route path="/404" element={<NotFoundpage />} />
         <Route path="*" element={<Navigate to="/404" />} />
         {/*---------------------- NotFound page End------------------------ */}
+
+        {/* forget password */}
+        <Route path="/forgot-password" element={<ForgotPasswordRequest />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
     </>
   );
