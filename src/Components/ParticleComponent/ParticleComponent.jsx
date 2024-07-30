@@ -1,18 +1,19 @@
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import '../../App.css'
+import { loadSlim } from "tsparticles-slim";
+
 const ParticleBackground = () => {
   const particlesInit = async (main) => {
     console.log(main);
 
 
-    await loadFull(main);
+    await loadSlim(main);
   };
   const particlesLoaded = (container) => {
     console.log(container);
   };
   return (
-    <Particles
+    <div className="absolute inset-0"> <Particles
 
       id="tsparticles"
       init={particlesInit}
@@ -89,7 +90,8 @@ const ParticleBackground = () => {
       }}
 
 
-    />
+    /></div>
+   
   );
 };
 

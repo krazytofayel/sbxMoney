@@ -112,7 +112,7 @@ const Slider = () => {
 
           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
          <div className='h-16 w-16 p-1 border-2 rounded-full mx-auto'>
-          <img src="/public/profile8.jpg" className='h-full w-100% object-cover rounded-full' alt="" />
+          <img src="/public/profile1.avif" className='h-full w-100% object-cover rounded-full' alt="" />
             
          </div>
             <a href="#">
@@ -127,7 +127,7 @@ const Slider = () => {
 
           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
          <div className='h-16 w-16 p-1 border-2 rounded-full mx-auto'>
-          <img src="/public/profile3.jpg" className='h-full w-100% object-cover rounded-full' alt="" />
+          <img src="/public/profile2.avif" className='h-full w-100% object-cover rounded-full' alt="" />
             
          </div>
             <a href="#">
@@ -142,7 +142,7 @@ const Slider = () => {
 
           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
          <div className='h-16 w-16 p-1 border-2 rounded-full mx-auto'>
-          <img src="/public/profile4.jpg" className='h-full w-100% object-cover rounded-full' alt="" />
+          <img src="/public/profile3.avif" className='h-full w-100% object-cover rounded-full' alt="" />
             
          </div>
             <a href="#">
@@ -157,7 +157,7 @@ const Slider = () => {
 
           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
          <div className='h-16 w-16 p-1 border-2 rounded-full mx-auto'>
-          <img src="/public/profile5.jpg" className='h-full w-100% object-cover rounded-full' alt="" />
+          <img src="/public/profile4.avif" className='h-full w-100% object-cover rounded-full' alt="" />
             
          </div>
             <a href="#">
@@ -171,7 +171,7 @@ const Slider = () => {
 
           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
          <div className='h-16 w-16 p-1 border-2 rounded-full mx-auto'>
-          <img src="/public/profile4.jpg" className='h-full w-100% object-cover rounded-full' alt="" />
+          <img src="/public/profile5.avif" className='h-full w-100% object-cover rounded-full' alt="" />
             
          </div>
             <a href="#">
@@ -185,7 +185,7 @@ const Slider = () => {
 
           <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
          <div className='h-16 w-16 p-1 border-2 rounded-full mx-auto'>
-          <img src="/public/profile5.jpg" className='h-full w-100% object-cover rounded-full' alt="" />
+          <img src="/public/profile1.avif" className='h-full w-100% object-cover rounded-full' alt="" />
             
          </div>
             <a href="#">
