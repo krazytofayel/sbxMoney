@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { TiTickOutline } from "react-icons/ti";
-import benefit from '../../../../../public/Group2.png'
+import benefit from '../../../../../public/Group2.avif'
 const Prestige_Benifit = () => {
   const items = [
     {
