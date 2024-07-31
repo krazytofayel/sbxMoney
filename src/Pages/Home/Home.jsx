@@ -9,43 +9,26 @@ import SBX_Mobile_App_Section from "./HomeComponents/SBX_Mobile_App_Section/SBX_
 import FAQ from "./HomeComponents/FAQ/FAQ";
 import Take_It_Easy_Steper from "./HomeComponents/Take_It_Easy_Steper/Take_It_Easy_Steper";
 import Slider from "./HomeComponents/Slider/Slider";
-
-
-
-
+import useStickyNavbar from "../../Components/CustomHook/useStickyNavbar/useStickyNavbar";
 
 const Home = () => {
-  const [navfix, setNavfix] = useState(false);
-
-  function setFixed() {
-    if (window.scrollY >= 70) {
-      setNavfix(true);
-      //console.log(scrollY)
-    } else {
-      setNavfix(false);
-    }
-  }
-  window.addEventListener("scroll", setFixed);
-
-
+  const isSticky = useStickyNavbar(70);
   return (
     <>
-      <div className={`z-20  top-0 bg-white w-full transition-all duration-300 ease-in-out ${navfix ? "shadow-lg bg-white" : ""}`}>
+      <div className={`z-20  top-0 bg-white w-full transition-all duration-300 ease-in-out ${isSticky ? "shadow-lg fixed bg-white" : ""}`} >
         <NavBar />
       </div>
       <MainHeroSection />
       <Prestige_Benifit />
       <Why_Chose_Us />
       <Fast_Easy_Secured_Every_Transaction />
-
       <Take_It_Easy_Steper />
       <Slider />
       <SBX_Mobile_App_Section />
       <FAQ></FAQ>
       <Footer />
-
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
