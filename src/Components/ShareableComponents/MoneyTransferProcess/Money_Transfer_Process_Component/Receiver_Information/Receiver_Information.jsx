@@ -109,7 +109,7 @@ const Receiver_Information = ({  receiverformData, setReceiverFormData, }) => {
 
   return (
     <div>
-      {/* <ToastContainer /> */}
+      <ToastContainer />
       <form className="max-w-4xl mx-auto" onSubmit={handleSubmit(onSubmit)}>
         <h1 className=" font-bold text-gray-900 mb-2">Personal Information:</h1>
         <div className="bg-white rounded-lg p-5">
