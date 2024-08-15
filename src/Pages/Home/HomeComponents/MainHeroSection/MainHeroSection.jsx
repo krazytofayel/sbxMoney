@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "../../../../Components/ShareableComponents/Footer/Footer";
 import GlobalButton from "../../../../Components/ShareableComponents/GlobalComponents/GlobalButton/GlobalButton";
-import CountryFlag from "react-country-flag";
 import { motion } from "framer-motion";
 import vector from "../../../../../public/Vector1.png";
 import currencies from "../../../../../public/commonCurrency.json";
@@ -10,13 +9,13 @@ import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import useCurrencyConverter from "../../../../Components/CustomHook/useCurrencyConverter/useCurrencyConverter";
 
 const MainHeroSection = () => {
-  const [isRegistered, setIsRegistered] = useState(null); 
- 
 
+  
 
-
+  // converts an object of currency data into an array of options suitable for use in a dropdown menu or a select input,obj.k return an array.then map throw the array and finally return a obj
   const cuntriesOptions = Object.keys(currencies).map((currency, index) => ({
     value: currencies[currency].code,
     label: `${currencies[currency].code} - ${currencies[currency].name}`,
@@ -24,82 +23,26 @@ const MainHeroSection = () => {
     symbol: currencies[currency].symbol,
     index: index,
   }));
+//this is for showing initial selected currency
+  const initialCurrencyFrom = cuntriesOptions.find(option => option.value === 'AUD');
+  const initialCurrencyTo = cuntriesOptions.find(option => option.value === 'BDT');
 
-  const initialCurrencyFrom = cuntriesOptions[8];
-  const initialCurrencyTo = cuntriesOptions[11];
-  const initialTotalPay = 0;
-  const initialExchangeRateAmount = 0;
-  const initialSelectAmount = 1;
-
-  const [selectedCurrencyFrom, setSelectedCurrencyFrom] = useState(initialCurrencyFrom);
-  const [selectedCurrencyTo, setSelectedCurrencyTo] = useState(initialCurrencyTo);
-  const [totalPay, setTotalPay] = useState(initialTotalPay);
-  const [exchangeRateAmount, setExchangeRateAmount] = useState(initialExchangeRateAmount);
-  const [selectAmount, setSelectAmount] = useState(initialSelectAmount);
-  const [exchangeRates, setExchangeRates] = useState({});
-  const URL = `https://v6.exchangerate-api.com/v6/90d4143fc7431ae39d52bd1d/latest/USD`;
+  const {
+    selectedCurrencyFrom, setSelectedCurrencyFrom,
+    selectedCurrencyTo, setSelectedCurrencyTo,
+    totalPay, setTotalPay,
+    exchangeRateAmount, setExchangeRateAmount,
+    selectAmount, setSelectAmount,
+    exchangeRates, handleConvert
+  } = useCurrencyConverter(initialCurrencyFrom, initialCurrencyTo);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch(URL)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.result === "success") {
-          setExchangeRates(data.conversion_rates);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
 
-  const handleConvert = () => {
-    if (exchangeRates && selectedCurrencyFrom && selectedCurrencyTo) {
-      const fromRate = exchangeRates[selectedCurrencyFrom.value];
-      const toRate = exchangeRates[selectedCurrencyTo.value];
-      if (fromRate && toRate) {
-        const conversionRate = toRate / fromRate;
-        const convertedAmount = selectAmount * conversionRate;
-        setTotalPay(convertedAmount.toFixed(2));
-        setExchangeRateAmount(conversionRate.toFixed(4));
-
-
-      }
-    }
-  };
-
-  const handleSelectTo = (_eTo) => {
-    setSelectedCurrencyTo(_eTo);
-
-  };
-
-  const handleSelectFrom = (_eFrom) => {
-    setSelectedCurrencyFrom(_eFrom);
-
-  };
-
-  const handleAmountChange = (value) => {
-    setSelectAmount(value);
-
-  };
-
-  const handleClose = () => {
-    // Log form data to the console
-    console.log({ selectedCurrencyFrom, selectedCurrencyTo, selectAmount, exchangeRateAmount, totalPay, });
-  };
-
-  useEffect(() => {
-    if (selectedCurrencyFrom && selectedCurrencyTo) {
-      handleConvert();
-    }
-  }, [selectedCurrencyTo, selectedCurrencyFrom]);
 
   const handleButtonClick = (event) => {
     event.preventDefault();
-    // Check if the user is registered
     const accessToken = localStorage.getItem("accessToken");
-    // Logic to check if the user is registered
     if (accessToken) {
       navigate("/sendmoney");
     } else {
@@ -107,18 +50,15 @@ const MainHeroSection = () => {
     }
   };
 
-
   const handleCalculate = (event) => {
     event.preventDefault();
-    // Validate the amount
     if (selectAmount <= 0) {
       toast.error("Please enter a valid amount greater than zero.");
       return;
     }
-    // Call handleConvert to calculate the total pay amount and show conversion rate
+
     handleConvert();
   };
-
   return (
     <>
       <ToastContainer />
@@ -161,7 +101,7 @@ const MainHeroSection = () => {
             <div className="flex  lg:flex-wrap  gap-2 ">
               <div>
                 <GlobalButton
-                  onClick={handleButtonClick}
+
                   text="Register Now"
                   bgColor="bg-green-500"
                   hoverBgColor="bg-red-500"
@@ -172,7 +112,7 @@ const MainHeroSection = () => {
               </div>
               <div>
                 <GlobalButton
-                  onClick={handleButtonClick}
+
                   text="How it's Work"
                   bgColor="bg-green-500"
                   hoverBgColor="bg-red-500"
@@ -190,14 +130,13 @@ const MainHeroSection = () => {
             className=""
           >
             <div className="hero-currency-convert relative  ">
-              {/* form */}
               <div className=" p-6 bg-white shadow-xl sm:w-10/12 md:w-10/12 ml-7  md:ml-7 lg:ml-10 xl:ml-[50px] absolute   mt-20 md:mt-16 rounded-md ">
                 <h1 className="text-lg font-bold">Conversion Form </h1>
 
-                <form className="mt-2" onSubmit={handleButtonClick}>
+                <form className="mt-2" onSubmit={handleCalculate}>
                   <div>
                     <label
-                      for="countries"
+                      htmlFor="countries"
                       className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
                     >
                       Select your country (From)
@@ -205,14 +144,14 @@ const MainHeroSection = () => {
                     <Select
                       id="countries"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full "
-                      onChange={handleSelectFrom}
+                      onChange={setSelectedCurrencyFrom}
                       value={selectedCurrencyFrom}
                       options={cuntriesOptions}
                     />
                   </div>
                   <div>
                     <label
-                      for="countries"
+                      htmlFor="countries"
                       className="block mt-2 mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
                     >
                       To
@@ -220,7 +159,7 @@ const MainHeroSection = () => {
                     <Select
                       id="countries"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full "
-                      onChange={handleSelectTo}
+                      onChange={setSelectedCurrencyTo}
                       value={selectedCurrencyTo}
                       options={cuntriesOptions}
                     />
@@ -234,36 +173,22 @@ const MainHeroSection = () => {
                   </label>
 
                   <div className="grid md:grid-cols-2 justify-between md:gap-6 mt-2">
-                    <div className="   mb-5">
+                    <div className="mb-5">
                       <CurrencyInput
                         type="text"
                         id="amount"
                         name="input-name"
-                        onValueChange={(value, name) => setSelectAmount(value)}
+                        onValueChange={(value) => setSelectAmount(value)}
                         value={selectAmount}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                         placeholder="amount"
                       />
                     </div>
-                    {/* <div className="relative z-0 w-full mb-5 group">
-                      <select
-                        id="countries"
-                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                      >
-                        <option value="">select value</option>
-                        <option>Bank ET</option>
-
-                        <option>Bank FR</option>
-                        <option>Bkash</option>
-                        <option>Cash FR</option>
-                      </select>
-                    </div> */}
-                    <div className="relative z-0 w-full  group">
+                    <div className="relative z-0 w-full group">
                       <button
                         onClick={handleCalculate}
                         className="border rounded-md px-3 py-2 bg-green-500 text-white font-semibold w-full"
                       >
-                        {" "}
                         Calculate
                       </button>
                     </div>
@@ -298,19 +223,14 @@ const MainHeroSection = () => {
                       {selectedCurrencyTo?.value}
                     </div>
                   </div>
-                  {/* <div className='flex justify-between mb-2 mt-2'>
-                    <div><p className='font-medium text-gray-700 text-sm'>Total fees</p></div>
-                    <div className='font-bold text-sm text-gray-700'><span >700</span> USD</div>
-
-                  </div> */}
 
                   <button
-                    type="submit"
-                    className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-green-500 rounded shadow-lg focus:outline-none hover:bg-green-500  hover:text-black"
+                    type="submit" onClick={handleButtonClick}
+                    className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-green-500 rounded shadow-lg focus:outline-none hover:bg-green-500 hover:text-black"
                   >
                     Send Money
                   </button>
-                  <p className="flex justify-between  mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
+                  <p className="flex justify-between mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
                     Already registered?
                   </p>
                 </form>
@@ -320,13 +240,12 @@ const MainHeroSection = () => {
               <img
                 src={vector}
                 alt="Image"
-                className="h-[540px]  relative -z-10 mt-28 mb-20  "
+                className="h-[540px] relative -z-10 mt-28 mb-20"
                 style={{
                   clipPath: "polygon(0 65%, 100% 33%, 100% 100%, 0% 100%)",
                 }}
               />
             </div>
-            {/* <div className="'h-[540px]  relative -z-10 mt-20 mb-20 bg-black" style={{ clipPath: 'polygon(0 65%, 100% 33%, 100% 100%, 0% 100%)' }}></div> */}
           </motion.div>
         </div>
       </section>

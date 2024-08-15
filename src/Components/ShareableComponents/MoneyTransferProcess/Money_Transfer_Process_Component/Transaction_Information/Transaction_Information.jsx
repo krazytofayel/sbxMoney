@@ -4,7 +4,7 @@ import Money_Conversion_Form from "../Money_Conversion_Form/Money_Conversion_For
 import Accordion from "../Ancordian/Ancordian";
 import axios from "axios";
 
-const Transaction_Information = ({ senderformData }) => {
+const Transaction_Information = ({ senderformData, isActive }) => {
   const [senderData, setSenderData] = useState({});
   const [receiverData, setReceiverData] = useState({});
   const [receiverOptions, setReceiverOptions] = useState([]);
@@ -24,7 +24,8 @@ const Transaction_Information = ({ senderformData }) => {
   // Retrieve user from local storage
   const storedUser = JSON.parse(localStorage.getItem("user"));
   const userId = storedUser?.id;
-  console.log(userId)
+  const numericUserId = Number(userId)
+  console.log(typeof (numericUserId))
 
   // Fetch receiver data specific to the user from the API when the component mounts
   useEffect(() => {
@@ -47,13 +48,30 @@ const Transaction_Information = ({ senderformData }) => {
         console.log("API Response: ", response.data);
 
         const receivers = response.data.data;
-        const tokenSetDate = new Date(tokenSetTimestamp);
+       // const tokenSetDate = new Date(tokenSetTimestamp);
+
+        // Check if userId and receivers data are valid
+        if (isNaN(numericUserId)) {
+          console.error("Invalid userId");
+          setIsLoading(false);
+          return;
+        }
+
+        if (!Array.isArray(receivers)) {
+          console.error("Receivers data is not an array");
+          setIsLoading(false);
+          return;
+        }
 
         // Filter receivers based on their creation date
-        const filteredReceivers = receivers.filter(receiver => {
-          const receiverCreatedDate = new Date(receiver.created_at);
-          return receiverCreatedDate >= tokenSetDate;
-        });
+        // const filteredReceivers = receivers.filter(receiver => {
+        //   const receiverCreatedDate = new Date(receiver.created_at);
+        //   return receiverCreatedDate >= tokenSetDate;
+        // });
+        // console.log("Filtered Receivers: ", filteredReceivers);
+        // Filter receivers based on user_id
+        const filteredReceivers = receivers.filter(receiver => Number(receiver.user_id) === numericUserId);
+
         console.log("Filtered Receivers: ", filteredReceivers);
         const options = filteredReceivers.map((receiver, index) => ({
           id: index,
@@ -68,10 +86,10 @@ const Transaction_Information = ({ senderformData }) => {
       }
     };
 
-    if (userId) {
+    if (isActive && userId) {
       fetchReceivers();
     }
-  }, [userId]);
+  }, [isActive, userId]);
 
   const handleReceiverChange = (event) => {
     const selectedReceiverName = event.target.value;
@@ -99,7 +117,7 @@ const Transaction_Information = ({ senderformData }) => {
                   <h2 className="text-xl font-semibold mb-4">
                     Sender Information
                   </h2>
-                  <div className="grid grid-cols-2 gap-4">
+                  {/* <div className="grid grid-cols-2 gap-4">
                     <div>
                       <p className="text-sm font-medium text-gray-900 mb-2">
                         First Name:
@@ -116,7 +134,7 @@ const Transaction_Information = ({ senderformData }) => {
                         {senderData.lastName}
                       </p>
                     </div>
-                  </div>
+                  </div> */}
                   <div>
                     <p className="text-sm font-medium text-gray-900 mt-2 mb-2">
                       Full Name:
@@ -178,7 +196,7 @@ const Transaction_Information = ({ senderformData }) => {
                     </div>
                   </div>
                   <div className="grid grid-cols-2 gap-4">
-                    <div>
+                    {/* <div>
                       <p className="text-sm font-medium text-gray-900 mt-2 mb-2">
                         Area:
                       </p>
@@ -193,7 +211,7 @@ const Transaction_Information = ({ senderformData }) => {
                       <p className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                         {senderData.block}
                       </p>
-                    </div>
+                    </div> */}
                     <div>
                       <p className="text-sm font-medium text-gray-900 mt-2 mb-1">
                         Post Code:
@@ -237,7 +255,7 @@ const Transaction_Information = ({ senderformData }) => {
                       Selected Receiver: {selectedReceiverData.name}
                     </h3>
 
-                   
+
                     <div>
                       <p className="text-sm font-medium text-gray-900 mt-2 mb-2">
                         Full Name:
@@ -264,7 +282,7 @@ const Transaction_Information = ({ senderformData }) => {
                         </p>
                       </div>
                     </div>
-                
+
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <p className="text-sm font-medium text-gray-900 mt-2 mb-2">
@@ -372,7 +390,7 @@ const Transaction_Information = ({ senderformData }) => {
           <Money_Conversion_Form
             senderData={senderData}
             receiverData={receiverData}
-            selectedReceiverData={selectedReceiverData} 
+            selectedReceiverData={selectedReceiverData}
           />
         )}
       </div>
