@@ -37,7 +37,7 @@ const MainHeroSection = () => {
   const [exchangeRateAmount, setExchangeRateAmount] = useState(initialExchangeRateAmount);
   const [selectAmount, setSelectAmount] = useState(initialSelectAmount);
   const [exchangeRates, setExchangeRates] = useState({});
-  const URL = `https://v6.exchangerate-api.com/v6/e6275e44ecb29da0333681c6/latest/USD`;
+  const URL = `https://v6.exchangerate-api.com/v6/90d4143fc7431ae39d52bd1d/latest/USD`;
 
   const navigate = useNavigate();
 

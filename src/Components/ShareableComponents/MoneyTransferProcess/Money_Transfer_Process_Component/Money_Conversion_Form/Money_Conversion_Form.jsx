@@ -30,7 +30,7 @@ const Money_Conversion_Form = ({ senderData, receiverData, selectedReceiverData 
   const [selectedCurrencyFrom, setSelectedCurrencyFrom] =useState(initialCurrencyFrom);
   const [selectedCurrencyTo, setSelectedCurrencyTo] = useState(initialCurrencyTo);
   const [exchangeRates, setExchangeRates] = useState({});
-  const URL = `https://v6.exchangerate-api.com/v6/e6275e44ecb29da0333681c6/latest/USD`;
+  const URL = `https://v6.exchangerate-api.com/v6/90d4143fc7431ae39d52bd1d/latest/USD`;
 
   const navigate = useNavigate();
 
